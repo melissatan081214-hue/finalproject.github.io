@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>芈月·永恒之月</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Noto Serif SC", serif;
+    background: #08090d;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* 左侧导航 */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 75px;
+    height: 100vh;
+    background: rgba(0,0,0,.65);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255,255,255,.12);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+}
+
+.sidebar a {
+    color: rgba(255,255,255,.55);
+    text-decoration: none;
+    writing-mode: vertical-rl;
+    font-size: 12px;
+    letter-spacing: 3px;
+    transition: .3s;
+}
+
+.sidebar a:hover {
+    color: #e8c77a;
+}
+
+/* HERO */
+.hero {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 65% 45%, rgba(180,120,70,.35), transparent 35%),
+        linear-gradient(120deg, #11131a 0%, #2b2220 45%, #08090d 100%);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.8), transparent 55%, rgba(0,0,0,.25));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-left: 12%;
+}
+
+.hero-text {
+    animation: fadeUp 1.5s ease;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    letter-spacing: 8px;
+    color: #d9bd78;
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-size: clamp(70px, 10vw, 150px);
+    font-weight: 500;
+    letter-spacing: 15px;
+}
+
+.hero-en {
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    letter-spacing: 8px;
+    opacity: .5;
+    margin-top: 10px;
+}
+
+.hero-line {
+    width: 150px;
+    height: 1px;
+    background: #d9bd78;
+    margin: 35px 0;
+}
+
+.hero-quote {
+    font-size: 20px;
+    letter-spacing: 4px;
+    opacity: .9;
+}
+
+.hero-button {
+    display: inline-block;
+    margin-top: 45px;
+    padding: 14px 35px;
+    border: 1px solid #d9bd78;
+    color: #d9bd78;
+    text-decoration: none;
+    letter-spacing: 4px;
+    transition: .4s;
+}
+
+.hero-button:hover {
+    background: #d9bd78;
+    color: #111;
+}
+
+/* 芈月立绘 */
+.character {
+    position: absolute;
+    right: 8%;
+    bottom: 0;
+    width: 45%;
+    height: 90%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.character::before {
+    content: "芈月";
+    font-size: 220px;
+    color: rgba(255,255,255,.025);
+    writing-mode: vertical-rl;
+    position: absolute;
+    right: 10%;
+    top: 10%;
+}
+
+.character-placeholder {
+    width: 70%;
+    height: 85%;
+    overflow: hidden;
+    border-radius: 50% 50% 0 0;
+    box-shadow: 0 0 100px rgba(210,160,90,.25);
+}
+
+/* 只控制 miyue2.jpg */
+.character-placeholder img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+}
+
+/* 通用 Section */
+section {
+    min-height: 100vh;
+    padding: 120px 12% 100px 15%;
+    position: relative;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-title small {
+    color: #d9bd78;
+    letter-spacing: 6px;
+}
+
+.section-title h2 {
+    margin-top: 15px;
+    font-size: 45px;
+    font-weight: 500;
+    letter-spacing: 10px;
+}
+
+/* 简介 */
+.introduction {
+    background: linear-gradient(rgba(8,9,13,.92), rgba(8,9,13,.96));
+}
+
+.intro-container {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.intro-image {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #392b27, #111218);
+    border: 2px solid rgba(217,189,120,.5);
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 50px rgba(217,189,120,.15);
+}
+
+.intro-text h3 {
+    font-size: 42px;
+    font-weight: 500;
+    letter-spacing: 8px;
+}
+
+.intro-text .en {
+    margin-top: 10px;
+    color: #d9bd78;
+    letter-spacing: 5px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.intro-text p {
+    margin-top: 35px;
+    line-height: 2.2;
+    color: rgba(255,255,255,.68);
+    font-size: 16px;
+}
+
+.intro-quote {
+    margin-top: 30px;
+    padding-left: 20px;
+    border-left: 2px solid #d9bd78;
+    color: #d9bd78;
+}
+
+/* 英雄档案 */
+.profile {
+    background: radial-gradient(circle at center, #24201e, #08090d 65%);
+}
+
+.profile-box {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.profile-row {
+    display: grid;
+    grid-template-columns: 100px 330px 1fr;
+    align-items: center;
+    min-height: 80px;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    transition: .3s;
+}
+
+.profile-row:hover {
+    background: rgba(217,189,120,.06);
+}
+
+.profile-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-logo img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+}
+
+.profile-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.profile-label i {
+    width: 55px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d9bd78);
+}
+
+.profile-label i:last-child {
+    background: linear-gradient(90deg, #d9bd78, transparent);
+}
+
+.profile-label span {
+    color: rgba(255,255,255,.65);
+    font-size: 13px;
+    letter-spacing: 3px;
+    white-space: nowrap;
+}
+
+.profile-row strong {
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+/* 技能 */
+.skills {
+    background: #0d0e13;
+}
+
+.skill-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 35px;
+    margin-bottom: 65px;
+}
+
+.skill-btn {
+    width: 90px;
+    height: 120px;
+    border: none;
+    background: transparent;
+    color: rgba(255,255,255,.55);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transition: .35s;
+}
+
+.skill-btn img {
+    width: 78px;
+    height: 78px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,.25);
+    filter: brightness(.65);
+    transition: .35s;
+}
+
+.skill-btn span {
+    font-size: 13px;
+    letter-spacing: 3px;
+    transition: .35s;
+}
+
+.skill-btn:hover img {
+    transform: scale(1.08);
+    filter: brightness(.9);
+    border-color: #d9bd78;
+}
+
+.skill-btn.active img {
+    transform: scale(1.12);
+    filter: brightness(1);
+    border-color: #d9bd78;
+    box-shadow:
+        0 0 0 3px rgba(217,189,120,.15),
+        0 0 25px rgba(217,189,120,.45);
+}
+
+.skill-btn.active span {
+    color: #d9bd78;
+}
+
+.skill-content {
+    max-width: 850px;
+    margin: auto;
+    line-height: 2.2;
+}
+
+.skill-content h3 {
+    color: #d9bd78;
+    margin-bottom: 20px;
+}
+
+/* 故事 */
+.story {
+    background: linear-gradient(180deg, #0b0c10, #211c19, #08090d);
+}
+
+.story-content {
+    max-width: 850px;
+    margin: auto;
+    text-align: left;
+}
+
+.story-content p {
+    line-height: 2.5;
+    color: rgba(255,255,255,.65);
+    font-size: 17px;
+    text-indent: 2em;
+    margin-bottom: 25px;
+}
+
+.story-highlight {
+    color: #d9bd78;
+    font-weight: 500;
+}
+
+/* Footer */
+footer {
+    padding: 40px;
+    text-align: center;
+    background: #050608;
+    color: rgba(255,255,255,.3);
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+/* Animation */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 手机 */
+@media(max-width: 800px) {
+    .sidebar {
+        width: 55px;
+    }
+
+    .hero-content {
+        padding-left: 90px;
+    }
+
+    .character {
+        opacity: .35;
+        width: 80%;
+        right: -20%;
+    }
+
+    section {
+        padding: 90px 30px 80px 80px;
+    }
+
+    .intro-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .intro-image {
+        width: 100%;
+        max-width: 400px;
+        height: 400px;
+    }
+
+    .profile-row {
+        grid-template-columns: 60px 150px 1fr;
+    }
+
+    .skill-buttons {
+        flex-wrap: wrap;
+    }
+
+    .hero-title {
+        font-size: 65px;
+        letter-spacing: 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="sidebar">
+    <a href="#home">芈月</a>
+    <a href="#intro">简介</a>
+    <a href="#profile">峡谷群雄•英雄世界</a>
+    <a href="#skills">技能</a>
+    <a href="#story">故事</a>
+</nav>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="hero-subtitle">永恒之月</div>
+            <h1 class="hero-title">芈月</h1>
+            <div class="hero-en">MI YUE</div>
+            <div class="hero-line"></div>
+            <div class="hero-quote">「拥有了青春，也就拥抱了永恒！」</div>
+            <a href="#intro" class="hero-button">探索英雄</a>
+        </div>
+    </div>
+
+    <div class="character">
+        <div class="character-placeholder">
+            <img src="miyue2.jpg" alt="芈月立绘">
+        </div>
+    </div>
+</section>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     英雄简介
+========================= -->
+
+<section class="introduction" id="intro">
+
+<div class="section-title">
+
+<small>HERO INTRODUCTION</small>
+
+<h2>英雄简介</h2>
+
+</div>
+
+
+<div class="intro-container">
+
+<div class="intro-image">
+ <img src="miyue.jpg" height="500" weight="500" alt="芈月立绘">
+</div>
+
+
+<div class="intro-text">
+
+<h3>芈月</h3>
+
+<div class="en">
+MI YUE
+</div>
+
+<p>
+芈月是《王者荣耀》中的法师英雄，
+拥有较强的持续输出能力与生存能力。
+她擅长利用暗影仆从进行持续攻击，
+并通过技能回复自身生命值。
+</p>
+
+<p>
+作为一名灵活的法术英雄，
+芈月能够通过位移与不可选中效果躲避敌人的攻击，
+不断消耗对手并寻找输出机会，
+在战场上展现出强大的持续作战与牵制能力。
+</p>
+
+<div class="intro-quote">
+「拥有了青春，也就拥抱了永恒！」
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     英雄档案
+========================= -->
+
+<section class="profile" id="profile">
+
+<div class="section-title">
+
+<small>HONOR OF KING</small>
+
+<h2>峡谷群雄•英雄世界</h2>
+
+</div>
+
+
+<div class="profile-box">
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="6.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>中文名</span>
+            <i></i>
+        </div>
+
+        <strong>芈月</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="2.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>种族</span>
+            <i></i>
+        </div>
+
+        <strong>人类</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="3.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>身份</span>
+            <i></i>
+        </div>
+
+        <strong>玄雍太后</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="5.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>职业</span>
+            <i></i>
+        </div>
+
+        <strong>战士</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="4.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>阵营</span>
+            <i></i>
+        </div>
+
+        <strong>玄雍</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="1.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>能量</span>
+            <i></i>
+        </div>
+
+        <strong>魔道</strong>
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     技能
+========================= -->
+
+<section class="skills" id="skills">
+
+<div class="section-title">
+
+<small>ABILITY</small>
+
+<h2>技能展示</h2>
+
+</div>
+
+
+<div class="skill-buttons">
+
+    <button class="skill-btn active" onclick="showSkill(0)">
+        <img src="1miyue.jpg" alt="被动技能">
+        <span>被动</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(1)">
+        <img src="2miyue.jpg" alt="一技能">
+        <span>一技能</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(2)">
+        <img src="3miyue.jpg" alt="二技能">
+        <span>二技能</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(3)">
+        <img src="4miyue.jpg" alt="三技能">
+        <span>三技能</span>
+    </button>
+
+</div>
+
+
+<div class="skill-content">
+
+<h3 id="skillName">
+永生之血 	
+</h3>
+
+<p id="skillText">
+芈月释放技能会召唤暗影仆从(最多6个)，暗影仆从自动攻击附近敌人，每次造成40~80(+8％法术攻击)法术伤害并为芈月提供20~40(+0.5%额外生命值)生命回复，暗影仆从对非英雄单位额外造成40~80(+8％法术攻击)法术伤害
+芈月召唤暗仆从时会获得30点暗影之力并获得最多30移速加成和10%额外回复(随暗影之力比例提升)
+暗影之力会自然消耗，暗影之力为0时仆从会逐个消失</p>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     故事
+========================= -->
+
+<section class="story" id="story">
+
+<div class="section-title">
+
+<small>HERO STORY</small>
+
+<h2>英雄故事</h2>
+
+</div>
+
+
+<div class="story-content">
+
+<p>卑微的少女因美貌改变命运，经过漫长的宫廷斗争中，芈月最终成了玄雍太后。但青春流逝与权力消退的恐惧与日俱增，她开始寻求长生不老药，
+不计一切代价留住青春美貌，无论献上灵药的徐福，进行何种残忍的黑暗实验。
+</p>
+
+<p>
+芈月永远不会忘记，自己卑微的少女时代结束于玄雍君主赞叹而惊艳的眼神。凭借美貌这件武器，以及对权谋的洞悉，她成为漫长岁月的胜利者。
+不仅自后宫的倾轧中生存下来，甚至成为了秦国的太后。但时间不会对任何人有所怜悯。青春容颜似细沙般从指间流逝，
+年幼的帝王逐渐长大成人，权力与尊贵便如风中烛火，转瞬间就可能熄灭。她意识到这点，开始一天比一天陷入恐惧。
+</p>
+
+<p><span class="story-highlight">
+此时，自称徐福的男人颤抖着伏在她的脚下，急迫惊惶的请求她的庇护。奉上的贡礼则是永葆青春的灵药。
+</span></p>
+
+<p>
+她服下灵药，做起美妙的梦。梦里她重回年华鼎盛的时代，俯瞰着过去的敌人。
+梦醒时刻，她知道一切并非幻觉。从镜子里看到的，俨然是二十年前的模样。
+正如徐福所言，消逝的青春美貌又回来了。
+</p>
+
+<p>
+徐福如愿以偿得到了他所渴求的庇护。太后赐予他专门的药室来炼制那种珍稀的灵药。
+</p>
+
+<p>
+徐福请求着灵药的材料。死囚和战俘成为最初的牺牲品，之后甚至开始为此饲养魔种。
+</p>
+
+<p>
+然而灵药效力所能持续的时间越来越短。面对太后不耐烦的质问，徐福再次献上新的秘方——
+<span class="story-highlight">长生不老之药。芈月初次得知，过去曾经存在一个辉煌的时代。那时的人们经由魔道拥有更长久的生命，以及更长久的青春。
+</span></p>
+
+<p>
+很快，徐福开始了新的实验：他将一个卑贱之子浸泡进药池，并实施了魔道手术，将他改造为强大的战士，并拥有了远超出人类的寿命。
+徐福请求着灵药的材料。死囚和战俘成为最初的牺牲品，之后甚至开始为此饲养魔种。
+</p>
+
+<p>
+很快，徐福开始了新的实验：他将一个卑贱之子浸泡进药池，并实施了魔道手术，
+将他改造为强大的战士，并拥有了远超出人类的寿命。
+</p>
+
+<p>
+芈月无法忍受近在咫尺的美梦破灭。
+</p>
+
+<p>
+“渴求青春美貌，并愿意付出一切代价。”
+</p>
+
+<p>
+“年龄？那是秘密。”
+</p>
+
+</div>
+
+</section>
+
+
+<footer>
+HERO PROFILE · SUN SHANGXIANG
+</footer>
+
+
+<script>
+
+/* =========================
+   技能资料
+========================= */
+
+const skills = [
+
+{
+name: "永生之血",
+text: "芈月释放技能会召唤暗影仆从(最多6个)，暗影仆从自动攻击附近敌人，每次造成40~80(+8％法术攻击)法术伤害并为芈月提供20~40(+0.5%额外生命值)生命回复，暗影仆从对非英雄单位额外造成40~80(+8％法术攻击)法术伤害芈月召唤暗仆从时会获得30点暗影之力并获得最多30移速加成和10%额外回复(随暗影之力比例提升)暗影之力会自然消耗，暗影之力为0时仆从会逐个消失。"
+},
+
+{
+name: "痛苦冲击",
+text: "芈月释放暗影能量，对路径上的敌人造成150/180/210/240/270/300(+30％法术攻击)法术伤害。再次使用该技能，芈月会降临在能量所在之处，并对附近的敌人造成150/180/210/240/270/300(+30％法术攻击)法术伤害。如果降临命中敌人，则芈月召唤一个暗影仆从。"
+},
+
+{
+name: "幻翼仆从",
+text: "芈月向前释放暗影锁链链接并抽取首个命中目标10/14/18/22/26/30物攻和30/45/60/75/90/105法攻，锁链会连锁附近的敌人(至多额外2~4个，技能3/5级时提升)，每命中一个单位获得35/42/49/56/63/70(+0.5%额外生命值)生命值回复(非英雄单位减半)并对目标造成35/42/49/56/63/70(+7%法术攻击)法术伤害(0.5秒1次，持续4秒)与15%减速(逐渐增加，4秒达到上限)芈月的普攻造成25/30/35/40/45/50(+100%物理攻击+15%法术攻击)法术伤害并在命中时获得10暗影之力链接双方超过1000距离则断开"
+},
+
+{
+name: "暗影之月",
+text: "芈月遁入暗影净化所有负面效果并对周围敌人造成350/525/700(+70％法术攻击)法术伤害，随后获得无法选中和70移速加成(持续2秒)，结束时再次造成等量伤害并在命中时召唤暗影仆从。"
+}
+
+];
+
+
+function showSkill(index) {
+
+document.getElementById("skillName").innerText =
+skills[index].name;
+
+document.getElementById("skillText").innerText =
+skills[index].text;
+
+document.querySelectorAll(".skill-btn")
+.forEach(btn => btn.classList.remove("active"));
+
+document.querySelectorAll(".skill-btn")[index]
+.classList.add("active");
+
+}
+
+
+/* =========================
+   滚动出现动画
+========================= */
+
+const observer =
+new IntersectionObserver((entries) => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+
+entry.target.style.animation =
+"fadeUp 1s ease forwards";
+
+}
+
+});
+
+},{threshold:0.15});
+
+
+document.querySelectorAll(
+".intro-container, .profile-box, .skill-content, .story-content"
+).forEach(el => {
+
+el.style.opacity = "0";
+
+observer.observe(el);
+
+});
+
+</script>
+
+</body>
