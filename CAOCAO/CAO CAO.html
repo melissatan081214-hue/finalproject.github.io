@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>曹操·鲜血枭雄</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Noto Serif SC", serif;
+    background: #08090d;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* 左侧导航 */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 75px;
+    height: 100vh;
+    background: rgba(0,0,0,.65);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255,255,255,.12);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+}
+
+.sidebar a {
+    color: rgba(255,255,255,.55);
+    text-decoration: none;
+    writing-mode: vertical-rl;
+    font-size: 12px;
+    letter-spacing: 3px;
+    transition: .3s;
+}
+
+.sidebar a:hover {
+    color: #e8c77a;
+}
+
+/* HERO */
+.hero {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 65% 45%, rgba(180,120,70,.35), transparent 35%),
+        linear-gradient(120deg, #11131a 0%, #2b2220 45%, #08090d 100%);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.8), transparent 55%, rgba(0,0,0,.25));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-left: 12%;
+}
+
+.hero-text {
+    animation: fadeUp 1.5s ease;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    letter-spacing: 8px;
+    color: #d9bd78;
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-size: clamp(70px, 10vw, 150px);
+    font-weight: 500;
+    letter-spacing: 15px;
+}
+
+.hero-en {
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    letter-spacing: 8px;
+    opacity: .5;
+    margin-top: 10px;
+}
+
+.hero-line {
+    width: 150px;
+    height: 1px;
+    background: #d9bd78;
+    margin: 35px 0;
+}
+
+.hero-quote {
+    font-size: 20px;
+    letter-spacing: 4px;
+    opacity: .9;
+}
+
+.hero-button {
+    display: inline-block;
+    margin-top: 45px;
+    padding: 14px 35px;
+    border: 1px solid #d9bd78;
+    color: #d9bd78;
+    text-decoration: none;
+    letter-spacing: 4px;
+    transition: .4s;
+}
+
+.hero-button:hover {
+    background: #d9bd78;
+    color: #111;
+}
+
+/* 曹操立绘 */
+.character {
+    position: absolute;
+    right: 8%;
+    bottom: 0;
+    width: 45%;
+    height: 90%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.character::before {
+    content: "曹操";
+    font-size: 220px;
+    color: rgba(255,255,255,.025);
+    writing-mode: vertical-rl;
+    position: absolute;
+    right: 10%;
+    top: 10%;
+}
+
+.character-placeholder {
+    width: 70%;
+    height: 85%;
+    overflow: hidden;
+    border-radius: 50% 50% 0 0;
+    box-shadow: 0 0 100px rgba(210,160,90,.25);
+}
+
+/* 只控制 miyue2.jpg */
+.character-placeholder img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+}
+
+/* 通用 Section */
+section {
+    min-height: 100vh;
+    padding: 120px 12% 100px 15%;
+    position: relative;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-title small {
+    color: #d9bd78;
+    letter-spacing: 6px;
+}
+
+.section-title h2 {
+    margin-top: 15px;
+    font-size: 45px;
+    font-weight: 500;
+    letter-spacing: 10px;
+}
+
+/* 简介 */
+.introduction {
+    background: linear-gradient(rgba(8,9,13,.92), rgba(8,9,13,.96));
+}
+
+.intro-container {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.intro-image {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #392b27, #111218);
+    border: 2px solid rgba(217,189,120,.5);
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 50px rgba(217,189,120,.15);
+}
+
+.intro-text h3 {
+    font-size: 42px;
+    font-weight: 500;
+    letter-spacing: 8px;
+}
+
+.intro-text .en {
+    margin-top: 10px;
+    color: #d9bd78;
+    letter-spacing: 5px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.intro-text p {
+    margin-top: 35px;
+    line-height: 2.2;
+    color: rgba(255,255,255,.68);
+    font-size: 16px;
+}
+
+.intro-quote {
+    margin-top: 30px;
+    padding-left: 20px;
+    border-left: 2px solid #d9bd78;
+    color: #d9bd78;
+}
+
+/* 英雄档案 */
+.profile {
+    background: radial-gradient(circle at center, #24201e, #08090d 65%);
+}
+
+.profile-box {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.profile-row {
+    display: grid;
+    grid-template-columns: 100px 330px 1fr;
+    align-items: center;
+    min-height: 80px;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    transition: .3s;
+}
+
+.profile-row:hover {
+    background: rgba(217,189,120,.06);
+}
+
+.profile-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-logo img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+}
+
+.profile-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.profile-label i {
+    width: 55px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d9bd78);
+}
+
+.profile-label i:last-child {
+    background: linear-gradient(90deg, #d9bd78, transparent);
+}
+
+.profile-label span {
+    color: rgba(255,255,255,.65);
+    font-size: 13px;
+    letter-spacing: 3px;
+    white-space: nowrap;
+}
+
+.profile-row strong {
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+/* 技能 */
+.skills {
+    background: #0d0e13;
+}
+
+.skill-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 35px;
+    margin-bottom: 65px;
+}
+
+.skill-btn {
+    width: 90px;
+    height: 120px;
+    border: none;
+    background: transparent;
+    color: rgba(255,255,255,.55);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transition: .35s;
+}
+
+.skill-btn img {
+    width: 78px;
+    height: 78px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,.25);
+    filter: brightness(.65);
+    transition: .35s;
+}
+
+.skill-btn span {
+    font-size: 13px;
+    letter-spacing: 3px;
+    transition: .35s;
+}
+
+.skill-btn:hover img {
+    transform: scale(1.08);
+    filter: brightness(.9);
+    border-color: #d9bd78;
+}
+
+.skill-btn.active img {
+    transform: scale(1.12);
+    filter: brightness(1);
+    border-color: #d9bd78;
+    box-shadow:
+        0 0 0 3px rgba(217,189,120,.15),
+        0 0 25px rgba(217,189,120,.45);
+}
+
+.skill-btn.active span {
+    color: #d9bd78;
+}
+
+.skill-content {
+    max-width: 850px;
+    margin: auto;
+    line-height: 2.2;
+}
+
+.skill-content h3 {
+    color: #d9bd78;
+    margin-bottom: 20px;
+}
+
+/* 故事 */
+.story {
+    background: linear-gradient(180deg, #0b0c10, #211c19, #08090d);
+}
+
+.story-content {
+    max-width: 850px;
+    margin: auto;
+    text-align: left;
+}
+
+.story-content p {
+    line-height: 2.5;
+    color: rgba(255,255,255,.65);
+    font-size: 17px;
+    text-indent: 2em;
+    margin-bottom: 25px;
+}
+
+.story-highlight {
+    color: #d9bd78;
+    font-weight: 500;
+}
+
+/* Footer */
+footer {
+    padding: 40px;
+    text-align: center;
+    background: #050608;
+    color: rgba(255,255,255,.3);
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+/* Animation */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 手机 */
+@media(max-width: 800px) {
+    .sidebar {
+        width: 55px;
+    }
+
+    .hero-content {
+        padding-left: 90px;
+    }
+
+    .character {
+        opacity: .35;
+        width: 80%;
+        right: -20%;
+    }
+
+    section {
+        padding: 90px 30px 80px 80px;
+    }
+
+    .intro-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .intro-image {
+        width: 100%;
+        max-width: 400px;
+        height: 400px;
+    }
+
+    .profile-row {
+        grid-template-columns: 60px 150px 1fr;
+    }
+
+    .skill-buttons {
+        flex-wrap: wrap;
+    }
+
+    .hero-title {
+        font-size: 65px;
+        letter-spacing: 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="sidebar">
+    <a href="#home">曹操</a>
+    <a href="#intro">简介</a>
+    <a href="#profile">峡谷群雄•英雄世界</a>
+    <a href="#skills">技能</a>
+    <a href="#story">故事</a>
+</nav>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="hero-subtitle">鲜血枭雄</div>
+            <h1 class="hero-title">曹操</h1>
+            <div class="hero-en">CAO CAO</div>
+            <div class="hero-line"></div>
+            <div class="hero-quote">「宁教我负天下人」</div>
+            <a href="#intro" class="hero-button">探索英雄</a>
+        </div>
+    </div>
+
+    <div class="character">
+        <div class="character-placeholder">
+            <img src="caocao2.jpg" alt="曹操立绘">
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================
+     英雄简介
+========================= -->
+
+<section class="introduction" id="intro">
+
+<div class="section-title">
+
+<small>HERO INTRODUCTION</small>
+
+<h2>英雄简介</h2>
+
+</div>
+
+
+<div class="intro-container">
+
+<div class="intro-image">
+ <img src="caocao.jpg" height="500" weight="500" alt="曹操立绘">
+</div>
+
+
+<div class="intro-text">
+
+<h3>曹操</h3>
+
+<div class="en">
+CAO CAO
+</div>
+
+<p> 
+曹操是《王者荣耀》中的战士英雄， 
+拥有较强的持续作战能力与回复能力。 
+他擅长利用技能快速接近敌人， 
+并通过强化自身攻击能力持续造成伤害。
+ </p>
+
+<p>
+作为一名近战战士， 曹操能够通过多段位移灵活接近敌人，
+ 开启大招后获得更强的攻击与回复能力，
+ 在战场上展现出强大的持续作战能力。 
+</p>
+
+
+
+
+<div class="intro-quote">
+「宁教我负天下人 ！」
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     英雄档案
+========================= -->
+
+<section class="profile" id="profile">
+
+<div class="section-title">
+
+<small>HONOR OF KING</small>
+
+<h2>峡谷群雄•英雄世界</h2>
+
+</div>
+
+
+<div class="profile-box">
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="6.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>中文名</span>
+            <i></i>
+        </div>
+
+        <strong>曹操</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="2.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>种族</span>
+            <i></i>
+        </div>
+
+        <strong>人类</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="3.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>身份</span>
+            <i></i>
+        </div>
+
+        <strong>魏地主公</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="5.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>职业</span>
+            <i></i>
+        </div>
+
+        <strong>战士</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="4.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>阵营</span>
+            <i></i>
+        </div>
+
+        <strong>魏</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="1.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>能量</span>
+            <i></i>
+        </div>
+
+        <strong>武道</strong>
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     技能
+========================= -->
+
+<section class="skills" id="skills">
+
+<div class="section-title">
+
+<small>ABILITY</small>
+
+<h2>技能展示</h2>
+
+</div>
+
+
+<div class="skill-buttons">
+
+    <button class="skill-btn active" onclick="showSkill(0)">
+        <img src="1caocao.jpg" alt="被动技能">
+        <span>被动</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(1)">
+        <img src="2caocao.jpg" alt="一技能">
+        <span>一技能</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(2)">
+        <img src="3caocao.jpg" alt="二技能">
+        <span>二技能</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(3)">
+        <img src="4caocao.jpg" alt="三技能">
+        <span>三技能</span>
+    </button>
+
+</div>
+
+
+<div class="skill-content">
+
+<h3 id="skillName">
+争霸	
+</h3>
+
+<p id="skillText">
+曹操使用技能后获得35%攻速和1次强化普攻(最多5次)，强化普攻可远程连续挥斩并在命中时提供90~180(+1.4%额外生命)回复（非英雄单位减半）
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     故事
+========================= -->
+
+<section class="story" id="story">
+
+<div class="section-title">
+
+<small>HERO STORY</small>
+
+<h2>英雄故事</h2>
+
+</div>
+
+
+<div class="story-content">
+
+<p>战争是什么？
+</p>
+
+<p>
+是铭文？是力量？是权力？
+</p>
+
+<p>
+不，这是一场游戏，一场野心与欲望的游戏。
+</p>
+
+<p>
+既然是游戏，必然有游戏的规则。
+</p>
+
+<p><span class="story-highlight">
+曹操想做的，就是那个制订游戏秩序的人。
+</span></p>
+
+<p>然而，阻碍实在太多太多：<span class="story-highlight">
+人间界的守护者夫子和他的稷下学院，不知踪迹的太古魔导姜子牙，最强帝国和它的统治者……
+</span></p>
+
+<p>
+他不得不一边思考着如何打破游戏秩序，一边扩张势力。
+很快，狡诈与野心大放异彩，不仅收揽了神秘的佣兵组织“龙”，
+连挡在前路的战神吕布也死于他的计算与阴谋。
+</p>
+
+<p><span class="story-highlight">
+契机出现在沧海之滨，血族之王徐福自东瀛扶桑归来，为卷土重来谋求合作：
+若曹操愿提供战俘建立血族大军，他将助其统一三分之地。
+</span></p>
+
+<p><span class="story-highlight">
+曹操却表示，自己想成为血族。
+</span></p>
+
+<p>
+徐福发出了低哑的笑声，他认为曹操已经被自己展现的力量迷惑，
+终究会成为芈月那样受自己操纵的傀儡。
+</p>
+
+<p>
+然而转化为血族后，曹操所做的第一件事，是制造意外，将通晓机关术与魔道，
+却不愿为自己效力的蔡邕及其一族全部置于死地。
+</p>
+
+<p>
+蔡邕所收养的野兽，被阴谋蒙蔽双眼，反倒投效了曹操。至于幼小的蔡文姬，
+她的天才也将在成人后为其所用。
+</p>
+
+<p>
+曹操开始下自己的棋。
+</p>
+
+<p>
+他大张旗鼓依据蔡邕的研究寻找上古遗留的大规模杀伤性武器。
+当他探寻到东风祭坛的所在，并将大军派往赤壁时，
+所有人都以为其意图在于统一三分之地，感受到危机的江郡和益城结为盟友。
+联军将全部注意力投向东风祭坛。殊不知这只是一招障眼法。
+他谋划的是更为惊天的阴谋，也是计划中颠覆人间界秩序的第一步。
+</p>
+
+<p>
+敌人什么的，就是用来玩弄的。
+</p>
+
+<p>
+离东海不远的小岛上，徐福精心雕琢着继白起之后又一得意之作：
+曾震撼整个大陆的战神吕布，正在秘密重生。这才是曹操真正的杀手锏。
+徐福沉浸在鲜血进化的艺术中，却忘记了螳螂捕蝉，黄雀在后的真理。
+</p>
+
+<p>
+队友什么的，就是用来垫背的。
+</p>
+
+<p><span class="story-highlight">
+是的，卧榻之侧，岂容他人酣睡！不仅要统一三分之地，连虎视眈眈的徐福，也将被一并剿灭。
+</span>果计划成功，血族之力将完全为曹操所独占。这是一局很大的棋。
+</p>
+
+<p><span class="story-highlight">
+“宁教我负天下人！”
+</span></p>
+
+
+</div>
+
+</section>
+
+
+<footer>
+HERO PROFILE · SUN SHANGXIANG
+</footer>
+
+
+<script>
+
+/* =========================
+   技能资料
+========================= */
+
+const skills = [
+
+{
+name: "争霸",
+text: "曹操使用技能后获得35%攻速和1次强化普攻(最多5次)，强化普攻可远程连续挥斩并在命中时提供90~180(+1.4%额外生命)回复（非英雄单位减半）。"
+},
+
+{
+name: "霸道之刃",
+text: "曹操向前突袭对路径上的敌人造成300/360/420/480/540/600(+90%额外物理攻击)物理伤害(最多3次)，第三次突袭造成击飞(0.5秒)每少使用一次【霸道之刃】将减少35%冷却时间。"
+},
+
+{
+name: "纵横天下",
+text: "曹操挥出强大剑气，对路径上的敌人造成320/384/448/512/576/640(+100%额外物理攻击)物理伤害并减少其25/30/35/40/45/50%移速，持续1.5秒。每命中一名敌方英雄回复200/240/280/320/360/400(+3%额外生命)点生命，非英雄单位减半。被动：普攻命中敌人时减少5%/6%/7%/8%/9%/10%【纵横天下】的冷却。"
+},
+
+{
+name: "纵横天下",
+text: "曹操以鲜血意志解除控制并造成230/345/460(+75%额外物理攻击)物理伤害，同时获得450/675/900(+7%额外生命值)最大生命(附近每个敌方英雄提升20%)和10/15/20%韧性(持续8秒)持续期间【争霸】的 强化普攻和【纵横天下】均能额外挥出一道剑气(50%伤害)并持续获得强化普攻次数。"
+}
+
+];
+
+
+function showSkill(index) {
+
+document.getElementById("skillName").innerText =
+skills[index].name;
+
+document.getElementById("skillText").innerText =
+skills[index].text;
+
+document.querySelectorAll(".skill-btn")
+.forEach(btn => btn.classList.remove("active"));
+
+document.querySelectorAll(".skill-btn")[index]
+.classList.add("active");
+
+}
+
+
+/* =========================
+   滚动出现动画
+========================= */
+
+const observer =
+new IntersectionObserver((entries) => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+
+entry.target.style.animation =
+"fadeUp 1s ease forwards";
+
+}
+
+});
+
+},{threshold:0.15});
+
+
+document.querySelectorAll(
+".intro-container, .profile-box, .skill-content, .story-content"
+).forEach(el => {
+
+el.style.opacity = "0";
+
+observer.observe(el);
+
+});
+
+</script>
+
+</body>
