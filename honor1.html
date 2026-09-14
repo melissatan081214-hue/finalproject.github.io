@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<title>王者荣耀 · 英雄图鉴</title>
+
+<style>
+
+/* =====================================================
+   基础
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#08090d;
+    color:#fff;
+    font-family:"Noto Sans SC","Microsoft YaHei",Arial,sans-serif;
+}
+
+button{
+    font-family:"Noto Sans SC","Microsoft YaHei",sans-serif;
+}
+
+
+/* =====================================================
+   英雄图鉴页面
+===================================================== */
+
+.hero-page{
+    min-height:100vh;
+
+    background:
+    radial-gradient(
+        circle at 50% 20%,
+        rgba(180,150,80,.12),
+        transparent 35%
+    ),
+    linear-gradient(
+        180deg,
+        #15171d,
+        #08090d 60%
+    );
+
+    padding:80px 8%;
+}
+
+
+/* =====================================================
+   标题
+===================================================== */
+
+.header{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.header-small{
+    color:#cdb56d;
+    font-size:13px;
+    letter-spacing:8px;
+    margin-bottom:18px;
+}
+
+.header h1{
+    font-family:"Noto Serif SC","Microsoft YaHei",serif;
+    font-size:52px;
+    font-weight:500;
+    letter-spacing:15px;
+}
+
+.header-line{
+    width:80px;
+    height:1px;
+    background:#cdb56d;
+    margin:25px auto;
+}
+
+
+/* =====================================================
+   分类按钮
+===================================================== */
+
+.category{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:65px;
+    flex-wrap:wrap;
+}
+
+.category button{
+    min-width:110px;
+    padding:14px 28px;
+
+    border:1px solid rgba(255,255,255,.2);
+
+    background:rgba(255,255,255,.03);
+
+    color:rgba(255,255,255,.65);
+
+    cursor:pointer;
+
+    font-size:14px;
+    letter-spacing:3px;
+
+    transition:.35s;
+}
+
+.category button:hover{
+    color:#d8bd70;
+    border-color:#d8bd70;
+}
+
+.category button.active{
+    color:#111;
+    background:#d8bd70;
+    border-color:#d8bd70;
+}
+
+
+/* =====================================================
+   英雄列表
+===================================================== */
+
+.hero-grid{
+    max-width:1100px;
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:20px;
+}
+
+.hero-card:nth-last-child(2):nth-child(4n+1){
+    grid-column:2;
+}
+
+.hero-card:last-child{
+    grid-column:3;
+}
+
+
+/* =====================================================
+   英雄卡片
+===================================================== */
+
+.hero-card{
+    position:relative;
+
+    height:420px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    background:#15161b;
+
+    transition:.45s;
+
+    animation:cardIn .6s ease;
+}
+
+.hero-card:hover{
+    transform:translateY(-12px);
+
+    border-color:#d8bd70;
+
+    box-shadow:
+    0 20px 50px
+    rgba(0,0,0,.6);
+}
+
+
+/* =====================================================
+   英雄图片
+===================================================== */
+
+.hero-image{
+    width:100%;
+    height:100%;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#202127;
+}
+
+.hero-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:.6s;
+}
+
+.hero-card:hover .hero-image img{
+    transform:scale(1.08);
+}
+
+
+/* =====================================================
+   图片底部渐变
+===================================================== */
+
+.hero-card::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:55%;
+
+    background:
+    linear-gradient(
+        transparent,
+        rgba(0,0,0,.95)
+    );
+
+    pointer-events:none;
+}
+
+
+/* =====================================================
+   英雄资料
+===================================================== */
+
+.hero-info{
+    position:absolute;
+
+    left:25px;
+    bottom:25px;
+
+    z-index:2;
+}
+
+.hero-position{
+    color:#d8bd70;
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    margin-bottom:8px;
+}
+
+.hero-name{
+    font-family:"Noto Serif SC",serif;
+    font-size:30px;
+    letter-spacing:6px;
+    font-weight:500;
+    transition:.3s;
+}
+
+.hero-en{
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    color:rgba(255,255,255,.4);
+
+    margin-top:7px;
+	font-family:"Cinzel",serif;
+}
+
+.hero-card:hover .hero-name{
+    color:#d8bd70;
+}
+
+
+/* =====================================================
+   详情页
+===================================================== */
+
+.hero-detail{
+    display:none;
+
+    min-height:100vh;
+
+    background:
+    radial-gradient(
+        circle at 50% 20%,
+        rgba(180,150,80,.12),
+        transparent 35%
+    ),
+    #08090d;
+}
+
+
+/* =====================================================
+   返回按钮
+===================================================== */
+
+.back-button{
+    position:fixed;
+
+    top:30px;
+    left:30px;
+
+    z-index:100;
+
+    padding:12px 22px;
+
+    background:rgba(0,0,0,.45);
+
+    border:1px solid rgba(255,255,255,.2);
+
+    color:#fff;
+
+    cursor:pointer;
+
+    letter-spacing:2px;
+
+    transition:.3s;
+}
+
+.back-button:hover{
+    color:#d8bd70;
+    border-color:#d8bd70;
+}
+
+
+/* =====================================================
+   详情 Hero
+===================================================== */
+
+.detail-hero{
+    min-height:650px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    overflow:hidden;
+}
+
+.detail-bg{
+    position:absolute;
+
+    inset:0;
+
+    background-position:center;
+    background-size:cover;
+
+    filter:brightness(.45);
+
+    transform:scale(1.05);
+}
+
+.detail-bg::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        90deg,
+        rgba(8,9,13,.95),
+        rgba(8,9,13,.35),
+        rgba(8,9,13,.85)
+    );
+}
+
+.detail-content{
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:100px 60px;
+}
+
+.detail-position{
+    color:#d8bd70;
+
+    letter-spacing:6px;
+
+    font-size:13px;
+
+    margin-bottom:15px;
+}
+
+.detail-name{
+    font-family:"Noto Serif SC","Microsoft YaHei",serif;
+    font-size:76px;
+    font-weight:500;
+    letter-spacing:14px;
+    margin-bottom:12px;
+}
+
+.detail-en{
+    font-size:14px;
+
+    letter-spacing:6px;
+
+    color:rgba(255,255,255,.45);
+
+    margin-bottom:35px;
+}
+
+.detail-quote{
+    max-width:600px;
+
+    color:rgba(255,255,255,.7);
+
+    line-height:2;
+
+    font-size:15px;
+}
+
+
+/* =====================================================
+   英雄档案
+===================================================== */
+
+.profile{
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:100px 40px;
+}
+
+.section-title{
+    text-align:center;
+
+    margin-bottom:55px;
+}
+
+.section-title small{
+    color:#cdb56d;
+
+    font-size:12px;
+
+    letter-spacing:6px;
+}
+
+.section-title h2{
+    font-family:"Noto Serif SC","Microsoft YaHei",serif;
+    font-size:40px;
+    font-weight:500;
+    letter-spacing:10px;
+    margin-top:12px;
+}
+
+
+/* =====================================================
+   档案列表
+===================================================== */
+
+.profile-box{
+    max-width:1050px;
+
+    margin:auto;
+
+    border-top:1px solid rgba(255,255,255,.15);
+}
+
+
+/* 每一行 */
+
+.profile-row{
+    display:grid;
+
+    grid-template-columns:
+    90px 340px 1fr;
+
+    align-items:center;
+
+    min-height:85px;
+
+    border-bottom:
+    1px solid rgba(255,255,255,.15);
+
+    transition:.3s;
+}
+
+.profile-row:hover{
+    background:
+    rgba(217,189,120,.06);
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.profile-logo{
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}
+
+.profile-logo img{
+    width:52px;
+    height:52px;
+
+    object-fit:contain;
+
+    opacity:.9;
+
+    transition:.3s;
+}
+
+.profile-row:hover .profile-logo img{
+    transform:scale(1.08);
+
+    opacity:1;
+}
+
+
+/* =====================================================
+   ━━━━━ 中文名 ━━━━━
+===================================================== */
+
+.profile-label{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    white-space:nowrap;
+}
+
+.profile-label i{
+    display:block;
+
+    width:55px;
+
+    height:1px;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        #cdb56d
+    );
+}
+
+.profile-label i:last-child{
+    background:
+    linear-gradient(
+        90deg,
+        #cdb56d,
+        transparent
+    );
+}
+
+.profile-label span{
+    color:rgba(255,255,255,.6);
+
+    font-size:13px;
+
+    letter-spacing:3px;
+}
+
+
+/* =====================================================
+   英雄资料内容
+===================================================== */
+
+.profile-value{
+    font-size:20px;
+
+    font-weight:400;
+
+    letter-spacing:2px;
+
+    color:#fff;
+}
+
+
+/* =====================================================
+   动画
+===================================================== */
+
+@keyframes cardIn{
+
+    from{
+        opacity:0;
+
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:translateY(0);
+    }
+
+}
+
+
+/* =====================================================
+   手机
+===================================================== */
+
+@media(max-width:1100px){
+
+    .hero-grid{
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+}
+
+@media(max-width:850px){
+
+    .hero-grid{
+        grid-template-columns:
+        repeat(3,1fr);
+    }
+
+    .detail-name{
+        font-size:55px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero-page{
+        padding:60px 20px;
+    }
+
+    .header h1{
+        font-size:38px;
+        letter-spacing:8px;
+    }
+
+    .hero-grid{
+        grid-template-columns:
+        repeat(2,1fr);
+
+        gap:12px;
+    }
+
+    .hero-card{
+        height:330px;
+    }
+
+    .detail-content{
+        padding:100px 30px;
+    }
+
+    .detail-name{
+        font-size:45px;
+        letter-spacing:6px;
+    }
+
+    .profile{
+        padding:70px 15px;
+    }
+
+    .profile-row{
+        grid-template-columns:
+        55px 1fr;
+
+        padding:15px 0;
+    }
+
+    .profile-label{
+        justify-content:flex-start;
+    }
+
+    .profile-value{
+        grid-column:2;
+        margin-top:8px;
+    }
+
+    .profile-label i{
+        width:25px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     英雄图鉴
+===================================================== -->
+
+<div class="hero-page" id="galleryPage">
+
+
+<header class="header">
+
+<div class="header-small">
+HERO GALLERY
+</div>
+
+<h1>
+英雄图鉴
+</h1>
+
+<div class="header-line"></div>
+
+</header>
+
+
+<!-- 分类 -->
+
+<div class="category">
+
+<button
+class="active"
+onclick="filterHero('全部',this)">
+全部
+</button>
+
+<button
+onclick="filterHero('对抗路',this)">
+对抗路
+</button>
+
+<button
+onclick="filterHero('打野',this)">
+打野
+</button>
+
+<button
+onclick="filterHero('中路',this)">
+中路
+</button>
+
+<button
+onclick="filterHero('发育路',this)">
+发育路
+</button>
+
+<button
+onclick="filterHero('游走',this)">
+游走
+</button>
+
+</div>
+
+
+<!-- 自动生成英雄 -->
+
+<div class="hero-grid" id="heroGrid"></div>
+
+
+</div>
+
+
+<!-- =====================================================
+     英雄详情
+===================================================== -->
+
+<div class="hero-detail" id="detailPage">
+
+<button
+class="back-button"
+onclick="backToGallery()">
+← 返回英雄图鉴
+</button>
+
+
+<!-- Hero -->
+
+<section class="detail-hero">
+
+<div
+class="detail-bg"
+id="detailBg">
+</div>
+
+<div class="detail-content">
+
+<div
+class="detail-position"
+id="detailPosition">
+</div>
+
+<div
+class="detail-name"
+id="detailName">
+</div>
+
+<div
+class="detail-en"
+id="detailEn">
+</div>
+
+<div
+class="detail-quote"
+id="detailQuote">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 英雄档案 -->
+
+<section class="profile">
+
+<div class="section-title">
+
+<small>
+HERO PROFILE
+</small>
+
+<h2>
+英雄档案
+</h2>
+
+</div>
+
+
+<div
+class="profile-box"
+id="profileBox">
+</div>
+
+</section>
+
+
+</div>
+
+
+<script>
+
+
+/* =====================================================
+   50位英雄资料
+===================================================== */
+
+const heroes = [
+
+/* =========================
+   对抗路 10
+========================= */
+
+{
+    name:"吕布",
+    en:"LU BU",
+    position:"对抗路",
+    image:"images/lubu.jpg",
+    title:"无双之魔",
+    weapon:"方天画戟",
+    faction:"群雄",
+    quote:"从此刻开始，战场由我主宰。"
+},
+
+{
+    name:"关羽",
+    en:"GUAN YU",
+    position:"对抗路",
+    image:"images/guanyu.jpg",
+    title:"一骑当千",
+    weapon:"青龙偃月刀",
+    faction:"蜀",
+    quote:"人在塔在。"
+},
+
+{
+    name:"夏侯惇",
+    en:"XIAHOU DUN",
+    position:"对抗路",
+    image:"images/xiahoudun.jpg",
+    title:"不羁之风",
+    weapon:"刀",
+    faction:"魏",
+    quote:"独眼，是男人的浪漫。"
+},
+
+{
+    name:"花木兰",
+    en:"HUA MULAN",
+    position:"对抗路",
+    image:"images/huamulan.jpg",
+    title:"传说之刃",
+    weapon:"双剑",
+    faction:"长城守卫军",
+    quote:"谁说女子不如男。"
+},
+
+{
+    name:"狂铁",
+    en:"KUANG TIE",
+    position:"对抗路",
+    image:"images/kuangtie.jpg",
+    title:"命运角斗场",
+    weapon:"电流战锤",
+    faction:"海都",
+    quote:"力量来自信念。"
+},
+
+{
+    name:"程咬金",
+    en:"CHENG YAOJIN",
+    position:"对抗路",
+    image:"images/chengyaojin.jpg",
+    title:"热烈之斧",
+    weapon:"双斧",
+    faction:"长安",
+    quote:"一个字，干！"
+},
+
+{
+    name:"亚瑟",
+    en:"ARTHUR",
+    position:"对抗路",
+    image:"images/arthur.jpg",
+    title:"圣骑之力",
+    weapon:"圣剑",
+    faction:"日落海",
+    quote:"因剑而生。"
+},
+
+{
+    name:"夏洛特",
+    en:"CHARLOTTE",
+    position:"对抗路",
+    image:"images/charlotte.jpg",
+    title:"永昼",
+    weapon:"剑",
+    faction:"海都",
+    quote:"剑之所向，心之所往。"
+},
+
+{
+    name:"孙策",
+    en:"SUN CE",
+    position:"对抗路",
+    image:"images/sunce.jpg",
+    title:"长帆破浪",
+    weapon:"船锚",
+    faction:"吴",
+    quote:"劈风斩浪，为你而来。"
+},
+
+{
+    name:"杨戬",
+    en:"YANG JIAN",
+    position:"对抗路",
+    image:"images/yangjian.jpg",
+    title:"根源之目",
+    weapon:"三尖两刃刀",
+    faction:"神话",
+    quote:"纵使天各一方，我也要找到你。"
+},
+
+
+/* =========================
+   打野 10
+========================= */
+
+{
+    name:"李白",
+    en:"LI BAI",
+    position:"打野",
+    image:"images/libai.jpg",
+    title:"青莲剑仙",
+    weapon:"剑",
+    faction:"长安",
+    quote:"十步杀一人，千里不留行。"
+},
+
+{
+    name:"孙悟空",
+    en:"SUN WUKONG",
+    position:"打野",
+    image:"images/sunwukong.jpg",
+    title:"齐天大圣",
+    weapon:"金箍棒",
+    faction:"花果山",
+    quote:"俺老孙来也！"
+},
+
+{
+    name:"韩信",
+    en:"HAN XIN",
+    position:"打野",
+    image:"images/hanxin.jpg",
+    title:"国士无双",
+    weapon:"长枪",
+    faction:"长安",
+    quote:"正义，不过是胜者的谎言。"
+},
+
+{
+    name:"赵云",
+    en:"ZHAO YUN",
+    position:"打野",
+    image:"images/zhaoyun.jpg",
+    title:"苍天翔龙",
+    weapon:"龙枪",
+    faction:"蜀",
+    quote:"阁下的首级，我收下了。"
+},
+
+{
+    name:"兰陵王",
+    en:"LANLINGWANG",
+    position:"打野",
+    image:"images/lanlingwang.jpg",
+    title:"暗影刀锋",
+    weapon:"匕首",
+    faction:"长城",
+    quote:"刀锋所划之地，便是疆土。"
+},
+
+{
+    name:"橘右京",
+    en:"UKYO TACHIBANA",
+    position:"打野",
+    image:"images/juyoujing.jpg",
+    title:"神梦一刀",
+    weapon:"剑",
+    faction:"扶桑",
+    quote:"剑的真谛，在于刹那生灭。"
+},
+
+{
+    name:"娜可露露",
+    en:"NAKORURU",
+    position:"打野",
+    image:"images/nakelulu.jpg",
+    title:"鹰之守护",
+    weapon:"短刀",
+    faction:"扶桑",
+    quote:"守护，是为了更好的未来。"
+},
+
+{
+    name:"典韦",
+    en:"DIAN WEI",
+    position:"打野",
+    image:"images/dianwei.jpg",
+    title:"狂战士",
+    weapon:"双斧",
+    faction:"魏",
+    quote:"给我一个目标，还你一片寂静。"
+},
+
+{
+    name:"阿轲",
+    en:"A KE",
+    position:"打野",
+    image:"images/ake.jpg",
+    title:"信念之刃",
+    weapon:"双刺",
+    faction:"长安",
+    quote:"不是你记忆中的荆轲，但致命的程度没两样。"
+},
+
+{
+    name:"云中君",
+    en:"YUN ZHONGJUN",
+    position:"打野",
+    image:"images/yunzhongjun.jpg",
+    title:"流云之翼",
+    weapon:"羽刃",
+    faction:"云梦泽",
+    quote:"我飞翔的理由，就是脚下的土地。"
+},
+
+
+/* =========================
+   中路 10
+========================= */
+
+{
+    name:"妲己",
+    en:"DA JI",
+    position:"中路",
+    image:"images/daji.jpg",
+    title:"魅惑之狐",
+    weapon:"狐火",
+    faction:"长安",
+    quote:"请尽情吩咐妲己吧。"
+},
+
+{
+    name:"貂蝉",
+    en:"DIAO CHAN",
+    position:"中路",
+    image:"images/diaochan.jpg",
+    title:"绝世舞姬",
+    weapon:"花",
+    faction:"长安",
+    quote:"花有再开的那天，人会不会有重逢的时刻？"
+},
+
+{
+    name:"安琪拉",
+    en:"ANGELA",
+    position:"中路",
+    image:"images/angela.jpg",
+    title:"暗夜萝莉",
+    weapon:"魔法书",
+    faction:"魔道",
+    quote:"知识就是力量。"
+},
+
+{
+    name:"王昭君",
+    en:"WANG ZHAOJUN",
+    position:"中路",
+    image:"images/wangzhaojun.jpg",
+    title:"冰雪之华",
+    weapon:"法杖",
+    faction:"北夷",
+    quote:"凛冬已至。"
+},
+
+{
+    name:"小乔",
+    en:"XIAO QIAO",
+    position:"中路",
+    image:"images/xiaoqiao.jpg",
+    title:"恋之微风",
+    weapon:"扇子",
+    faction:"吴",
+    quote:"风，听从我的呼唤。"
+},
+
+{
+    name:"甄姬",
+    en:"ZHEN JI",
+    position:"中路",
+    image:"images/zhenji.jpg",
+    title:"洛神降临",
+    weapon:"水",
+    faction:"魏",
+    quote:"明明说好的，要永远在一起。"
+},
+
+{
+    name:"诸葛亮",
+    en:"ZHU GE LIANG",
+    position:"中路",
+    image:"images/zhugeliang.jpg",
+    title:"绝代智谋",
+    weapon:"羽扇",
+    faction:"蜀",
+    quote:"天下如棋，一步三算。"
+},
+
+{
+    name:"张良",
+    en:"ZHANG LIANG",
+    position:"中路",
+    image:"images/zhangliang.jpg",
+    title:"言灵之书",
+    weapon:"法典",
+    faction:"长安",
+    quote:"预知未来的唯一方式，就是创造未来。"
+},
+
+{
+    name:"上官婉儿",
+    en:"SHANGGUAN WANER",
+    position:"中路",
+    image:"images/shangguanwaner.jpg",
+    title:"惊鸿之笔",
+    weapon:"笔",
+    faction:"长安",
+    quote:"横扫千军，笔落惊风。"
+},
+
+{
+    name:"不知火舞",
+    en:"MAI SHIRANUI",
+    position:"中路",
+    image:"images/buzhihuowu.jpg",
+    title:"明媚烈焰",
+    weapon:"扇",
+    faction:"扶桑",
+    quote:"花蝶扇！"
+},
+
+
+/* =========================
+   发育路 10
+========================= */
+
+{
+    name:"孙尚香",
+    en:"SUN SHANGXIANG",
+    position:"发育路",
+    image:"images/sunshangxiang.jpg",
+    title:"千金重弩",
+    weapon:"重弩",
+    faction:"吴",
+    quote:"大小姐驾到，统统闪开！",
+    page:"sunshangxiang.html"
+},
+
+{
+    name:"后羿",
+    en:"HOU YI",
+    position:"发育路",
+    image:"images/houyi.jpg",
+    title:"半神之弓",
+    weapon:"弓箭",
+    faction:"神话",
+    quote:"发光的，一个就够了。"
+},
+
+{
+    name:"狄仁杰",
+    en:"DI RENJIE",
+    position:"发育路",
+    image:"images/direnjie.jpg",
+    title:"断案大师",
+    weapon:"令牌",
+    faction:"长安",
+    quote:"真相只有一个。"
+},
+
+{
+    name:"鲁班七号",
+    en:"LUBAN NO.7",
+    position:"发育路",
+    image:"images/luban.jpg",
+    title:"机关造物",
+    weapon:"机关枪",
+    faction:"稷下",
+    quote:"鲨嘴炮！"
+},
+
+{
+    name:"伽罗",
+    en:"JIA LUO",
+    position:"发育路",
+    image:"images/jialuo.jpg",
+    title:"破魔之箭",
+    weapon:"长弓",
+    faction:"长城",
+    quote:"即使如此，我也要继续守护。"
+},
+
+{
+    name:"虞姬",
+    en:"YU JI",
+    position:"发育路",
+    image:"images/yuji.jpg",
+    title:"森之风灵",
+    weapon:"弩",
+    faction:"楚汉",
+    quote:"明媚如风，轻盈似箭。"
+},
+
+{
+    name:"公孙离",
+    en:"GONGSUN LI",
+    position:"发育路",
+    image:"images/gongsunli.jpg",
+    title:"幻舞玲珑",
+    weapon:"纸伞",
+    faction:"长安",
+    quote:"花会枯萎，爱永不凋零。"
+},
+
+{
+    name:"李元芳",
+    en:"LI YUANFANG",
+    position:"发育路",
+    image:"images/liyuanfang.jpg",
+    title:"王都密探",
+    weapon:"飞镖",
+    faction:"长安",
+    quote:"秘密的探员，正在行动。"
+},
+
+{
+    name:"百里守约",
+    en:"BAILI SHOUYUE",
+    position:"发育路",
+    image:"images/bailishouyue.jpg",
+    title:"静谧之眼",
+    weapon:"狙击枪",
+    faction:"长城",
+    quote:"给你，整个世界。"
+},
+
+{
+    name:"黄忠",
+    en:"HUANG ZHONG",
+    position:"发育路",
+    image:"images/huangzhong.jpg",
+    title:"燃魂重炮",
+    weapon:"重炮",
+    faction:"蜀",
+    quote:"老兵不死，只会逐渐凋零。"
+},
+
+
+/* =========================
+   游走 10
+========================= */
+
+{
+    name:"瑶",
+    en:"YAO",
+    position:"游走",
+    image:"images/yao.jpg",
+    title:"鹿灵守心",
+    weapon:"法杖",
+    faction:"云梦泽",
+    quote:"风里雨里，等你。"
+},
+
+{
+    name:"张飞",
+    en:"ZHANG FEI",
+    position:"游走",
+    image:"images/zhangfei.jpg",
+    title:"乱世虎臣",
+    weapon:"蛇矛",
+    faction:"蜀",
+    quote:"心有猛虎。"
+},
+
+{
+    name:"蔡文姬",
+    en:"CAI WENJI",
+    position:"游走",
+    image:"images/caiwenji.jpg",
+    title:"天籁弦音",
+    weapon:"胡笳琴",
+    faction:"魏",
+    quote:"不要欺负我，我会生气的！"
+},
+
+{
+    name:"牛魔",
+    en:"NIU MO",
+    position:"游走",
+    image:"images/niumo.jpg",
+    title:"精英酋长",
+    weapon:"巨斧",
+    faction:"长安",
+    quote:"牛气冲天！"
+},
+
+{
+    name:"东皇太一",
+    en:"DONGHUANG TAIYI",
+    position:"游走",
+    image:"images/donghuang.jpg",
+    title:"噬灭日蚀",
+    weapon:"日蚀",
+    faction:"太古",
+    quote:"万物皆有灵。"
+},
+
+{
+    name:"鬼谷子",
+    en:"GUIGUZI",
+    position:"游走",
+    image:"images/guiguzi.jpg",
+    title:"玄微子",
+    weapon:"法杖",
+    faction:"稷下",
+    quote:"万物皆有因果。"
+},
+
+{
+    name:"盾山",
+    en:"DUNSHAN",
+    position:"游走",
+    image:"images/dunshan.jpg",
+    title:"无尽之盾",
+    weapon:"盾",
+    faction:"长城",
+    quote:"坚不可摧。"
+},
+
+{
+    name:"大乔",
+    en:"DA QIAO",
+    position:"游走",
+    image:"images/daqiao.jpg",
+    title:"沧海之曜",
+    weapon:"法杖",
+    faction:"吴",
+    quote:"守望着天空，大海，和你的回忆。"
+},
+
+{
+    name:"刘禅",
+    en:"LIU SHAN",
+    position:"游走",
+    image:"images/liushan.jpg",
+    title:"暴走机关",
+    weapon:"机关",
+    faction:"蜀",
+    quote:"小霸王又回来啦！"
+},
+
+{
+    name:"孙膑",
+    en:"SUN BIN",
+    position:"游走",
+    image:"images/sunbin.jpg",
+    title:"逆流之时",
+    weapon:"时空",
+    faction:"稷下",
+    quote:"时间，会证明一切。"
+}
+
+];
+
+
+/* =====================================================
+   自动生成英雄卡片
+===================================================== */
+
+const heroGrid =
+document.getElementById("heroGrid");
+
+
+function renderHeroes(list){
+
+    heroGrid.innerHTML="";
+
+    list.forEach((hero,index)=>{
+
+        const card =
+        document.createElement("div");
+
+        card.className="hero-card";
+
+        card.onclick=()=>{
+         window.location.href = hero.page;
+        };
+
+        card.innerHTML=`
+
+            <div class="hero-image">
+
+                <img
+                src="${hero.image}"
+                alt="${hero.name}"
+                onerror="this.style.display='none'">
+
+            </div>
+
+            <div class="hero-info">
+
+                <div class="hero-position">
+                    ${hero.position}
+                </div>
+
+                <div class="hero-name">
+                    ${hero.name}
+                </div>
+
+                <div class="hero-en">
+                    ${hero.en}
+                </div>
+
+            </div>
+        `;
+
+        heroGrid.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   分类筛选
+===================================================== */
+
+function filterHero(position,button){
+
+    document
+    .querySelectorAll(".category button")
+    .forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+
+    if(position==="全部"){
+
+        renderHeroes(heroes);
+
+    }else{
+
+        const result =
+        heroes.filter(hero=>
+            hero.position===position
+        );
+
+        renderHeroes(result);
+
+    }
+
+}
+
+
+/* =====================================================
+   打开英雄详情
+===================================================== */
+
+function openHero(hero){
+
+    document.getElementById("galleryPage")
+    .style.display="none";
+
+    document.getElementById("detailPage")
+    .style.display="block";
+
+
+    /* Hero 背景 */
+
+    const bg =
+    document.getElementById("detailBg");
+
+    bg.style.backgroundImage =
+    `url("${hero.image}")`;
+
+
+    /* 基本资料 */
+
+    document.getElementById("detailPosition")
+    .textContent=
+    hero.position;
+
+
+    document.getElementById("detailName")
+    .textContent=
+    hero.name;
+
+
+    document.getElementById("detailEn")
+    .textContent=
+    hero.en;
+
+
+    document.getElementById("detailQuote")
+    .textContent=
+    hero.quote;
+
+
+    /* =================================================
+       英雄档案
+    ================================================= */
+
+    const profile =
+    document.getElementById("profileBox");
+
+
+    profile.innerHTML=`
+
+        <div class="profile-row">
+
+            <div class="profile-logo">
+                <img
+                src="images/logo.png"
+                alt="LOGO">
+            </div>
+
+            <div class="profile-label">
+                <i></i>
+                <span>中文名</span>
+                <i></i>
+            </div>
+
+            <div class="profile-value">
+                ${hero.name}
+            </div>
+
+        </div>
+
+
+        <div class="profile-row">
+
+            <div class="profile-logo">
+                <img
+                src="images/logo.png"
+                alt="LOGO">
+            </div>
+
+            <div class="profile-label">
+                <i></i>
+                <span>英文名</span>
+                <i></i>
+            </div>
+
+            <div class="profile-value">
+                ${hero.en}
+            </div>
+
+        </div>
+
+
+        <div class="profile-row">
+
+            <div class="profile-logo">
+                <img
+                src="images/logo.png"
+                alt="LOGO">
+            </div>
+
+            <div class="profile-label">
+                <i></i>
+                <span>称号</span>
+                <i></i>
+            </div>
+
+            <div class="profile-value">
+                ${hero.title}
+            </div>
+
+        </div>
+
+
+        <div class="profile-row">
+
+            <div class="profile-logo">
+                <img
+                src="images/logo.png"
+                alt="LOGO">
+            </div>
+
+            <div class="profile-label">
+                <i></i>
+                <span>职业</span>
+                <i></i>
+            </div>
+
+            <div class="profile-value">
+                ${hero.position}
+            </div>
+
+        </div>
+
+
+        <div class="profile-row">
+
+            <div class="profile-logo">
+                <img
+                src="images/logo.png"
+                alt="LOGO">
+            </div>
+
+            <div class="profile-label">
+                <i></i>
+                <span>阵营</span>
+                <i></i>
+            </div>
+
+            <div class="profile-value">
+                ${hero.faction}
+            </div>
+
+        </div>
+
+
+        <div class="profile-row">
+
+            <div class="profile-logo">
+                <img
+                src="images/logo.png"
+                alt="LOGO">
+            </div>
+
+            <div class="profile-label">
+                <i></i>
+                <span>武器</span>
+                <i></i>
+            </div>
+
+            <div class="profile-value">
+                ${hero.weapon}
+            </div>
+
+        </div>
+
+    `;
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   返回英雄图鉴
+===================================================== */
+
+function backToGallery(){
+
+    document.getElementById("detailPage")
+    .style.display="none";
+
+    document.getElementById("galleryPage")
+    .style.display="block";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   页面初始化
+===================================================== */
+
+renderHeroes(heroes);
+
+
+</script>
+
+</body>
+</html>
