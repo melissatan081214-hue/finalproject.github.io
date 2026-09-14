@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安琪拉·暗夜萝莉</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* =========================
+   基础
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Noto Serif SC", serif;
+    background: #08090d;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   左侧导航
+========================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 75px;
+    height: 100vh;
+
+    background: rgba(0,0,0,.65);
+    backdrop-filter: blur(10px);
+
+    border-right: 1px solid rgba(255,255,255,.12);
+
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 35px;
+}
+
+.sidebar a {
+    color: rgba(255,255,255,.55);
+
+    text-decoration: none;
+
+    writing-mode: vertical-rl;
+
+    font-size: 12px;
+    letter-spacing: 3px;
+
+    font-family: "Noto Serif SC", serif;
+
+    transition: .3s;
+}
+
+.sidebar a:hover {
+    color: #e8c77a;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 65% 45%,
+            rgba(180,120,70,.35),
+            transparent 35%
+        ),
+        linear-gradient(
+            120deg,
+            #11131a 0%,
+            #2b2220 45%,
+            #08090d 100%
+        );
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.8),
+            transparent 55%,
+            rgba(0,0,0,.25)
+        );
+}
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 12%;
+}
+
+.hero-text {
+    animation: fadeUp 1.5s ease;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+
+    letter-spacing: 8px;
+
+    color: #d9bd78;
+
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-size: clamp(70px, 10vw, 150px);
+
+    font-weight: 500;
+
+    letter-spacing: 15px;
+}
+
+.hero-en {
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 15px;
+
+    letter-spacing: 8px;
+
+    opacity: .5;
+
+    margin-top: 10px;
+}
+
+.hero-line {
+    width: 150px;
+    height: 1px;
+
+    background: #d9bd78;
+
+    margin: 35px 0;
+}
+
+.hero-quote {
+    font-size: 20px;
+
+    letter-spacing: 4px;
+
+    opacity: .9;
+}
+
+.hero-button {
+    display: inline-block;
+
+    margin-top: 45px;
+
+    padding: 14px 35px;
+
+    border: 1px solid #d9bd78;
+
+    color: #d9bd78;
+
+    text-decoration: none;
+
+    letter-spacing: 4px;
+
+    transition: .4s;
+}
+
+.hero-button:hover {
+    background: #d9bd78;
+    color: #111;
+}
+
+
+/* =========================
+   英雄立绘
+========================= */
+
+.character {
+    position: absolute;
+
+    right: 8%;
+    bottom: 0;
+
+    width: 45%;
+    height: 90%;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    pointer-events: none;
+}
+
+.character::before {
+    content: "安琪拉";
+
+    font-size: 220px;
+
+    color: rgba(255,255,255,.025);
+
+    writing-mode: vertical-rl;
+
+    position: absolute;
+
+    right: 10%;
+    top: 10%;
+}
+
+.character-placeholder {
+    width: 70%;
+    height: 85%;
+
+    overflow: hidden;
+
+    border-radius: 50% 50% 0 0;
+
+    box-shadow:
+        0 0 100px rgba(210,160,90,.25);
+}
+
+
+/* 安琪拉立绘 */
+
+.character-placeholder img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center center;
+}
+
+
+/* =========================
+   通用 Section
+========================= */
+
+section {
+    min-height: 100vh;
+
+    padding: 120px 12% 100px 15%;
+
+    position: relative;
+}
+
+.section-title {
+    text-align: center;
+
+    margin-bottom: 80px;
+}
+
+.section-title small {
+    color: #d9bd78;
+
+    letter-spacing: 6px;
+}
+
+.section-title h2 {
+    margin-top: 15px;
+
+    font-size: 45px;
+
+    font-weight: 500;
+
+    letter-spacing: 10px;
+}
+
+
+/* =========================
+   英雄简介
+========================= */
+
+.introduction {
+    background:
+        linear-gradient(
+            rgba(8,9,13,.92),
+            rgba(8,9,13,.96)
+        );
+}
+
+.intro-container {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1.5fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+.intro-image {
+    width: 400px;
+    height: 450px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    position: relative;
+}
+
+.intro-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center bottom;
+
+    display: block;
+
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,.5));
+}
+
+.intro-text h3 {
+    font-size: 42px;
+
+    font-weight: 500;
+
+    letter-spacing: 8px;
+}
+
+.intro-text .en {
+    margin-top: 10px;
+
+    color: #d9bd78;
+
+    letter-spacing: 5px;
+
+    font-family: "Montserrat", sans-serif;
+}
+
+.intro-text p {
+    margin-top: 35px;
+
+    line-height: 2.2;
+
+    color: rgba(255,255,255,.68);
+
+    font-size: 16px;
+}
+
+.intro-quote {
+    margin-top: 30px;
+
+    padding-left: 20px;
+
+    border-left: 2px solid #d9bd78;
+
+    color: #d9bd78;
+}
+
+
+/* =========================
+   英雄档案
+========================= */
+
+.profile {
+    background:
+        radial-gradient(
+            circle at center,
+            #24201e,
+            #08090d 65%
+        );
+}
+
+.profile-box {
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+.profile-row {
+    display: grid;
+
+    grid-template-columns: 100px 330px 1fr;
+
+    align-items: center;
+
+    min-height: 80px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.15);
+
+    transition: .3s;
+}
+
+.profile-row:hover {
+    background: rgba(217,189,120,.06);
+}
+
+.profile-logo {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-logo img {
+    width: 65px;
+    height: 65px;
+
+    object-fit: contain;
+}
+
+.profile-label {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.profile-label i {
+    width: 55px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d9bd78
+        );
+}
+
+.profile-label i:last-child {
+    background:
+        linear-gradient(
+            90deg,
+            #d9bd78,
+            transparent
+        );
+}
+
+.profile-label span {
+    color: rgba(255,255,255,.65);
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    white-space: nowrap;
+}
+
+.profile-row strong {
+    font-size: 20px;
+
+    font-weight: 400;
+
+    color: #fff;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   技能
+========================= */
+
+.skills {
+    background: #0d0e13;
+}
+
+.skill-buttons {
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 35px;
+
+    margin-bottom: 65px;
+}
+
+.skill-btn {
+    width: 90px;
+    height: 120px;
+
+    border: none;
+
+    background: transparent;
+
+    color: rgba(255,255,255,.55);
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
+    transition: .35s;
+}
+
+.skill-btn img {
+    width: 78px;
+    height: 78px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border:
+        2px solid rgba(255,255,255,.25);
+
+    filter: brightness(.65);
+
+    transition: .35s;
+}
+
+.skill-btn span {
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    transition: .35s;
+}
+
+.skill-btn:hover img {
+    transform: scale(1.08);
+
+    filter: brightness(.9);
+
+    border-color: #d9bd78;
+}
+
+.skill-btn.active img {
+    transform: scale(1.12);
+
+    filter: brightness(1);
+
+    border-color: #d9bd78;
+
+    box-shadow:
+        0 0 0 3px rgba(217,189,120,.15),
+        0 0 25px rgba(217,189,120,.45);
+}
+
+.skill-btn.active span {
+    color: #d9bd78;
+}
+
+.skill-content {
+    max-width: 850px;
+
+    margin: auto;
+
+    line-height: 2.2;
+}
+
+.skill-content h3 {
+    color: #d9bd78;
+
+    margin-bottom: 20px;
+}
+
+.skill-content p {
+    color: rgba(255,255,255,.68);
+}
+
+
+/* =========================
+   英雄关系
+========================= */
+
+.relationship {
+    background:
+        radial-gradient(
+            circle at center,
+            #211e1c,
+            #08090d 70%
+        );
+}
+
+
+/* =========================
+   关系分类按钮
+========================= */
+
+.relationship-tabs {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 70px;
+
+    margin-bottom: 65px;
+}
+
+.relationship-tab {
+    position: relative;
+
+    padding: 12px 30px;
+
+    border: none;
+
+    background: transparent;
+
+    color: rgba(255,255,255,.45);
+
+    font-family: "Noto Serif SC", serif;
+
+    font-size: 15px;
+
+    letter-spacing: 4px;
+
+    cursor: pointer;
+
+    transition: .35s;
+}
+
+.relationship-tab::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 0;
+    height: 1px;
+
+    background: #d9bd78;
+
+    transform: translateX(-50%);
+
+    transition: .35s;
+}
+
+.relationship-tab:hover {
+    color: #d9bd78;
+}
+
+.relationship-tab.active {
+    color: #d9bd78;
+}
+
+.relationship-tab.active::after {
+    width: 80%;
+}
+
+
+/* =========================
+   英雄关系头像
+========================= */
+
+.relationship-heroes {
+    max-width: 900px;
+
+    margin: 0 auto 65px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 100px;
+}
+
+.relationship-hero {
+    width: 180px;
+
+    border: none;
+
+    background: transparent;
+
+    color: rgba(255,255,255,.55);
+
+    cursor: pointer;
+
+    text-align: center;
+
+    transition: .35s;
+}
+
+.relationship-hero-image {
+    width: 180px;
+    height: 180px;
+
+    margin: auto;
+
+    overflow: visible;
+
+    transition: .35s;
+}
+
+.relationship-hero-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+.relationship-hero-name {
+    margin-top: 20px;
+
+    font-size: 20px;
+
+    letter-spacing: 4px;
+
+    color: rgba(255,255,255,.8);
+
+    transition: .35s;
+}
+
+.relationship-hero-en {
+    margin-top: 8px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: rgba(255,255,255,.35);
+}
+
+
+/* 鼠标经过 */
+
+.relationship-hero:hover .relationship-hero-image {
+    transform: scale(1.06);
+}
+
+
+/* 当前英雄 */
+
+.relationship-hero.active .relationship-hero-image {
+    transform: scale(1.1);
+}
+
+.relationship-hero.active .relationship-hero-name {
+    color: #d9bd78;
+}
+
+
+/* =========================
+   英雄关系介绍
+========================= */
+
+.relationship-info {
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 45px 60px;
+
+    border-top:
+        1px solid rgba(217,189,120,.3);
+
+    border-bottom:
+        1px solid rgba(217,189,120,.3);
+
+    text-align: center;
+
+    min-height: 220px;
+}
+
+.relationship-info h3 {
+    font-size: 32px;
+
+    font-weight: 500;
+
+    letter-spacing: 6px;
+
+    color: #fff;
+}
+
+.relationship-info .en {
+    margin-top: 8px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    color: #d9bd78;
+}
+
+.relationship-info p {
+    margin-top: 30px;
+
+    line-height: 2.2;
+
+    font-size: 16px;
+
+    color: rgba(255,255,255,.65);
+}
+
+
+/* =========================
+   故事
+========================= */
+
+.story {
+    background:
+        linear-gradient(
+            180deg,
+            #0b0c10,
+            #211c19,
+            #08090d
+        );
+}
+
+.story-content {
+    max-width: 850px;
+
+    margin: auto;
+
+    text-align: left;
+}
+
+.story-content p {
+    line-height: 2.5;
+
+    color: rgba(255,255,255,.65);
+
+    font-size: 17px;
+
+    text-indent: 2em;
+
+    margin-bottom: 25px;
+}
+
+.story-highlight {
+    color: #d9bd78;
+
+    font-weight: 500;
+}
+
+
+/* =========================
+   Footer
+========================= */
+
+footer {
+    padding: 40px;
+
+    text-align: center;
+
+    background: #050608;
+
+    color: rgba(255,255,255,.3);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================
+   Animation
+========================= */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================
+   手机版
+========================= */
+
+@media(max-width: 800px) {
+
+    /* 侧边栏 */
+
+    .sidebar {
+        width: 55px;
+        gap: 25px;
+    }
+
+
+    /* HERO */
+
+    .hero-content {
+        padding-left: 90px;
+    }
+
+    .character {
+        opacity: .35;
+
+        width: 80%;
+
+        right: -20%;
+    }
+
+
+    /* Section */
+
+    section {
+        padding:
+            90px 30px 80px 80px;
+    }
+
+
+    /* Section 标题 */
+
+    .section-title {
+        margin-bottom: 55px;
+    }
+
+    .section-title h2 {
+        font-size: 32px;
+        letter-spacing: 6px;
+    }
+
+
+    /* 英雄简介 */
+
+    .intro-container {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .intro-image {
+        width: 100%;
+        max-width: 400px;
+
+        height: 400px;
+
+        margin: auto;
+    }
+
+
+    /* 英雄档案 */
+
+    .profile-row {
+        grid-template-columns:
+            60px 150px 1fr;
+    }
+
+    .profile-logo img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .profile-row strong {
+        font-size: 16px;
+    }
+
+
+    /* 技能 */
+
+    .skill-buttons {
+        flex-wrap: wrap;
+
+        gap: 25px;
+    }
+
+
+    /* HERO 标题 */
+
+    .hero-title {
+        font-size: 65px;
+
+        letter-spacing: 8px;
+    }
+
+    .hero-quote {
+        font-size: 15px;
+
+        letter-spacing: 2px;
+    }
+
+    .relationship-hero-image {
+    width: 140px;
+    height: 140px;
+     }
+	 
+    /* =========================
+       英雄关系
+    ========================= */
+
+    .relationship-tabs {
+        gap: 10px;
+
+        margin-bottom: 50px;
+    }
+
+    .relationship-tab {
+        padding: 10px 12px;
+
+        font-size: 12px;
+
+        letter-spacing: 2px;
+    }
+
+    .relationship-heroes {
+        gap: 25px;
+
+        margin-bottom: 50px;
+    }
+
+    .relationship-hero {
+        width: 140px;
+    }
+
+    .relationship-hero-image {
+        width: 105px;
+        height: 105px;
+    }
+
+    .relationship-hero-name {
+        font-size: 16px;
+
+        letter-spacing: 2px;
+    }
+
+    .relationship-info {
+        padding: 35px 25px;
+    }
+
+    .relationship-info h3 {
+        font-size: 25px;
+
+        letter-spacing: 4px;
+    }
+
+    .relationship-info p {
+        font-size: 14px;
+
+        line-height: 2;
+    }
+
+
+    /* 故事 */
+
+    .story-content p {
+        font-size: 15px;
+
+        line-height: 2.3;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 左侧导航 -->
+
+<nav class="sidebar">
+
+<a href="#home">安琪拉</a>
+<a href="#intro">简介</a>
+<a href="#profile">峡谷群雄•英雄世界</a>
+<a href="#skills">技能</a>
+<a href="#relationship">英雄关系</a>
+<a href="#story">故事</a>
+
+</nav>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="hero-subtitle">暗夜萝莉、</div>
+            <h1 class="hero-title">安琪拉</h1>
+            <div class="hero-en">AN QI LA</div>
+            <div class="hero-line"></div>
+            <div class="hero-quote">「知识，就是力量！」</div>
+            <a href="#intro" class="hero-button">探索英雄</a>
+        </div>
+    </div>
+
+    <div class="character">
+        <div class="character-placeholder">
+            <img src="anqila2.jpg" alt="安琪拉立绘">
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================
+     英雄简介
+========================= -->
+
+<section class="introduction" id="intro">
+
+<div class="section-title">
+
+<small>HERO INTRODUCTION</small>
+
+<h2>英雄简介</h2>
+
+</div>
+
+
+<div class="intro-container">
+
+<div class="intro-image">
+ <img src="anqila.jpg" height="600" weight="600" alt="安琪拉立绘">
+</div>
+
+
+<div class="intro-text">
+
+<h3>安琪拉</h3>
+
+<div class="en">
+AN QI lA</div>
+
+<p>
+安琪拉是《王者荣耀》中的法师英雄，
+拥有较强的远程消耗与爆发能力。
+她擅长利用技能控制敌人，
+并通过连续的法术攻击对敌人造成高额伤害。
+</p>
+
+<p>
+作为一名远程法师英雄，
+安琪拉能够通过技能组合快速消耗敌人，
+在团战中利用控制与爆发打出大量伤害，
+在战场上展现出强大的法术输出能力。
+</p>
+
+<div class="intro-quote">
+「知识，就是力量！」
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     英雄档案
+========================= -->
+
+<section class="profile" id="profile">
+
+<div class="section-title">
+
+<small>HONOR OF KING</small>
+
+<h2>峡谷群雄•英雄世界</h2>
+
+</div>
+
+
+<div class="profile-box">
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="6.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>中文名</span>
+            <i></i>
+        </div>
+
+        <strong>安琪拉<strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="2.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>种族</span>
+            <i></i>
+        </div>
+
+        <strong>人类</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="3.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>身份</span>
+            <i></i>
+        </div>
+
+        <strong>神秘法师</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="5.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>职业</span>
+            <i></i>
+        </div>
+
+        <strong>法师</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="4.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>阵营</span>
+            <i></i>
+        </div>
+
+        <strong>日落圣殿</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="1.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>能量</span>
+            <i></i>
+        </div>
+
+        <strong>魔道</strong>
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     技能
+========================= -->
+
+<section class="skills" id="skills">
+
+<div class="section-title">
+
+<small>ABILITY</small>
+
+<h2>技能展示</h2>
+
+</div>
+
+
+<div class="skill-buttons">
+
+    <button class="skill-btn active" onclick="showSkill(0)">
+        <img src="1anqila.jpg" alt="被动技能">
+        <span>被动</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(1)">
+        <img src="2anqila.jpg" alt="一技能">
+        <span>一技能</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(2)">
+        <img src="3anqila.jpg" alt="二技能">
+        <span>二技能</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(3)">
+        <img src="4anqila.jpg" alt="三技能">
+        <span>三技能</span>
+    </button>
+
+</div>
+
+
+<div class="skill-content">
+
+<h3 id="skillName">
+炽热光辉
+</h3>
+
+<p id="skillText">
+安琪拉释放炽热光辉，持续3秒，每次对触碰的敌人造成150/190/230(+21%法术攻击)法术伤害，最多12次，并获得850/1300/1750(+88%法术攻击)点护盾，护盾存在期间免控。
+施法0.5秒后再次释放该技能可以取消引导。
+</p>
+
+</div>
+
+</section>
+
+<!-- =========================
+     英雄关系
+========================= -->
+
+<section class="relationship" id="relationship">
+
+<div class="section-title">
+
+<small>HERO RELATIONSHIP</small>
+
+<h2>英雄关系</h2>
+
+</div>
+
+
+<!-- 关系分类 -->
+
+<div class="relationship-tabs">
+
+    <button
+        class="relationship-tab active"
+        onclick="showRelationship('partner')">
+        最佳搭档
+    </button>
+
+    <button
+        class="relationship-tab"
+        onclick="showRelationship('counter')">
+        压制英雄
+    </button>
+
+    <button
+        class="relationship-tab"
+        onclick="showRelationship('countered')">
+        被压制英雄
+    </button>
+
+</div>
+
+
+<!-- 英雄头像 -->
+
+<div class="relationship-heroes" id="relationshipHeroes">
+
+    <!-- 钟馗 -->
+
+    <button
+        class="relationship-hero active"
+        onclick="showHeroRelation('zhongkui')">
+
+        <div class="relationship-hero-image">
+            <img src="zhongkui.jpg" alt="钟馗">
+        </div>
+
+        <div class="relationship-hero-name">
+            钟馗
+        </div>
+
+        <div class="relationship-hero-en">
+            ZHONG KUI
+        </div>
+
+    </button>
+
+
+    <!-- 白起 -->
+
+    <button
+        class="relationship-hero"
+        onclick="showHeroRelation('baiqi')">
+
+        <div class="relationship-hero-image">
+            <img src="baiqi.jpg" alt="白起">
+        </div>
+
+        <div class="relationship-hero-name">
+            白起
+        </div>
+
+        <div class="relationship-hero-en">
+            BAI QI
+        </div>
+
+    </button>
+
+</div>
+
+
+<!-- 英雄介绍 -->
+
+<div class="relationship-info">
+
+    <h3 id="relationshipName">
+        钟馗
+    </h3>
+
+    <div class="en" id="relationshipEnglish">
+        ZHONG KUI
+    </div>
+
+    <p id="relationshipText">
+      安琪拉的技能是AOE可以同时对多人造成伤害的，钟馗利用大招闪现把敌方3-5人控制住，安琪拉接21技能配合大招可以轻松将敌方团灭。
+    </p>
+
+</div>
+
+</section>
+
+<!-- =========================
+     故事
+========================= -->
+
+<section class="story" id="story">
+
+<div class="section-title">
+
+<small>HERO STORY</small>
+
+<h2>英雄故事</h2>
+
+</div>
+
+
+<div class="story-content">
+
+<p><span class="story-highlight">
+梅林“曾经”是大陆上最神秘的法师之一，堪比东方两大宗师。</span>
+她还肩负着伟大的使命——辅助王者，让日落圣殿再度复兴。
+</p>
+
+<p>
+遗憾的称之为“曾经”……因为她的晚节不保。是的，她使用魔法（东方人称为魔道）时失手，极其不幸的把自己关在了透明的气泡囚笼中！这个囚笼则摇摇晃晃挂在一棵古老的大树上。
+</p>
+
+<p>
+没人知道过了多少年，她绞尽脑汁打破气泡，最好的成果也无非是将自己制造的小玩意儿扔出气泡，本体依然无法脱离。<span class="story-highlight">直到发现偶尔会有猎人的小孩路过，引发新的灵感：制造一个超！可！爱！的玩偶，然后扔到树下。
+</span></p>
+
+<p><span class="story-highlight">
+小女孩安琪拉发现了玩偶。她拾取来看了又看，爱不释手。这时，附着在玩偶上的魔法发动了：灵魂交换。
+</span></p>
+
+<p>
+成功！梅林离开囚笼，进入小女孩的身体。可是……感觉有点怪怪的？顾不上那么多，梅林想操纵新的身体走出森林。她开始施展寻路法术。也许太专注……就像所有故事里那样，一只手轻轻搭在她的肩膀上。
+</p>
+
+<p>
+那是个好心的圣骑士，发现了迷路的女孩子，要带她回家。
+</p>
+
+<p>
+一瞬间，梅林知道问题所在了。当她看到那家伙，眼睛就再也移不开，脚步也不由自主紧跟着他，他说什么就会顺从的照着去办。
+</p>
+
+<p><span class="story-highlight">
+这具身体，想必一直憧憬仰慕着这位圣骑士。这种仰慕如此强烈，让梅林无法抵御。
+</span></p>
+
+<p>
+梅林抓狂了！她才不要刚离开囚笼，就单恋上弱爆了的人类。她果断决定一回到村镇，立刻暗杀这位救命恩人。
+</p>
+
+<p>
+幸亏，他们所遇到的第一个行人，朝圣骑士打招呼，并叫他“亚瑟”！
+</p>
+
+<p>
+一瞬间，所有不堪回忆的黑历史都涌到了梅林……哦不，<span class="story-highlight">现在名为安琪拉的小女孩脑中：是的，她被称为世界上最伟大和正义的巫师，但这是假象。她是个失败者。天才的她计划要谋夺世界，无耻的家伙践踏了她的自尊心，诅咒了她，让她被迫听命于亚瑟王。
+</span>什么复兴日落圣殿！她本想毁灭它！亚瑟王死后，她以为自己终于解脱，却又失手被困。如今，命运的诅咒再度生效。小女孩的单相思让眼前这个同样叫亚瑟的圣骑士成为她新的主人。真是倒霉透顶！
+</p>
+
+<p>
+愤怒焚烧了安琪拉的理智。她召唤出巨大火球。圣骑士反应神速的拔出长剑：
+</p>
+
+<p>
+“你是谁！”他警惕的问。
+</p>
+
+<p>
+“请接受我——法师安琪拉的效忠。这是命运安排我们重逢。”小女孩展现出与年龄不符的微笑，“我的陛下……”
+</p>
+
+<p>
+服从亚瑟又如何？无论如何，我回来了。我要报复，我要找回尊严和自信。
+</p>
+
+<p><span class="story-highlight">
+“知识，就是力量！”
+</span></p>
+
+
+</div>
+
+</section>
+
+
+<footer>
+HERO PROFILE · AN QI LA 
+</footer>
+
+
+<script>
+
+/* =========================
+   技能资料
+========================= */
+
+const skills = [
+
+{
+name: "咒术火焰",
+text: "安琪拉的技能会灼烧敌人，每层灼烧效果会在安琪拉使用技能攻击时额外增加10~20(+2%法术攻击)法术伤害并为自己增加2%移速，效果最多叠加10层，持续3秒，逐层消失。"
+
+},
+
+{
+name: "火球术",
+text: "安琪拉召唤5颗火球朝指定位置攻击，每颗火球造成270/310/350/390/430/470(+30%法术攻击)法术伤害，对同一目标第二颗火球开始只造成30%伤害。当火球命中敌方英雄时会停止移动并销毁。"
+},
+
+{
+name: "混沌火种",
+text: "安琪拉朝指定方向释放混沌火种，火种到达最远处或命中目标时停下并裂变为火焰漩涡，火焰漩涡每0.5秒对周围的敌人造成125/150/175/200/225/250(+20%法术攻击)法术伤害，持续3秒。同时范围内的敌人会减少30/36/42/48/54/60%移速，持续1.5秒。当火种直接命中敌人时还会将其晕眩1秒。"
+},
+
+{
+name: "炽热光辉",
+text: "安琪拉释放炽热光辉，持续3秒，每次对触碰的敌人造成150/190/230(+21%法术攻击)法术伤害，最多12次，并获得850/1300/1750(+88%法术攻击)点护盾，护盾存在期间免控。施法0.5秒后再次释放该技能可以取消引导。"
+}
+
+];
+
+
+/* =========================
+   切换技能
+========================= */
+
+function showSkill(index) {
+
+    // 改变技能名称
+    document.getElementById("skillName").innerText =
+        skills[index].name;
+
+    // 改变技能介绍
+    document.getElementById("skillText").innerHTML =
+        skills[index].text;
+
+    // 移除所有 active
+    document.querySelectorAll(".skill-btn")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+    // 给当前技能增加 active
+    document.querySelectorAll(".skill-btn")[index]
+        .classList.add("active");
+}
+
+/* =========================
+   英雄关系资料
+========================= */
+
+const relationshipData = {
+
+    partner: {
+
+        heroes: [
+            {
+                id: "zhongkui",
+                name: "钟馗",
+                english: "ZHONG KUI",
+                image: "zhongkui.jpg",
+                text: "安琪拉的技能是AOE可以同时对多人造成伤害的，钟馗利用大招闪现把敌方3-5人控制住，安琪拉接21技能配合大招可以轻松将敌方团灭。"
+            },
+
+            {
+                id: "baiqi",
+                name: "白起",
+                english: "BAI QI",
+                image: "baiqi.jpg",
+                text: "白起闪现2技能家大招可以轻松把敌方英雄聚拢，配合安琪拉21技能家大招可以轻松将敌方团灭。"
+            }
+        ]
+
+    },
+
+
+counter: {
+
+    heroes: [
+        {
+            id: "lubanqihao",
+            name: "鲁班七号",
+            english: "LU BAN QI HAO",
+            image: "lubanqiha.jpg",
+            text: "针对鲁班七号类型的后排无位移英雄，可以在草丛伏击，先手2技能打中后接1技能大招可以轻松秒杀敌方英雄。"
+        },
+
+        {
+            id: "houyi",
+            name: "后羿",
+            english: "HOU YI",
+            image: "houyi.jpg",
+            text: "针对后羿类型的后排无位移英雄，可以在草丛伏击，先手2技能打中后接1技能大招可以轻松秒杀敌方英雄。"
+        }
+    ]
+
+},
+
+    countered: {
+
+        heroes: [
+            {
+                id: "hanxin",
+                name: "韩信",
+                english: "HAN XIN",
+                image: "hanxin.jpg",
+                text: "身为脆皮法师，安琪拉害怕韩信等位移多伤害高的刺客英雄"
+            },
+
+            {
+                id: "lanlingwang",
+                name: "兰陵王",
+                english: "LAN LING WANG",
+                image: "lanlingwang.jpg",
+                text: "兰陵王在团战中能够一套技能直接带走安琪拉"
+            }
+        ]
+
+    }
+
+};
+
+
+/* =========================
+   当前关系
+========================= */
+
+let currentRelationship = "partner";
+
+
+/* =========================
+   切换关系类型
+========================= */
+
+function showRelationship(type) {
+
+    currentRelationship = type;
+
+    /* 切换顶部按钮 */
+
+    document.querySelectorAll(".relationship-tab")
+        .forEach(button => {
+            button.classList.remove("active");
+        });
+
+    event.currentTarget.classList.add("active");
+
+
+    /* 取得当前关系英雄 */
+
+    const heroes =
+        relationshipData[type].heroes;
+
+
+    /* 重新生成英雄头像 */
+
+    const container =
+        document.getElementById("relationshipHeroes");
+
+    container.innerHTML = "";
+
+
+    heroes.forEach((hero, index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "relationship-hero" +
+            (index === 0 ? " active" : "");
+
+        button.onclick = function() {
+            showHeroRelation(hero.id);
+        };
+
+
+        button.innerHTML = `
+
+            <div class="relationship-hero-image">
+
+                <img
+                    src="${hero.image}"
+                    alt="${hero.name}">
+
+            </div>
+
+            <div class="relationship-hero-name">
+                ${hero.name}
+            </div>
+
+            <div class="relationship-hero-en">
+                ${hero.english}
+            </div>
+
+        `;
+
+
+        container.appendChild(button);
+
+    });
+
+
+    /* 默认显示第一个英雄 */
+
+    showHeroRelation(heroes[0].id);
+}
+
+
+/* =========================
+   点击英雄
+========================= */
+
+function showHeroRelation(heroId) {
+
+    const heroes =
+        relationshipData[currentRelationship].heroes;
+
+
+    const hero =
+        heroes.find(item => item.id === heroId);
+
+
+    if (!hero) return;
+
+
+    /* 修改介绍 */
+
+    document.getElementById(
+        "relationshipName"
+    ).innerText = hero.name;
+
+
+    document.getElementById(
+        "relationshipEnglish"
+    ).innerText = hero.english;
+
+
+    document.getElementById(
+        "relationshipText"
+    ).innerText = hero.text;
+
+
+    /* 修改当前头像 */
+
+    document.querySelectorAll(
+        ".relationship-hero"
+    ).forEach(button => {
+
+        button.classList.remove("active");
+
+    });
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".relationship-hero"
+        );
+
+
+    buttons.forEach(button => {
+
+        const name =
+            button.querySelector(
+                ".relationship-hero-name"
+            ).innerText;
+
+
+        if(name === hero.name) {
+
+            button.classList.add("active");
+
+        }
+
+    });
+
+}
+
+/* =========================
+   滚动出现动画
+========================= */
+
+const observer =
+new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.style.animation =
+                "fadeUp 1s ease forwards";
+
+        }
+
+    });
+
+},{threshold:0.15});
+
+
+document.querySelectorAll(
+    ".intro-container, .profile-box, .skill-content, .story-content"
+).forEach(el => {
+
+    el.style.opacity = "0";
+    observer.observe(el);
+
+});
+
+</script>
+
+</body>
+</html>

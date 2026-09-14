@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>妲己·魅力之狐</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* =========================
+   基础
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Noto Serif SC", serif;
+    background: #08090d;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   左侧导航
+========================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 75px;
+    height: 100vh;
+
+    background: rgba(0,0,0,.65);
+    backdrop-filter: blur(10px);
+
+    border-right: 1px solid rgba(255,255,255,.12);
+
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 35px;
+}
+
+.sidebar a {
+    color: rgba(255,255,255,.55);
+
+    text-decoration: none;
+
+    writing-mode: vertical-rl;
+
+    font-size: 12px;
+    letter-spacing: 3px;
+
+    font-family: "Noto Serif SC", serif;
+
+    transition: .3s;
+}
+
+.sidebar a:hover {
+    color: #e8c77a;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 65% 45%,
+            rgba(180,120,70,.35),
+            transparent 35%
+        ),
+        linear-gradient(
+            120deg,
+            #11131a 0%,
+            #2b2220 45%,
+            #08090d 100%
+        );
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.8),
+            transparent 55%,
+            rgba(0,0,0,.25)
+        );
+}
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 12%;
+}
+
+.hero-text {
+    animation: fadeUp 1.5s ease;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+
+    letter-spacing: 8px;
+
+    color: #d9bd78;
+
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-size: clamp(70px, 10vw, 150px);
+
+    font-weight: 500;
+
+    letter-spacing: 15px;
+}
+
+.hero-en {
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 15px;
+
+    letter-spacing: 8px;
+
+    opacity: .5;
+
+    margin-top: 10px;
+}
+
+.hero-line {
+    width: 150px;
+    height: 1px;
+
+    background: #d9bd78;
+
+    margin: 35px 0;
+}
+
+.hero-quote {
+    font-size: 20px;
+
+    letter-spacing: 4px;
+
+    opacity: .9;
+}
+
+.hero-button {
+    display: inline-block;
+
+    margin-top: 45px;
+
+    padding: 14px 35px;
+
+    border: 1px solid #d9bd78;
+
+    color: #d9bd78;
+
+    text-decoration: none;
+
+    letter-spacing: 4px;
+
+    transition: .4s;
+}
+
+.hero-button:hover {
+    background: #d9bd78;
+    color: #111;
+}
+
+
+/* =========================
+   英雄立绘
+========================= */
+
+.character {
+    position: absolute;
+
+    right: 8%;
+    bottom: 0;
+
+    width: 45%;
+    height: 90%;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    pointer-events: none;
+}
+
+.character::before {
+    content: "妲己";
+
+    font-size: 220px;
+
+    color: rgba(255,255,255,.025);
+
+    writing-mode: vertical-rl;
+
+    position: absolute;
+
+    right: 10%;
+    top: 10%;
+}
+
+.character-placeholder {
+    width: 70%;
+    height: 85%;
+
+    overflow: hidden;
+
+    border-radius: 50% 50% 0 0;
+
+    box-shadow:
+        0 0 100px rgba(210,160,90,.25);
+}
+
+
+/* 妲己立绘 */
+
+.character-placeholder img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center center;
+}
+
+
+/* =========================
+   通用 Section
+========================= */
+
+section {
+    min-height: 100vh;
+
+    padding: 120px 12% 100px 15%;
+
+    position: relative;
+}
+
+.section-title {
+    text-align: center;
+
+    margin-bottom: 80px;
+}
+
+.section-title small {
+    color: #d9bd78;
+
+    letter-spacing: 6px;
+}
+
+.section-title h2 {
+    margin-top: 15px;
+
+    font-size: 45px;
+
+    font-weight: 500;
+
+    letter-spacing: 10px;
+}
+
+
+/* =========================
+   英雄简介
+========================= */
+
+.introduction {
+    background:
+        linear-gradient(
+            rgba(8,9,13,.92),
+            rgba(8,9,13,.96)
+        );
+}
+
+.intro-container {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1.5fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+.intro-image {
+    width: 400px;
+    height: 450px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    position: relative;
+}
+
+.intro-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center bottom;
+
+    display: block;
+
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,.5));
+}
+
+.intro-text h3 {
+    font-size: 42px;
+
+    font-weight: 500;
+
+    letter-spacing: 8px;
+}
+
+.intro-text .en {
+    margin-top: 10px;
+
+    color: #d9bd78;
+
+    letter-spacing: 5px;
+
+    font-family: "Montserrat", sans-serif;
+}
+
+.intro-text p {
+    margin-top: 35px;
+
+    line-height: 2.2;
+
+    color: rgba(255,255,255,.68);
+
+    font-size: 16px;
+}
+
+.intro-quote {
+    margin-top: 30px;
+
+    padding-left: 20px;
+
+    border-left: 2px solid #d9bd78;
+
+    color: #d9bd78;
+}
+
+
+/* =========================
+   英雄档案
+========================= */
+
+.profile {
+    background:
+        radial-gradient(
+            circle at center,
+            #24201e,
+            #08090d 65%
+        );
+}
+
+.profile-box {
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+.profile-row {
+    display: grid;
+
+    grid-template-columns: 100px 330px 1fr;
+
+    align-items: center;
+
+    min-height: 80px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.15);
+
+    transition: .3s;
+}
+
+.profile-row:hover {
+    background: rgba(217,189,120,.06);
+}
+
+.profile-logo {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-logo img {
+    width: 65px;
+    height: 65px;
+
+    object-fit: contain;
+}
+
+.profile-label {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.profile-label i {
+    width: 55px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d9bd78
+        );
+}
+
+.profile-label i:last-child {
+    background:
+        linear-gradient(
+            90deg,
+            #d9bd78,
+            transparent
+        );
+}
+
+.profile-label span {
+    color: rgba(255,255,255,.65);
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    white-space: nowrap;
+}
+
+.profile-row strong {
+    font-size: 20px;
+
+    font-weight: 400;
+
+    color: #fff;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   技能
+========================= */
+
+.skills {
+    background: #0d0e13;
+}
+
+.skill-buttons {
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 35px;
+
+    margin-bottom: 65px;
+}
+
+.skill-btn {
+    width: 90px;
+    height: 120px;
+
+    border: none;
+
+    background: transparent;
+
+    color: rgba(255,255,255,.55);
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
+    transition: .35s;
+}
+
+.skill-btn img {
+    width: 78px;
+    height: 78px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border:
+        2px solid rgba(255,255,255,.25);
+
+    filter: brightness(.65);
+
+    transition: .35s;
+}
+
+.skill-btn span {
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    transition: .35s;
+}
+
+.skill-btn:hover img {
+    transform: scale(1.08);
+
+    filter: brightness(.9);
+
+    border-color: #d9bd78;
+}
+
+.skill-btn.active img {
+    transform: scale(1.12);
+
+    filter: brightness(1);
+
+    border-color: #d9bd78;
+
+    box-shadow:
+        0 0 0 3px rgba(217,189,120,.15),
+        0 0 25px rgba(217,189,120,.45);
+}
+
+.skill-btn.active span {
+    color: #d9bd78;
+}
+
+.skill-content {
+    max-width: 850px;
+
+    margin: auto;
+
+    line-height: 2.2;
+}
+
+.skill-content h3 {
+    color: #d9bd78;
+
+    margin-bottom: 20px;
+}
+
+.skill-content p {
+    color: rgba(255,255,255,.68);
+}
+
+
+/* =========================
+   英雄关系
+========================= */
+
+.relationship {
+    background:
+        radial-gradient(
+            circle at center,
+            #211e1c,
+            #08090d 70%
+        );
+}
+
+
+/* =========================
+   关系分类按钮
+========================= */
+
+.relationship-tabs {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 70px;
+
+    margin-bottom: 65px;
+}
+
+.relationship-tab {
+    position: relative;
+
+    padding: 12px 30px;
+
+    border: none;
+
+    background: transparent;
+
+    color: rgba(255,255,255,.45);
+
+    font-family: "Noto Serif SC", serif;
+
+    font-size: 15px;
+
+    letter-spacing: 4px;
+
+    cursor: pointer;
+
+    transition: .35s;
+}
+
+.relationship-tab::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 0;
+    height: 1px;
+
+    background: #d9bd78;
+
+    transform: translateX(-50%);
+
+    transition: .35s;
+}
+
+.relationship-tab:hover {
+    color: #d9bd78;
+}
+
+.relationship-tab.active {
+    color: #d9bd78;
+}
+
+.relationship-tab.active::after {
+    width: 80%;
+}
+
+
+/* =========================
+   英雄关系头像
+========================= */
+
+.relationship-heroes {
+    max-width: 900px;
+
+    margin: 0 auto 65px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 100px;
+}
+
+.relationship-hero {
+    width: 180px;
+
+    border: none;
+
+    background: transparent;
+
+    color: rgba(255,255,255,.55);
+
+    cursor: pointer;
+
+    text-align: center;
+
+    transition: .35s;
+}
+
+.relationship-hero-image {
+    width: 180px;
+    height: 180px;
+
+    margin: auto;
+
+    overflow: visible;
+
+    transition: .35s;
+}
+
+.relationship-hero-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+.relationship-hero-name {
+    margin-top: 20px;
+
+    font-size: 20px;
+
+    letter-spacing: 4px;
+
+    color: rgba(255,255,255,.8);
+
+    transition: .35s;
+}
+
+.relationship-hero-en {
+    margin-top: 8px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: rgba(255,255,255,.35);
+}
+
+
+/* 鼠标经过 */
+
+.relationship-hero:hover .relationship-hero-image {
+    transform: scale(1.06);
+}
+
+
+/* 当前英雄 */
+
+.relationship-hero.active .relationship-hero-image {
+    transform: scale(1.1);
+}
+
+.relationship-hero.active .relationship-hero-name {
+    color: #d9bd78;
+}
+
+
+/* =========================
+   英雄关系介绍
+========================= */
+
+.relationship-info {
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 45px 60px;
+
+    border-top:
+        1px solid rgba(217,189,120,.3);
+
+    border-bottom:
+        1px solid rgba(217,189,120,.3);
+
+    text-align: center;
+
+    min-height: 220px;
+}
+
+.relationship-info h3 {
+    font-size: 32px;
+
+    font-weight: 500;
+
+    letter-spacing: 6px;
+
+    color: #fff;
+}
+
+.relationship-info .en {
+    margin-top: 8px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    color: #d9bd78;
+}
+
+.relationship-info p {
+    margin-top: 30px;
+
+    line-height: 2.2;
+
+    font-size: 16px;
+
+    color: rgba(255,255,255,.65);
+}
+
+
+/* =========================
+   故事
+========================= */
+
+.story {
+    background:
+        linear-gradient(
+            180deg,
+            #0b0c10,
+            #211c19,
+            #08090d
+        );
+}
+
+.story-content {
+    max-width: 850px;
+
+    margin: auto;
+
+    text-align: left;
+}
+
+.story-content p {
+    line-height: 2.5;
+
+    color: rgba(255,255,255,.65);
+
+    font-size: 17px;
+
+    text-indent: 2em;
+
+    margin-bottom: 25px;
+}
+
+.story-highlight {
+    color: #d9bd78;
+
+    font-weight: 500;
+}
+
+
+/* =========================
+   Footer
+========================= */
+
+footer {
+    padding: 40px;
+
+    text-align: center;
+
+    background: #050608;
+
+    color: rgba(255,255,255,.3);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================
+   Animation
+========================= */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================
+   手机版
+========================= */
+
+@media(max-width: 800px) {
+
+    /* 侧边栏 */
+
+    .sidebar {
+        width: 55px;
+        gap: 25px;
+    }
+
+
+    /* HERO */
+
+    .hero-content {
+        padding-left: 90px;
+    }
+
+    .character {
+        opacity: .35;
+
+        width: 80%;
+
+        right: -20%;
+    }
+
+
+    /* Section */
+
+    section {
+        padding:
+            90px 30px 80px 80px;
+    }
+
+
+    /* Section 标题 */
+
+    .section-title {
+        margin-bottom: 55px;
+    }
+
+    .section-title h2 {
+        font-size: 32px;
+        letter-spacing: 6px;
+    }
+
+
+    /* 英雄简介 */
+
+    .intro-container {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .intro-image {
+        width: 100%;
+        max-width: 400px;
+
+        height: 400px;
+
+        margin: auto;
+    }
+
+
+    /* 英雄档案 */
+
+    .profile-row {
+        grid-template-columns:
+            60px 150px 1fr;
+    }
+
+    .profile-logo img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .profile-row strong {
+        font-size: 16px;
+    }
+
+
+    /* 技能 */
+
+    .skill-buttons {
+        flex-wrap: wrap;
+
+        gap: 25px;
+    }
+
+
+    /* HERO 标题 */
+
+    .hero-title {
+        font-size: 65px;
+
+        letter-spacing: 8px;
+    }
+
+    .hero-quote {
+        font-size: 15px;
+
+        letter-spacing: 2px;
+    }
+
+    .relationship-hero-image {
+    width: 140px;
+    height: 140px;
+     }
+	 
+    /* =========================
+       英雄关系
+    ========================= */
+
+    .relationship-tabs {
+        gap: 10px;
+
+        margin-bottom: 50px;
+    }
+
+    .relationship-tab {
+        padding: 10px 12px;
+
+        font-size: 12px;
+
+        letter-spacing: 2px;
+    }
+
+    .relationship-heroes {
+        gap: 25px;
+
+        margin-bottom: 50px;
+    }
+
+    .relationship-hero {
+        width: 140px;
+    }
+
+    .relationship-hero-image {
+        width: 105px;
+        height: 105px;
+    }
+
+    .relationship-hero-name {
+        font-size: 16px;
+
+        letter-spacing: 2px;
+    }
+
+    .relationship-info {
+        padding: 35px 25px;
+    }
+
+    .relationship-info h3 {
+        font-size: 25px;
+
+        letter-spacing: 4px;
+    }
+
+    .relationship-info p {
+        font-size: 14px;
+
+        line-height: 2;
+    }
+
+
+    /* 故事 */
+
+    .story-content p {
+        font-size: 15px;
+
+        line-height: 2.3;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 左侧导航 -->
+
+<nav class="sidebar">
+
+<a href="#home">妲己</a>
+<a href="#intro">简介</a>
+<a href="#profile">峡谷群雄•英雄世界</a>
+<a href="#skills">技能</a>
+<a href="#relationship">英雄关系</a>
+<a href="#story">故事</a>
+
+</nav>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="hero-subtitle">魅力之狐</div>
+            <h1 class="hero-title">妲己</h1>
+            <div class="hero-en">DA JI</div>
+            <div class="hero-line"></div>
+            <div class="hero-quote">「请尽情吩咐妲己，主人」</div>
+            <a href="#intro" class="hero-button">探索英雄</a>
+        </div>
+    </div>
+
+    <div class="character">
+        <div class="character-placeholder">
+            <img src="daji2.jpg" alt="妲己立绘">
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================
+     英雄简介
+========================= -->
+
+<section class="introduction" id="intro">
+
+<div class="section-title">
+
+<small>HERO INTRODUCTION</small>
+
+<h2>英雄简介</h2>
+
+</div>
+
+
+<div class="intro-container">
+
+<div class="intro-image">
+ <img src="daji.jpg" height="600" weight="600" alt="妲己立绘">
+</div>
+
+
+<div class="intro-text">
+
+<h3>妲己</h3>
+
+<div class="en">
+CAO CAO
+</div>
+
+<p>
+妲己是《王者荣耀》中的法师英雄，  
+拥有较强的控制能力与爆发能力。  
+她擅长利用技能控制敌人，  
+并通过连续的技能攻击对敌人造成高额伤害。  
+</p>
+
+<p>
+作为一名灵活的远程法师，  
+妲己能够利用技能寻找合适的输出机会，  
+通过控制与爆发迅速击败敌人，  
+在战场上展现出强大的爆发力与控制能力。  
+</p>
+
+
+<div class="intro-quote">
+「请尽情吩咐妲己，主人」」
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     英雄档案
+========================= -->
+
+<section class="profile" id="profile">
+
+<div class="section-title">
+
+<small>HONOR OF KING</small>
+
+<h2>峡谷群雄•英雄世界</h2>
+
+</div>
+
+
+<div class="profile-box">
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="6.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>中文名</span>
+            <i></i>
+        </div>
+
+        <strong>妲己<strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="2.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>种族</span>
+            <i></i>
+        </div>
+
+        <strong>人造人</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="3.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>身份</span>
+            <i></i>
+        </div>
+
+        <strong>姜子牙所造人偶</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="5.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>职业</span>
+            <i></i>
+        </div>
+
+        <strong>法师</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="4.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>阵营</span>
+            <i></i>
+        </div>
+
+        <strong>归山一族</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="1.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>能量</span>
+            <i></i>
+        </div>
+
+        <strong>魔道</strong>
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     技能
+========================= -->
+
+<section class="skills" id="skills">
+
+<div class="section-title">
+
+<small>ABILITY</small>
+
+<h2>技能展示</h2>
+
+</div>
+
+
+<div class="skill-buttons">
+
+    <button class="skill-btn active" onclick="showSkill(0)">
+        <img src="1daji.jpg" alt="被动技能">
+        <span>被动</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(1)">
+        <img src="2daji.jpg" alt="一技能">
+        <span>一技能</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(2)">
+        <img src="3daji.jpg" alt="二技能">
+        <span>二技能</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(3)">
+        <img src="4daji.jpg" alt="三技能">
+        <span>三技能</span>
+    </button>
+
+</div>
+
+
+<div class="skill-content">
+
+<h3 id="skillName">
+失心
+</h3>
+
+<p id="skillText">
+妲己技能命中敌人会减少目标36~72点法术防御，持续3秒，最多叠加3层。
+</p>
+
+</div>
+
+</section>
+
+<!-- =========================
+     英雄关系
+========================= -->
+
+<section class="relationship" id="relationship">
+
+<div class="section-title">
+
+<small>HERO RELATIONSHIP</small>
+
+<h2>英雄关系</h2>
+
+</div>
+
+
+<!-- 关系分类 -->
+
+<div class="relationship-tabs">
+
+    <button
+        class="relationship-tab active"
+        onclick="showRelationship('partner')">
+        最佳搭档
+    </button>
+
+    <button
+        class="relationship-tab"
+        onclick="showRelationship('counter')">
+        压制英雄
+    </button>
+
+    <button
+        class="relationship-tab"
+        onclick="showRelationship('countered')">
+        被压制英雄
+    </button>
+
+</div>
+
+
+<!-- 英雄头像 -->
+
+<div class="relationship-heroes" id="relationshipHeroes">
+
+    <!-- 孙悟空 -->
+
+    <button
+        class="relationship-hero active"
+        onclick="showHeroRelation('sunwukong')">
+
+        <div class="relationship-hero-image">
+            <img src="sunwukong.jpg" alt="孙悟空">
+        </div>
+
+        <div class="relationship-hero-name">
+            孙悟空
+        </div>
+
+        <div class="relationship-hero-en">
+            SUN WU KONG
+        </div>
+
+    </button>
+
+
+    <!-- 阿轲 -->
+
+    <button
+        class="relationship-hero"
+        onclick="showHeroRelation('ake')">
+
+        <div class="relationship-hero-image">
+            <img src="ake.jpg" alt="阿轲">
+        </div>
+
+        <div class="relationship-hero-name">
+            阿轲
+        </div>
+
+        <div class="relationship-hero-en">
+            A KE
+        </div>
+
+    </button>
+
+</div>
+
+
+<!-- 英雄介绍 -->
+
+<div class="relationship-info">
+
+    <h3 id="relationshipName">
+        孙悟空
+    </h3>
+
+    <div class="en" id="relationshipEnglish">
+        SUN WU KONG
+    </div>
+
+    <p id="relationshipText">
+        猴子是高爆发英雄，和妲己配合双重控制爆发，妲己先手控制，231技能跟上，猴子一技能接平A，
+		敌人就算不死也是残血，猴子大招控制跟上，再接平A，即使是坦克也很难生存，游走抓人效率极高。
+    </p>
+
+</div>
+
+</section>
+
+<!-- =========================
+     故事
+========================= -->
+
+<section class="story" id="story">
+
+<div class="section-title">
+
+<small>HERO STORY</small>
+
+<h2>英雄故事</h2>
+
+</div>
+
+
+<div class="story-content">
+
+<p>
+很久以前，世界的面貌与日后截然不同，机关术和魔道造就了繁华盛世，人们沉浸于奢靡的生活，役使着大量魔种作为奴隶。当然，也有魔种因为怨恨而对人类发起了反抗，但很快就被镇压下去。
+</p>
+
+<p><span class="story-highlight">
+精通魔道的老人隐居在渭水之畔。他按照记忆中的模样，用机关术制造了一个人偶，又用魔道为她注入灵魂。
+</span></p>
+
+<p>
+老人反复雕琢着人偶。人偶也很努力，想要做到父亲眼里的完美。但老人依旧会叹息，为何始终无法成为记忆中的模样。人偶不解的歪着头，心中充满迷惑。为什么？是因为自己没有心吗？啊，什么时候，才能成为真正的人类呢？
+</p>
+
+<p>
+这一天来的比想象中更早。
+</p>
+
+<p>
+当人偶一举一动跟真正的人没有什么两样时，老人将她送往朝歌献给纣王。人偶又害怕，又担心。自己，被主人遗弃了吗？
+</p>
+
+<p><span class="story-highlight">
+此时纣王正沉浸在失去爱人的悲痛中。人偶和死去的爱人如此相似。他抑制不住收下这可疑的礼物，温柔的叫她“妲己”。
+</span></p>
+
+<p>
+妲己过上了期盼中的，像人类一样的生活。只是，心依旧空空如也。纣王向她倾诉着思念。于是她知道纣王的爱人本是魔种与人类的混血。为了她，纣王希望人类和魔种能够和平共处，并不断做着努力。
+</p>
+
+<p>
+臣民们反对这样的努力。他们无法忍受魔种与人类平起平坐。站出来召集召唤师们发动叛乱的，正是创造了妲己的老人。
+</p>
+
+<p>
+妲己似懂非懂的聆听着，充满同情。自己算是爱上了纣王吗？据说人类都有“爱”这种感情。可什么才是真正的爱？她不敢肯定。因为自己没有心。
+</p>
+
+<p>
+纣王出征了。妲己在宫殿中游荡。脑海中神秘的声音在指引她，她要去找自己的心。
+</p>
+
+<p><span class="story-highlight">
+她被指引到纣王为爱人建造的陵墓。无声的咒语打开白玉的棺材，一颗心脏鲜活的跳动着。她拿起那颗心。心破裂了，封印的灵魂飞入躯体。
+</span></p>
+
+<p>
+妲己和那灵魂在人偶的身躯中痛苦搏斗了很长时间，争夺主导，奇怪的声音嘈杂的争辩，记忆的碎片不断闪过。
+</p>
+
+<p>
+纣王爱上魔种少女。纣王在反对声中失去爱人，纣王用自己的心脏保存爱人的灵魂。纣王把人偶当成了爱人。<span class="story-highlight">魔种少女的灵魂认为纣王背叛了自己，在嫉妒中发了狂。纣王的心脏破碎了，老人的阴谋得逞了！
+</span></p>
+
+<p>
+此刻，纣王感受到心碎的痛楚。不，不止是心，连身体也逐渐化为灰烬，徒留下躯壳，这是魔道反噬的作用。他知道自己终究被欺骗和背叛。也许这是最好的结局，能从双重的痛苦中得到解脱。
+</p>
+
+<p>
+两个妲己的争吵终结于无边无际的梦境中。直到很久以后，路过的召唤师解开封印，天真的人偶妲己才再度醒来。
+</p>
+
+<p><span class="story-highlight">
+“请尽情吩咐妲己吧，主人。”这一次，请帮助我寻找到真正的心吧。主人……
+</span></p>
+
+
+<p>
+一、
+</p>
+
+<p>
+为了搭好天梯上倒悬天见主人，哮天犬热衷于到处捡“垃圾”。
+</p>
+
+<p>
+天上掉下来的陨石，好东西，叼回去打地基！
+</p>
+
+<p>
+好粗一根树枝，好东西，叼回去做栏杆！
+</p>
+
+<p>
+看起来很真还会响的狐狸人偶……好东西，驮回去蜡烛往手里一放就能当烛台！
+</p>
+
+<p>
+汪汪汪，活儿干得真漂亮，我真是一只好狗狗。
+</p>
+
+<p>
+“喂，哮天犬，你怎么带回来一个人？”太乙真人问。
+</p>
+
+<p>
+“喂，狗子，你是一条猎狐犬吗？”炉子说。
+</p>
+
+<p>
+“汪？”
+</p>
+
+<p>
+哮天犬一个急刹狗，停下脚步，脑袋一歪，看向太乙真人。
+</p>
+
+<p>
+它的背上，那位紧紧攥着狗脖子的狐耳狐尾少女也脑袋一歪，瞧瞧黑黢黢的小人儿，又瞅瞅蹦蹦跳跳的炉子，一路狂飙的头发终于承受不住压力，乱七八糟耷拉下来，逗得哮天犬鼻子直痒痒。
+</p>
+
+<p>
+伴随时不时的喷嚏声和太乙真人炼金小课堂（对低龄小朋友特供版）的讲座声，狗子明白过来，眼前的这位少女虽然闻起来是人偶，魔力流动也是人偶，但人家是有生命的。
+</p>
+
+<p>
+它思考了一会儿，伸出一只前爪碰了碰少女，又碰了碰炉子。
+</p>
+
+<p>
+太乙真人点点头：“没错没错，孺狗可教也，她也是炼金造物，和炉子的生命形态差不多。”
+</p>
+
+<p>
+“但人家为什么就不能是美少女呢？”
+</p>
+
+<p>
+炉子有些生气。
+</p>
+
+<p>
+于是妲己稀里糊涂来到建木脚下的归山，又稀里糊涂留了下来。
+</p>
+
+<p>
+“从野狐狸变成了家狐狸。”
+</p>
+
+<p>
+炉子如此评价。
+</p>
+
+<p>
+在来到归山之前，妲己的确度过了一段野孩子时光。
+</p>
+
+<p>
+那时候她刚刚醒来，只觉得似乎做了一个漫长的梦。她懵懵懂懂启程，漫无目的地路过山野，经过城镇，过了许久才恍然大悟，原来离自己的时代已过去了很多年。
+</p>
+
+<p>
+纣王化作故事中的名字，名为朝歌的偌大城池如今不留一丝痕迹，那场可怕的战争成了茶馆里人们闲谈时偶尔提到的传说，自己的狐耳狐尾在大部分人眼里也并没有什么特别，很多东西都变了，唯一与过去完全相同的，是她胸膛里那依旧空空如也的心。
+</p>
+
+<p>
+她从说书人口中听过“观棋已是百年后”的故事，主角的经历与她如出一辙，可说书人讲的，樵子目睹人事变迁时，心底泛起的惆怅与怀念，她始终弄不明白。
+</p>
+
+<p>
+她尝试着想起纣王，想起师父，想起过去的那些人。
+</p>
+
+<p>
+身为人偶，她能很清楚地记得他们的脸，但就算是纣王，也只是让她觉得有些熟悉而已。
+</p>
+
+<p>
+懵懂的人偶或许弄不明白很多东西，但现在她明白了一个道理，或者说一个结论——再久远的时间也带不来一颗真正的心。
+</p>
+
+
+
+
+</div>
+
+</section>
+
+
+<footer>
+HERO PROFILE · DA JI 
+</footer>
+
+
+<script>
+
+/* =========================
+   技能资料
+========================= */
+
+const skills = [
+
+{
+name: "失心",
+text: "妲己技能命中敌人会减少目标36~72点法术防御，持续3秒，最多叠加3层。"
+},
+
+{
+name: "灵魂冲击",
+text: "妲己向指定方向挥出灵魂冲击波，对命中的敌人造成570/635/700/765/830/895(+120%法术攻击)法术伤害。"
+},
+
+{
+name: "偶像魅力",
+text: "妲己锁定敌人抛出魅力爱心，造成285/320/355/390/425/460(+66%法术攻击)法术伤害和1.5秒晕眩。"
+},
+
+{
+name: "女王崇拜",
+text: "妲己放出5团狐火，狐火随机攻击范围内的敌人，每团狐火造成325/405/485(+75%法术攻击)法术伤害。当多团狐火命中同一个目标时，后续狐火开始只造成50%伤害。"
+}
+
+];
+
+
+/* =========================
+   切换技能
+========================= */
+
+function showSkill(index) {
+
+    // 改变技能名称
+    document.getElementById("skillName").innerText =
+        skills[index].name;
+
+    // 改变技能介绍
+    document.getElementById("skillText").innerHTML =
+        skills[index].text;
+
+    // 移除所有 active
+    document.querySelectorAll(".skill-btn")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+    // 给当前技能增加 active
+    document.querySelectorAll(".skill-btn")[index]
+        .classList.add("active");
+}
+
+/* =========================
+   英雄关系资料
+========================= */
+
+const relationshipData = {
+
+    partner: {
+
+        heroes: [
+            {
+                id: "sunwukong",
+                name: "孙悟空",
+                english: "SUN WU KONG",
+                image: "sunwukong.jpg",
+                text: "猴子是高爆发英雄，和妲己配合双重控制爆发，妲己先手控制，231技能跟上，猴子一技能接平A，敌人就算不死也是残血，猴子大招控制跟上，再接平A，即使是坦克也很难生存，游走抓人效率极高。"
+            },
+
+            {
+                id: "ake",
+                name: "阿轲",
+                english: "A KE",
+                image: "ake.jpg",
+                text: "阿轲的埋伏和绕后能力强，妲己蹲草伏击爆发秒人能力强，两人配合埋伏蹲人可以达到瞬秒的效果。配合游走gank 能力非常很强。"
+            }
+        ]
+
+    },
+
+
+    counter: {
+
+        heroes: [
+            {
+                id: "luna",
+                name: "露娜",
+                english: "LU NA",
+                image: "luna.jpg",
+                text: "露娜4级后比较强，建立优势后很难针对，妲己的2技能控制无法躲避，可以见到露娜就231打一套消耗，在己方塔下完全不用担心被露娜强杀，注意不要强推线，在后期打团高额伤害也可以让露娜很难受。"
+            },
+
+            {
+                id: "diaochan",
+                name: "貂蝉",
+                english: "DIAO CHAN",
+                image: "diaochan.jpg",
+                text: "貂蝉比较怕硬控和集火秒杀，妲己的单体爆发比较高，可以在貂蝉秀起来之前一套231连招秒掉，注意在貂蝉交出2技能消失后在眩晕打出一套连招（中后期妲己经济碾压的情况下，即使貂蝉满血也可以秒掉）。"
+            }
+        ]
+
+    },
+
+
+    countered: {
+
+        heroes: [
+            {
+                id: "lanlingwang",
+                name: "兰陵王",
+                english: "LAN LING WANG",
+                image: "lanlingwang.jpg",
+                text: "兰陵王的隐身和秒杀能力很容易接近妲己将其秒杀"
+            },
+
+            {
+                id: "huamulan",
+                name: "花木兰",
+                english: "HUA MU LAN",
+                image: "huamulan.jpg",
+                text: "花木兰的超高爆发输出能力能快速击杀走位不慎的妲己"
+            }
+        ]
+
+    }
+
+};
+
+
+/* =========================
+   当前关系
+========================= */
+
+let currentRelationship = "partner";
+
+
+/* =========================
+   切换关系类型
+========================= */
+
+function showRelationship(type) {
+
+    currentRelationship = type;
+
+    /* 切换顶部按钮 */
+
+    document.querySelectorAll(".relationship-tab")
+        .forEach(button => {
+            button.classList.remove("active");
+        });
+
+    event.currentTarget.classList.add("active");
+
+
+    /* 取得当前关系英雄 */
+
+    const heroes =
+        relationshipData[type].heroes;
+
+
+    /* 重新生成英雄头像 */
+
+    const container =
+        document.getElementById("relationshipHeroes");
+
+    container.innerHTML = "";
+
+
+    heroes.forEach((hero, index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "relationship-hero" +
+            (index === 0 ? " active" : "");
+
+        button.onclick = function() {
+            showHeroRelation(hero.id);
+        };
+
+
+        button.innerHTML = `
+
+            <div class="relationship-hero-image">
+
+                <img
+                    src="${hero.image}"
+                    alt="${hero.name}">
+
+            </div>
+
+            <div class="relationship-hero-name">
+                ${hero.name}
+            </div>
+
+            <div class="relationship-hero-en">
+                ${hero.english}
+            </div>
+
+        `;
+
+
+        container.appendChild(button);
+
+    });
+
+
+    /* 默认显示第一个英雄 */
+
+    showHeroRelation(heroes[0].id);
+}
+
+
+/* =========================
+   点击英雄
+========================= */
+
+function showHeroRelation(heroId) {
+
+    const heroes =
+        relationshipData[currentRelationship].heroes;
+
+
+    const hero =
+        heroes.find(item => item.id === heroId);
+
+
+    if (!hero) return;
+
+
+    /* 修改介绍 */
+
+    document.getElementById(
+        "relationshipName"
+    ).innerText = hero.name;
+
+
+    document.getElementById(
+        "relationshipEnglish"
+    ).innerText = hero.english;
+
+
+    document.getElementById(
+        "relationshipText"
+    ).innerText = hero.text;
+
+
+    /* 修改当前头像 */
+
+    document.querySelectorAll(
+        ".relationship-hero"
+    ).forEach(button => {
+
+        button.classList.remove("active");
+
+    });
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".relationship-hero"
+        );
+
+
+    buttons.forEach(button => {
+
+        const name =
+            button.querySelector(
+                ".relationship-hero-name"
+            ).innerText;
+
+
+        if(name === hero.name) {
+
+            button.classList.add("active");
+
+        }
+
+    });
+
+}
+
+/* =========================
+   滚动出现动画
+========================= */
+
+const observer =
+new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.style.animation =
+                "fadeUp 1s ease forwards";
+
+        }
+
+    });
+
+},{threshold:0.15});
+
+
+document.querySelectorAll(
+    ".intro-container, .profile-box, .skill-content, .story-content"
+).forEach(el => {
+
+    el.style.opacity = "0";
+    observer.observe(el);
+
+});
+
+</script>
+
+</body>
+</html>

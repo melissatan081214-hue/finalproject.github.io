@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蔡文姬·天籁弦音</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* =========================
+   基础
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Noto Serif SC", serif;
+    background: #08090d;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   左侧导航
+========================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 75px;
+    height: 100vh;
+
+    background: rgba(0,0,0,.65);
+    backdrop-filter: blur(10px);
+
+    border-right: 1px solid rgba(255,255,255,.12);
+
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 35px;
+}
+
+.sidebar a {
+    color: rgba(255,255,255,.55);
+
+    text-decoration: none;
+
+    writing-mode: vertical-rl;
+
+    font-size: 12px;
+    letter-spacing: 3px;
+
+    font-family: "Noto Serif SC", serif;
+
+    transition: .3s;
+}
+
+.sidebar a:hover {
+    color: #e8c77a;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 65% 45%,
+            rgba(180,120,70,.35),
+            transparent 35%
+        ),
+        linear-gradient(
+            120deg,
+            #11131a 0%,
+            #2b2220 45%,
+            #08090d 100%
+        );
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.8),
+            transparent 55%,
+            rgba(0,0,0,.25)
+        );
+}
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 12%;
+}
+
+.hero-text {
+    animation: fadeUp 1.5s ease;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+
+    letter-spacing: 8px;
+
+    color: #d9bd78;
+
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-size: clamp(70px, 10vw, 150px);
+
+    font-weight: 500;
+
+    letter-spacing: 15px;
+}
+
+.hero-en {
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 15px;
+
+    letter-spacing: 8px;
+
+    opacity: .5;
+
+    margin-top: 10px;
+}
+
+.hero-line {
+    width: 150px;
+    height: 1px;
+
+    background: #d9bd78;
+
+    margin: 35px 0;
+}
+
+.hero-quote {
+    font-size: 20px;
+
+    letter-spacing: 4px;
+
+    opacity: .9;
+}
+
+.hero-button {
+    display: inline-block;
+
+    margin-top: 45px;
+
+    padding: 14px 35px;
+
+    border: 1px solid #d9bd78;
+
+    color: #d9bd78;
+
+    text-decoration: none;
+
+    letter-spacing: 4px;
+
+    transition: .4s;
+}
+
+.hero-button:hover {
+    background: #d9bd78;
+    color: #111;
+}
+
+
+/* =========================
+   英雄立绘
+========================= */
+
+.character {
+    position: absolute;
+
+    right: 8%;
+    bottom: 0;
+
+    width: 45%;
+    height: 90%;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    pointer-events: none;
+}
+
+.character::before {
+    content: "蔡文姬";
+
+    font-size: 220px;
+
+    color: rgba(255,255,255,.025);
+
+    writing-mode: vertical-rl;
+
+    position: absolute;
+
+    right: 10%;
+    top: 10%;
+}
+
+.character-placeholder {
+    width: 70%;
+    height: 85%;
+
+    overflow: hidden;
+
+    border-radius: 50% 50% 0 0;
+
+    box-shadow:
+        0 0 100px rgba(210,160,90,.25);
+}
+
+
+/* 蔡文姬立绘 */
+
+.character-placeholder img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center center;
+}
+
+
+/* =========================
+   通用 Section
+========================= */
+
+section {
+    min-height: 100vh;
+
+    padding: 120px 12% 100px 15%;
+
+    position: relative;
+}
+
+.section-title {
+    text-align: center;
+
+    margin-bottom: 80px;
+}
+
+.section-title small {
+    color: #d9bd78;
+
+    letter-spacing: 6px;
+}
+
+.section-title h2 {
+    margin-top: 15px;
+
+    font-size: 45px;
+
+    font-weight: 500;
+
+    letter-spacing: 10px;
+}
+
+
+/* =========================
+   英雄简介
+========================= */
+
+.introduction {
+    background:
+        linear-gradient(
+            rgba(8,9,13,.92),
+            rgba(8,9,13,.96)
+        );
+}
+
+.intro-container {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1.5fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+.intro-image {
+    width: 400px;
+    height: 450px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    position: relative;
+}
+
+.intro-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center bottom;
+
+    display: block;
+
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,.5));
+}
+
+.intro-text h3 {
+    font-size: 42px;
+
+    font-weight: 500;
+
+    letter-spacing: 8px;
+}
+
+.intro-text .en {
+    margin-top: 10px;
+
+    color: #d9bd78;
+
+    letter-spacing: 5px;
+
+    font-family: "Montserrat", sans-serif;
+}
+
+.intro-text p {
+    margin-top: 35px;
+
+    line-height: 2.2;
+
+    color: rgba(255,255,255,.68);
+
+    font-size: 16px;
+}
+
+.intro-quote {
+    margin-top: 30px;
+
+    padding-left: 20px;
+
+    border-left: 2px solid #d9bd78;
+
+    color: #d9bd78;
+}
+
+
+/* =========================
+   英雄档案
+========================= */
+
+.profile {
+    background:
+        radial-gradient(
+            circle at center,
+            #24201e,
+            #08090d 65%
+        );
+}
+
+.profile-box {
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+.profile-row {
+    display: grid;
+
+    grid-template-columns: 100px 330px 1fr;
+
+    align-items: center;
+
+    min-height: 80px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.15);
+
+    transition: .3s;
+}
+
+.profile-row:hover {
+    background: rgba(217,189,120,.06);
+}
+
+.profile-logo {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-logo img {
+    width: 65px;
+    height: 65px;
+
+    object-fit: contain;
+}
+
+.profile-label {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.profile-label i {
+    width: 55px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d9bd78
+        );
+}
+
+.profile-label i:last-child {
+    background:
+        linear-gradient(
+            90deg,
+            #d9bd78,
+            transparent
+        );
+}
+
+.profile-label span {
+    color: rgba(255,255,255,.65);
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    white-space: nowrap;
+}
+
+.profile-row strong {
+    font-size: 20px;
+
+    font-weight: 400;
+
+    color: #fff;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   技能
+========================= */
+
+.skills {
+    background: #0d0e13;
+}
+
+.skill-buttons {
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 35px;
+
+    margin-bottom: 65px;
+}
+
+.skill-btn {
+    width: 90px;
+    height: 120px;
+
+    border: none;
+
+    background: transparent;
+
+    color: rgba(255,255,255,.55);
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
+    transition: .35s;
+}
+
+.skill-btn img {
+    width: 78px;
+    height: 78px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border:
+        2px solid rgba(255,255,255,.25);
+
+    filter: brightness(.65);
+
+    transition: .35s;
+}
+
+.skill-btn span {
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    transition: .35s;
+}
+
+.skill-btn:hover img {
+    transform: scale(1.08);
+
+    filter: brightness(.9);
+
+    border-color: #d9bd78;
+}
+
+.skill-btn.active img {
+    transform: scale(1.12);
+
+    filter: brightness(1);
+
+    border-color: #d9bd78;
+
+    box-shadow:
+        0 0 0 3px rgba(217,189,120,.15),
+        0 0 25px rgba(217,189,120,.45);
+}
+
+.skill-btn.active span {
+    color: #d9bd78;
+}
+
+.skill-content {
+    max-width: 850px;
+
+    margin: auto;
+
+    line-height: 2.2;
+}
+
+.skill-content h3 {
+    color: #d9bd78;
+
+    margin-bottom: 20px;
+}
+
+.skill-content p {
+    color: rgba(255,255,255,.68);
+}
+
+
+/* =========================
+   英雄关系
+========================= */
+
+.relationship {
+    background:
+        radial-gradient(
+            circle at center,
+            #211e1c,
+            #08090d 70%
+        );
+}
+
+
+/* =========================
+   关系分类按钮
+========================= */
+
+.relationship-tabs {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 70px;
+
+    margin-bottom: 65px;
+}
+
+.relationship-tab {
+    position: relative;
+
+    padding: 12px 30px;
+
+    border: none;
+
+    background: transparent;
+
+    color: rgba(255,255,255,.45);
+
+    font-family: "Noto Serif SC", serif;
+
+    font-size: 15px;
+
+    letter-spacing: 4px;
+
+    cursor: pointer;
+
+    transition: .35s;
+}
+
+.relationship-tab::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 0;
+    height: 1px;
+
+    background: #d9bd78;
+
+    transform: translateX(-50%);
+
+    transition: .35s;
+}
+
+.relationship-tab:hover {
+    color: #d9bd78;
+}
+
+.relationship-tab.active {
+    color: #d9bd78;
+}
+
+.relationship-tab.active::after {
+    width: 80%;
+}
+
+
+/* =========================
+   英雄关系头像
+========================= */
+
+.relationship-heroes {
+    max-width: 900px;
+
+    margin: 0 auto 65px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 100px;
+}
+
+.relationship-hero {
+    width: 180px;
+
+    border: none;
+
+    background: transparent;
+
+    color: rgba(255,255,255,.55);
+
+    cursor: pointer;
+
+    text-align: center;
+
+    transition: .35s;
+}
+
+.relationship-hero-image {
+    width: 180px;
+    height: 180px;
+
+    margin: auto;
+
+    overflow: visible;
+
+    transition: .35s;
+}
+
+.relationship-hero-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+.relationship-hero-name {
+    margin-top: 20px;
+
+    font-size: 20px;
+
+    letter-spacing: 4px;
+
+    color: rgba(255,255,255,.8);
+
+    transition: .35s;
+}
+
+.relationship-hero-en {
+    margin-top: 8px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: rgba(255,255,255,.35);
+}
+
+
+/* 鼠标经过 */
+
+.relationship-hero:hover .relationship-hero-image {
+    transform: scale(1.06);
+}
+
+
+/* 当前英雄 */
+
+.relationship-hero.active .relationship-hero-image {
+    transform: scale(1.1);
+}
+
+.relationship-hero.active .relationship-hero-name {
+    color: #d9bd78;
+}
+
+
+/* =========================
+   英雄关系介绍
+========================= */
+
+.relationship-info {
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 45px 60px;
+
+    border-top:
+        1px solid rgba(217,189,120,.3);
+
+    border-bottom:
+        1px solid rgba(217,189,120,.3);
+
+    text-align: center;
+
+    min-height: 220px;
+}
+
+.relationship-info h3 {
+    font-size: 32px;
+
+    font-weight: 500;
+
+    letter-spacing: 6px;
+
+    color: #fff;
+}
+
+.relationship-info .en {
+    margin-top: 8px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    color: #d9bd78;
+}
+
+.relationship-info p {
+    margin-top: 30px;
+
+    line-height: 2.2;
+
+    font-size: 16px;
+
+    color: rgba(255,255,255,.65);
+}
+
+
+/* =========================
+   故事
+========================= */
+
+.story {
+    background:
+        linear-gradient(
+            180deg,
+            #0b0c10,
+            #211c19,
+            #08090d
+        );
+}
+
+.story-content {
+    max-width: 850px;
+
+    margin: auto;
+
+    text-align: left;
+}
+
+.story-content p {
+    line-height: 2.5;
+
+    color: rgba(255,255,255,.65);
+
+    font-size: 17px;
+
+    text-indent: 2em;
+
+    margin-bottom: 25px;
+}
+
+.story-highlight {
+    color: #d9bd78;
+
+    font-weight: 500;
+}
+
+
+/* =========================
+   Footer
+========================= */
+
+footer {
+    padding: 40px;
+
+    text-align: center;
+
+    background: #050608;
+
+    color: rgba(255,255,255,.3);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================
+   Animation
+========================= */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================
+   手机版
+========================= */
+
+@media(max-width: 800px) {
+
+    /* 侧边栏 */
+
+    .sidebar {
+        width: 55px;
+        gap: 25px;
+    }
+
+
+    /* HERO */
+
+    .hero-content {
+        padding-left: 90px;
+    }
+
+    .character {
+        opacity: .35;
+
+        width: 80%;
+
+        right: -20%;
+    }
+
+
+    /* Section */
+
+    section {
+        padding:
+            90px 30px 80px 80px;
+    }
+
+
+    /* Section 标题 */
+
+    .section-title {
+        margin-bottom: 55px;
+    }
+
+    .section-title h2 {
+        font-size: 32px;
+        letter-spacing: 6px;
+    }
+
+
+    /* 英雄简介 */
+
+    .intro-container {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .intro-image {
+        width: 100%;
+        max-width: 400px;
+
+        height: 400px;
+
+        margin: auto;
+    }
+
+
+    /* 英雄档案 */
+
+    .profile-row {
+        grid-template-columns:
+            60px 150px 1fr;
+    }
+
+    .profile-logo img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .profile-row strong {
+        font-size: 16px;
+    }
+
+
+    /* 技能 */
+
+    .skill-buttons {
+        flex-wrap: wrap;
+
+        gap: 25px;
+    }
+
+
+    /* HERO 标题 */
+
+    .hero-title {
+        font-size: 65px;
+
+        letter-spacing: 8px;
+    }
+
+    .hero-quote {
+        font-size: 15px;
+
+        letter-spacing: 2px;
+    }
+
+    .relationship-hero-image {
+    width: 140px;
+    height: 140px;
+     }
+	 
+    /* =========================
+       英雄关系
+    ========================= */
+
+    .relationship-tabs {
+        gap: 10px;
+
+        margin-bottom: 50px;
+    }
+
+    .relationship-tab {
+        padding: 10px 12px;
+
+        font-size: 12px;
+
+        letter-spacing: 2px;
+    }
+
+    .relationship-heroes {
+        gap: 25px;
+
+        margin-bottom: 50px;
+    }
+
+    .relationship-hero {
+        width: 140px;
+    }
+
+    .relationship-hero-image {
+        width: 105px;
+        height: 105px;
+    }
+
+    .relationship-hero-name {
+        font-size: 16px;
+
+        letter-spacing: 2px;
+    }
+
+    .relationship-info {
+        padding: 35px 25px;
+    }
+
+    .relationship-info h3 {
+        font-size: 25px;
+
+        letter-spacing: 4px;
+    }
+
+    .relationship-info p {
+        font-size: 14px;
+
+        line-height: 2;
+    }
+
+
+    /* 故事 */
+
+    .story-content p {
+        font-size: 15px;
+
+        line-height: 2.3;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- 左侧导航 -->
+
+<nav class="sidebar">
+
+<a href="#home">蔡文姬</a>
+<a href="#intro">简介</a>
+<a href="#profile">峡谷群雄•英雄世界</a>
+<a href="#skills">技能</a>
+<a href="#relationship">英雄关系</a>
+<a href="#story">故事</a>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="hero-subtitle">天籁弦音</div>
+            <h1 class="hero-title">蔡文姬</h1>
+            <div class="hero-en">CAI WENJI</div>
+            <div class="hero-line"></div>
+            <div class="hero-quote">「飞舞战场的美少女，大活跃！」</div>
+            <a href="#intro" class="hero-button">探索英雄</a>
+        </div>
+    </div>
+
+    <div class="character">
+        <div class="character-placeholder">
+            <img src="caiwenji2.jpg" alt="蔡文姬立绘">
+        </div>
+    </div>
+</section>
+
+<!-- =========================
+     英雄简介
+========================= -->
+
+<section class="introduction" id="intro">
+
+<div class="section-title">
+
+<small>HERO INTRODUCTION</small>
+
+<h2>英雄简介</h2>
+
+</div>
+
+
+<div class="intro-container">
+
+<div class="intro-image">
+<img src="caiwenji.jpg" alt="蔡文姬立绘">
+</div>
+
+
+<div class="intro-text">
+
+<h3>蔡文姬</h3>
+
+<div class="en">
+CAI WENJI
+</div>
+
+<p>
+蔡文姬是《王者荣耀》中的辅助英雄，拥有强大的治疗与支援能力。
+她擅长利用技能为队友恢复生命值，并通过控制技能干扰敌人，为队友创造良好的输出环境。
+</p>
+
+<p>
+作为一名辅助英雄，蔡文姬能够通过持续治疗和控制保护队友，并利用自身技能为团队提供稳定的支援。
+在战场上，她可以有效提升队伍的生存能力，展现出出色的辅助与保护能力。
+</p>
+
+<div class="intro-quote">
+「飞舞战场的美少女，大活跃！」
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     英雄档案
+========================= -->
+
+<section class="profile" id="profile">
+
+<div class="section-title">
+
+<small>HONOR OF KING</small>
+
+<h2>峡谷群雄•英雄世界</h2>
+
+</div>
+
+
+<div class="profile-box">
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="6.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>中文名</span>
+            <i></i>
+        </div>
+
+        <strong>蔡文姬</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="2.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>种族</span>
+            <i></i>
+        </div>
+
+        <strong>人类</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="3.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>身份</span>
+            <i></i>
+        </div>
+
+        <strong>音乐天才少女</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="5.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>职业</span>
+            <i></i>
+        </div>
+
+        <strong>辅助</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="4.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>阵营</span>
+            <i></i>
+        </div>
+
+        <strong>魏</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="1.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>能量</span>
+            <i></i>
+        </div>
+
+        <strong>魔道</strong>
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     技能
+========================= -->
+
+<section class="skills" id="skills">
+
+<div class="section-title">
+
+<small>ABILITY</small>
+
+<h2>技能展示</h2>
+
+</div>
+
+
+<div class="skill-buttons">
+
+    <button class="skill-btn active" onclick="showSkill(0)">
+        <img src="1caiwenji.jpg" alt="被动技能">
+        <span>被动</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(1)">
+        <img src="2caiwenji.jpg" alt="一技能">
+        <span>一技能</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(2)">
+        <img src="3caiwenji.jpg" alt="二技能">
+        <span>二技能</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(3)">
+        <img src="4caiwenji.jpg" alt="三技能">
+        <span>三技能</span>
+    </button>
+
+</div>
+
+
+<div class="skill-content">
+
+<h3 id="skillName">
+长歌行
+</h3>
+
+<p id="skillText">
+蔡文姬受到伤害时增加持续衰减的35~70%移速，持续2秒，同时每秒回复250~530(+50%法术攻击)生命，持续2秒。
+该效果每10秒只能触发1次。
+</p>
+
+</div>
+
+</section>
+
+<!-- =========================
+     英雄关系
+========================= -->
+
+<section class="relationship" id="relationship">
+
+<div class="section-title">
+
+<small>HERO RELATIONSHIP</small>
+
+<h2>英雄关系</h2>
+
+</div>
+
+
+<!-- 关系分类 -->
+
+<div class="relationship-tabs">
+
+    <button
+        class="relationship-tab active"
+        onclick="showRelationship('partner')">
+        最佳搭档
+    </button>
+
+    <button
+        class="relationship-tab"
+        onclick="showRelationship('counter')">
+        压制英雄
+    </button>
+
+    <button
+        class="relationship-tab"
+        onclick="showRelationship('countered')">
+        被压制英雄
+    </button>
+
+</div>
+
+
+<!-- 英雄头像 -->
+
+<div class="relationship-heroes" id="relationshipHeroes">
+
+    <!-- 高渐离 -->
+
+    <button
+        class="relationship-hero active"
+        onclick="showHeroRelation('zhuangzhou')">
+
+        <div class="relationship-hero-image">
+            <img src="gaojianli.jpg" alt="高渐离">
+        </div>
+
+        <div class="relationship-hero-name">
+            高渐离
+        </div>
+
+        <div class="relationship-hero-en">
+            GAO JIANLI
+        </div>
+
+    </button>
+
+
+    <!-- 狄仁杰 -->
+
+    <button
+        class="relationship-hero"
+        onclick="showHeroRelation('daqiao')">
+
+        <div class="relationship-hero-image">
+            <img src="direnjie.jpg" alt="狄仁杰">
+        </div>
+
+        <div class="relationship-hero-name">
+            狄仁杰
+        </div>
+
+        <div class="relationship-hero-en">
+            DI RENJIE
+        </div>
+
+    </button>
+
+</div>
+
+
+<!-- 英雄介绍 -->
+
+<div class="relationship-info">
+
+    <h3 id="relationshipName">
+        高渐离
+    </h3>
+
+    <div class="en" id="relationshipEnglish">
+        GAO JIANLI
+    </div>
+
+    <p id="relationshipText">
+        高渐离：高渐离作为版本最强的AOE爆发输出流法师之一，开启大招免伤配合蔡文姬的大招加血加双抗能在团战中起到一个2打5的作用，
+		蔡文姬二技能的稳定控制也能配合高渐离打出更好的输出环境。
+    </p>
+
+</div>
+
+</section>
+
+<!-- =========================
+     故事
+========================= -->
+
+<section class="story" id="story">
+
+<div class="section-title">
+
+<small>HERO STORY</small>
+
+<h2>英雄故事</h2>
+
+</div>
+
+
+<div class="story-content">
+
+<p>
+黑暗的魔神王会降临大陆，唯有美少女的琴音挥洒希望与胜利。”
+</p>
+
+<p>
+“人家这样坚信。”
+</p>
+
+<p><span class="story-highlight">
+“人家的名字，叫蔡文姬。去世的爹爹，希望文姬做个文雅又可爱的女郎呢。爹爹大名蔡邕，是大陆也顶顶有学问的人。
+</span>爹爹，到底长得什么样呢？文姬怎么想也想不起来。只有抱着胡笳琴睡觉的时候，好像能梦到爹爹的影子。那么温暖，眼神又是那么忧伤。</p>
+
+<p>“把这些告诉文姬的人是阿典。阿典很沉默很沉默，可提到爹爹，就停不了嘴：爹爹走过好多好多地方；
+<span class="story-highlight">爹爹的学问，连稷下的老夫子也称赞不已；爹爹的书籍，装满了七八个房间；
+爹爹发掘了许多珍贵的太古时代的遗物——可惜，留给文姬的唯有这架古怪的胡笳琴。</span>
+以及，以及，爹爹收养了的阿典。”</p>
+
+<p>
+“阿典，爹爹到底是怎么去世的呢？每次问这个问题，阿典就会哽咽着露出痛苦的表情，本来就笨嘴笨舌的，更加连话也说不利索了。”
+</p>
+
+<p>
+“虽然爹爹已经不在了，但文姬还有义父。义父，可是比爹爹还要伟大的人哟！
+没错，义父正乃孟德大人是也！啊，孟德大人，那么伟岸，充满了气魄。大人的心愿，也是如此宏大！
+文姬，文姬最崇拜的人，非孟德大人莫属！”
+</p>
+
+<p>“文姬终于鼓起勇气，问义父大人。义父大人说，爹爹得到了太古时代的宝物，所以被心怀叵测的好朋友害死。
+是什么人，会去害爹爹？——是个很有学问的人，他的学问仅次于爹爹，名叫诸葛亮。
+<span class="story-highlight">他醉心于太古魔道的研究，为了争夺魔神王的武器而杀害了爹爹。”</span></p>
+
+<p>
+“诸葛亮，文姬记住了这个名字。文姬再一次在梦里见到爹爹时，大声问，是他害死了您吗？爹爹，你为什么叹息呢？真的是他吗？”
+</p>
+
+<p>
+“于是，文姬做出了重要的决定！文姬不要做个文雅又可爱的女郎，文姬和文姬的胡笳琴，也要为孟德大人，为了讨伐爹爹的仇人，飞舞在战场上！”
+</p>
+
+<p>
+“来吧，邪恶的诸葛亮！可怕，爱说谎的大人！可是，诸葛亮尚未现身，那个，那个一言不合就开始飚车的变态是谁呀？
+自称为诸葛亮的弟子，可那种，用机关熊猫当坐骑的恶劣品味……那种，一脸自恋的讨厌模样……那种，
+那种……啊啊啊啊，讨厌啦，颜值不够又自说自话的追求者，最！讨！厌！啦！”
+</p>
+
+<p><span class="story-highlight">“飞舞战场的美少女，大活跃！”</span></p>
+
+</div>
+
+</section>
+
+
+<footer>
+HERO PROFILE · CAI WENJI
+</footer>
+
+
+<script>
+
+/* =========================
+   技能资料
+========================= */
+
+const skills = [
+
+{
+name: "长歌行",
+text: `蔡文姬受到伤害时增加持续衰减的35~70%移速，持续2秒，同时每秒回复250~530(+50%法术攻击)生命，持续2秒。
+该效果每10秒只能触发1次。`
+},
+
+{
+name: "思无邪",
+text: `蔡文姬演奏乐曲，增加40%移速，同时为己方英雄每0.5秒回复60/72/84/96/108/120(+20%法术攻击)点生命，
+持续3秒，对非英雄单位造成50%效果。`
+},
+
+{
+name: "胡笳乐",
+text: `蔡文姬发出音波在敌人间弹射，每次弹射造成270/324/378/432/486/540(+48%法术攻击)法术伤害和0.75秒晕眩。
+每束音波最多弹射6次，同一目标最多受到2次弹射效果，第二次弹射命中时将只造成25%的初始伤害和晕眩时间。`
+},
+
+{
+name: "忘忧曲",
+text: `蔡文姬释放琴音每0.5秒为范围内血量最低的友方英雄回复90/135/180(+45%法术攻击)点生命，持续5秒，
+同时为其增加200/300/400(+30%法术攻击)点物理和法术防御。`
+}
+
+];
+
+
+/* =========================
+   切换技能
+========================= */
+
+function showSkill(index) {
+
+    // 改变技能名称
+    document.getElementById("skillName").innerText =
+        skills[index].name;
+
+    // 改变技能介绍
+    document.getElementById("skillText").innerHTML =
+        skills[index].text;
+
+    // 移除所有 active
+    document.querySelectorAll(".skill-btn")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+    // 给当前技能增加 active
+    document.querySelectorAll(".skill-btn")[index]
+        .classList.add("active");
+}
+
+/* =========================
+   英雄关系资料
+========================= */
+
+const relationshipData = {
+
+    partner: {
+
+        heroes: [
+            {
+                id: "GAOJIANLI",
+                name: "高渐离",
+                english: "GAOJIANLI",
+                image: "gaojianli.jpg",
+                text: "高渐离：高渐离作为版本最强的AOE爆发输出流法师之一，开启大招免伤配合蔡文姬的大招加血加双抗能在团战中起到一个2打5的作用，蔡文姬二技能的稳定控制也能配合高渐离打出更好的输出环境。"
+            },
+
+            {
+                id: "DI RENJIE",
+                name: "狄仁杰",
+                english: "DI RENJIE",
+                image: "direnjie.jpg",
+                text: "狄仁杰：狄仁杰站桩近距离输出是相当强势的，二技能的解控使狄仁杰在团战中不会出现被控制直接秒掉的情况，蔡文姬的回血和二技能的眩晕以及大招的加双抗，能使狄仁杰在面对敌方刺客的针对时有更好的输出环境。"
+            }
+        ]
+
+    },
+
+
+    counter: {
+
+        heroes: [
+            {
+                id: "DIAO CHAN",
+                name: "貂蝉",
+                english: "DIAO CHAN",
+                image: "diaochan.jpg",
+                text: "貂蝉：貂蝉是持续输出英雄，蔡文姬二技能追踪的连续两下控制很容易让貂蝉放空一个技能或者一个技能放不出来而自乱阵脚，1技能配合大招的恢复能力也能保护队友轻松逃生或反杀。"
+            },
+
+            {
+                id: "AKe",
+                name: "阿轲",
+                english: "AKe",
+                image: "ale.jpg",
+                text: "阿轲需要一套技能秒人才能发挥最大的效果，团战时有一个蔡文姬保护后排加血加双抗，敌方的阿轲就很难一套直接秒掉后排，相反蔡文姬的眩晕还能让阿轲有来无回，配合后排的输出甚至能直接秒掉反杀阿轲。"
+            }
+        ]
+
+    },
+
+
+    countered: {
+
+        heroes: [
+            {
+                id: "LAN LING WANG",
+                name: "兰陵王",
+                english: "LAN LING WANG",
+                image: "lanlingwang.jpg",
+                text: "兰陵王的隐身和秒杀能力很容易接近蔡文姬将其秒杀"
+            },
+
+            {
+                id: "HUA MULAN",
+                name: "花木兰",
+                english: "HUA MULAN",
+                image: "huamulan.jpg",
+                text: "花木兰的超高爆发输出能力能快速击杀走位不慎的蔡文姬"
+            }
+        ]
+
+    }
+
+};
+
+
+/* =========================
+   当前关系
+========================= */
+
+let currentRelationship = "partner";
+
+
+/* =========================
+   切换关系类型
+========================= */
+
+function showRelationship(type) {
+
+    currentRelationship = type;
+
+    /* 切换顶部按钮 */
+
+    document.querySelectorAll(".relationship-tab")
+        .forEach(button => {
+            button.classList.remove("active");
+        });
+
+    event.currentTarget.classList.add("active");
+
+
+    /* 取得当前关系英雄 */
+
+    const heroes =
+        relationshipData[type].heroes;
+
+
+    /* 重新生成英雄头像 */
+
+    const container =
+        document.getElementById("relationshipHeroes");
+
+    container.innerHTML = "";
+
+
+    heroes.forEach((hero, index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "relationship-hero" +
+            (index === 0 ? " active" : "");
+
+        button.onclick = function() {
+            showHeroRelation(hero.id);
+        };
+
+
+        button.innerHTML = `
+
+            <div class="relationship-hero-image">
+
+                <img
+                    src="${hero.image}"
+                    alt="${hero.name}">
+
+            </div>
+
+            <div class="relationship-hero-name">
+                ${hero.name}
+            </div>
+
+            <div class="relationship-hero-en">
+                ${hero.english}
+            </div>
+
+        `;
+
+
+        container.appendChild(button);
+
+    });
+
+
+    /* 默认显示第一个英雄 */
+
+    showHeroRelation(heroes[0].id);
+}
+
+
+/* =========================
+   点击英雄
+========================= */
+
+function showHeroRelation(heroId) {
+
+    const heroes =
+        relationshipData[currentRelationship].heroes;
+
+
+    const hero =
+        heroes.find(item => item.id === heroId);
+
+
+    if (!hero) return;
+
+
+    /* 修改介绍 */
+
+    document.getElementById(
+        "relationshipName"
+    ).innerText = hero.name;
+
+
+    document.getElementById(
+        "relationshipEnglish"
+    ).innerText = hero.english;
+
+
+    document.getElementById(
+        "relationshipText"
+    ).innerText = hero.text;
+
+
+    /* 修改当前头像 */
+
+    document.querySelectorAll(
+        ".relationship-hero"
+    ).forEach(button => {
+
+        button.classList.remove("active");
+
+    });
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".relationship-hero"
+        );
+
+
+    buttons.forEach(button => {
+
+        const name =
+            button.querySelector(
+                ".relationship-hero-name"
+            ).innerText;
+
+
+        if(name === hero.name) {
+
+            button.classList.add("active");
+
+        }
+
+    });
+
+}
+
+/* =========================
+   滚动出现动画
+========================= */
+
+const observer =
+new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.style.animation =
+                "fadeUp 1s ease forwards";
+
+        }
+
+    });
+
+},{threshold:0.15});
+
+
+document.querySelectorAll(
+    ".intro-container, .profile-box, .skill-content, .story-content"
+).forEach(el => {
+
+    el.style.opacity = "0";
+    observer.observe(el);
+
+});
+
+</script>
+
+</body>
+</html>
