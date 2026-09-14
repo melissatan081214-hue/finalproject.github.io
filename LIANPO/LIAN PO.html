@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>廉颇·正义爆轰</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* =========================
+   基础
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Noto Serif SC", serif;
+    background: #08090d;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   左侧导航
+========================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 75px;
+    height: 100vh;
+
+    background: rgba(0,0,0,.65);
+    backdrop-filter: blur(10px);
+
+    border-right: 1px solid rgba(255,255,255,.12);
+
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 35px;
+}
+
+.sidebar a {
+    color: rgba(255,255,255,.55);
+
+    text-decoration: none;
+
+    writing-mode: vertical-rl;
+
+    font-size: 12px;
+    letter-spacing: 3px;
+
+    font-family: "Noto Serif SC", serif;
+
+    transition: .3s;
+}
+
+.sidebar a:hover {
+    color: #e8c77a;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 65% 45%,
+            rgba(180,120,70,.35),
+            transparent 35%
+        ),
+        linear-gradient(
+            120deg,
+            #11131a 0%,
+            #2b2220 45%,
+            #08090d 100%
+        );
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.8),
+            transparent 55%,
+            rgba(0,0,0,.25)
+        );
+}
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 12%;
+}
+
+.hero-text {
+    animation: fadeUp 1.5s ease;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+
+    letter-spacing: 8px;
+
+    color: #d9bd78;
+
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-size: clamp(70px, 10vw, 150px);
+
+    font-weight: 500;
+
+    letter-spacing: 15px;
+}
+
+.hero-en {
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 15px;
+
+    letter-spacing: 8px;
+
+    opacity: .5;
+
+    margin-top: 10px;
+}
+
+.hero-line {
+    width: 150px;
+    height: 1px;
+
+    background: #d9bd78;
+
+    margin: 35px 0;
+}
+
+.hero-quote {
+    font-size: 20px;
+
+    letter-spacing: 4px;
+
+    opacity: .9;
+}
+
+.hero-button {
+    display: inline-block;
+
+    margin-top: 45px;
+
+    padding: 14px 35px;
+
+    border: 1px solid #d9bd78;
+
+    color: #d9bd78;
+
+    text-decoration: none;
+
+    letter-spacing: 4px;
+
+    transition: .4s;
+}
+
+.hero-button:hover {
+    background: #d9bd78;
+    color: #111;
+}
+
+
+/* =========================
+   英雄立绘
+========================= */
+
+.character {
+    position: absolute;
+
+    right: 8%;
+    bottom: 0;
+
+    width: 45%;
+    height: 90%;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    pointer-events: none;
+}
+
+.character::before {
+    content: "廉颇";
+
+    font-size: 220px;
+
+    color: rgba(255,255,255,.025);
+
+    writing-mode: vertical-rl;
+
+    position: absolute;
+
+    right: 10%;
+    top: 10%;
+}
+
+.character-placeholder {
+    width: 70%;
+    height: 85%;
+
+    overflow: hidden;
+
+    border-radius: 50% 50% 0 0;
+
+    box-shadow:
+        0 0 100px rgba(210,160,90,.25);
+}
+
+
+/* 廉颇立绘 */
+
+.character-placeholder img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center center;
+}
+
+
+/* =========================
+   通用 Section
+========================= */
+
+section {
+    min-height: 100vh;
+
+    padding: 120px 12% 100px 15%;
+
+    position: relative;
+}
+
+.section-title {
+    text-align: center;
+
+    margin-bottom: 80px;
+}
+
+.section-title small {
+    color: #d9bd78;
+
+    letter-spacing: 6px;
+}
+
+.section-title h2 {
+    margin-top: 15px;
+
+    font-size: 45px;
+
+    font-weight: 500;
+
+    letter-spacing: 10px;
+}
+
+
+/* =========================
+   英雄简介
+========================= */
+
+.introduction {
+    background:
+        linear-gradient(
+            rgba(8,9,13,.92),
+            rgba(8,9,13,.96)
+        );
+}
+
+.intro-container {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1.5fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+.intro-image {
+    width: 400px;
+    height: 450px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    position: relative;
+}
+
+.intro-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center bottom;
+
+    display: block;
+
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,.5));
+}
+
+.intro-text h3 {
+    font-size: 42px;
+
+    font-weight: 500;
+
+    letter-spacing: 8px;
+}
+
+.intro-text .en {
+    margin-top: 10px;
+
+    color: #d9bd78;
+
+    letter-spacing: 5px;
+
+    font-family: "Montserrat", sans-serif;
+}
+
+.intro-text p {
+    margin-top: 35px;
+
+    line-height: 2.2;
+
+    color: rgba(255,255,255,.68);
+
+    font-size: 16px;
+}
+
+.intro-quote {
+    margin-top: 30px;
+
+    padding-left: 20px;
+
+    border-left: 2px solid #d9bd78;
+
+    color: #d9bd78;
+}
+
+
+/* =========================
+   英雄档案
+========================= */
+
+.profile {
+    background:
+        radial-gradient(
+            circle at center,
+            #24201e,
+            #08090d 65%
+        );
+}
+
+.profile-box {
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+.profile-row {
+    display: grid;
+
+    grid-template-columns: 100px 330px 1fr;
+
+    align-items: center;
+
+    min-height: 80px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.15);
+
+    transition: .3s;
+}
+
+.profile-row:hover {
+    background: rgba(217,189,120,.06);
+}
+
+.profile-logo {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-logo img {
+    width: 65px;
+    height: 65px;
+
+    object-fit: contain;
+}
+
+.profile-label {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.profile-label i {
+    width: 55px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d9bd78
+        );
+}
+
+.profile-label i:last-child {
+    background:
+        linear-gradient(
+            90deg,
+            #d9bd78,
+            transparent
+        );
+}
+
+.profile-label span {
+    color: rgba(255,255,255,.65);
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    white-space: nowrap;
+}
+
+.profile-row strong {
+    font-size: 20px;
+
+    font-weight: 400;
+
+    color: #fff;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   技能
+========================= */
+
+.skills {
+    background: #0d0e13;
+}
+
+.skill-buttons {
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 35px;
+
+    margin-bottom: 65px;
+}
+
+.skill-btn {
+    width: 90px;
+    height: 120px;
+
+    border: none;
+
+    background: transparent;
+
+    color: rgba(255,255,255,.55);
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
+    transition: .35s;
+}
+
+.skill-btn img {
+    width: 78px;
+    height: 78px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border:
+        2px solid rgba(255,255,255,.25);
+
+    filter: brightness(.65);
+
+    transition: .35s;
+}
+
+.skill-btn span {
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    transition: .35s;
+}
+
+.skill-btn:hover img {
+    transform: scale(1.08);
+
+    filter: brightness(.9);
+
+    border-color: #d9bd78;
+}
+
+.skill-btn.active img {
+    transform: scale(1.12);
+
+    filter: brightness(1);
+
+    border-color: #d9bd78;
+
+    box-shadow:
+        0 0 0 3px rgba(217,189,120,.15),
+        0 0 25px rgba(217,189,120,.45);
+}
+
+.skill-btn.active span {
+    color: #d9bd78;
+}
+
+.skill-content {
+    max-width: 850px;
+
+    margin: auto;
+
+    line-height: 2.2;
+}
+
+.skill-content h3 {
+    color: #d9bd78;
+
+    margin-bottom: 20px;
+}
+
+.skill-content p {
+    color: rgba(255,255,255,.68);
+}
+
+
+/* =========================
+   英雄关系
+========================= */
+
+.relationship {
+    background:
+        radial-gradient(
+            circle at center,
+            #211e1c,
+            #08090d 70%
+        );
+}
+
+
+/* =========================
+   关系分类按钮
+========================= */
+
+.relationship-tabs {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 70px;
+
+    margin-bottom: 65px;
+}
+
+.relationship-tab {
+    position: relative;
+
+    padding: 12px 30px;
+
+    border: none;
+
+    background: transparent;
+
+    color: rgba(255,255,255,.45);
+
+    font-family: "Noto Serif SC", serif;
+
+    font-size: 15px;
+
+    letter-spacing: 4px;
+
+    cursor: pointer;
+
+    transition: .35s;
+}
+
+.relationship-tab::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 0;
+    height: 1px;
+
+    background: #d9bd78;
+
+    transform: translateX(-50%);
+
+    transition: .35s;
+}
+
+.relationship-tab:hover {
+    color: #d9bd78;
+}
+
+.relationship-tab.active {
+    color: #d9bd78;
+}
+
+.relationship-tab.active::after {
+    width: 80%;
+}
+
+
+/* =========================
+   英雄关系头像
+========================= */
+
+.relationship-heroes {
+    max-width: 900px;
+
+    margin: 0 auto 65px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 100px;
+}
+
+.relationship-hero {
+    width: 180px;
+
+    border: none;
+
+    background: transparent;
+
+    color: rgba(255,255,255,.55);
+
+    cursor: pointer;
+
+    text-align: center;
+
+    transition: .35s;
+}
+
+.relationship-hero-image {
+    width: 180px;
+    height: 180px;
+
+    margin: auto;
+
+    overflow: visible;
+
+    transition: .35s;
+}
+
+.relationship-hero-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+.relationship-hero-name {
+    margin-top: 20px;
+
+    font-size: 20px;
+
+    letter-spacing: 4px;
+
+    color: rgba(255,255,255,.8);
+
+    transition: .35s;
+}
+
+.relationship-hero-en {
+    margin-top: 8px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: rgba(255,255,255,.35);
+}
+
+
+/* 鼠标经过 */
+
+.relationship-hero:hover .relationship-hero-image {
+    transform: scale(1.06);
+}
+
+
+/* 当前英雄 */
+
+.relationship-hero.active .relationship-hero-image {
+    transform: scale(1.1);
+}
+
+.relationship-hero.active .relationship-hero-name {
+    color: #d9bd78;
+}
+
+
+/* =========================
+   英雄关系介绍
+========================= */
+
+.relationship-info {
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 45px 60px;
+
+    border-top:
+        1px solid rgba(217,189,120,.3);
+
+    border-bottom:
+        1px solid rgba(217,189,120,.3);
+
+    text-align: center;
+
+    min-height: 220px;
+}
+
+.relationship-info h3 {
+    font-size: 32px;
+
+    font-weight: 500;
+
+    letter-spacing: 6px;
+
+    color: #fff;
+}
+
+.relationship-info .en {
+    margin-top: 8px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    color: #d9bd78;
+}
+
+.relationship-info p {
+    margin-top: 30px;
+
+    line-height: 2.2;
+
+    font-size: 16px;
+
+    color: rgba(255,255,255,.65);
+}
+
+
+/* =========================
+   故事
+========================= */
+
+.story {
+    background:
+        linear-gradient(
+            180deg,
+            #0b0c10,
+            #211c19,
+            #08090d
+        );
+}
+
+.story-content {
+    max-width: 850px;
+
+    margin: auto;
+
+    text-align: left;
+}
+
+.story-content p {
+    line-height: 2.5;
+
+    color: rgba(255,255,255,.65);
+
+    font-size: 17px;
+
+    text-indent: 2em;
+
+    margin-bottom: 25px;
+}
+
+.story-highlight {
+    color: #d9bd78;
+
+    font-weight: 500;
+}
+
+
+/* =========================
+   Footer
+========================= */
+
+footer {
+    padding: 40px;
+
+    text-align: center;
+
+    background: #050608;
+
+    color: rgba(255,255,255,.3);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================
+   Animation
+========================= */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================
+   手机版
+========================= */
+
+@media(max-width: 800px) {
+
+    /* 侧边栏 */
+
+    .sidebar {
+        width: 55px;
+        gap: 25px;
+    }
+
+
+    /* HERO */
+
+    .hero-content {
+        padding-left: 90px;
+    }
+
+    .character {
+        opacity: .35;
+
+        width: 80%;
+
+        right: -20%;
+    }
+
+
+    /* Section */
+
+    section {
+        padding:
+            90px 30px 80px 80px;
+    }
+
+
+    /* Section 标题 */
+
+    .section-title {
+        margin-bottom: 55px;
+    }
+
+    .section-title h2 {
+        font-size: 32px;
+        letter-spacing: 6px;
+    }
+
+
+    /* 英雄简介 */
+
+    .intro-container {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .intro-image {
+        width: 100%;
+        max-width: 400px;
+
+        height: 400px;
+
+        margin: auto;
+    }
+
+
+    /* 英雄档案 */
+
+    .profile-row {
+        grid-template-columns:
+            60px 150px 1fr;
+    }
+
+    .profile-logo img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .profile-row strong {
+        font-size: 16px;
+    }
+
+
+    /* 技能 */
+
+    .skill-buttons {
+        flex-wrap: wrap;
+
+        gap: 25px;
+    }
+
+
+    /* HERO 标题 */
+
+    .hero-title {
+        font-size: 65px;
+
+        letter-spacing: 8px;
+    }
+
+    .hero-quote {
+        font-size: 15px;
+
+        letter-spacing: 2px;
+    }
+
+    .relationship-hero-image {
+    width: 140px;
+    height: 140px;
+     }
+	 
+    /* =========================
+       英雄关系
+    ========================= */
+
+    .relationship-tabs {
+        gap: 10px;
+
+        margin-bottom: 50px;
+    }
+
+    .relationship-tab {
+        padding: 10px 12px;
+
+        font-size: 12px;
+
+        letter-spacing: 2px;
+    }
+
+    .relationship-heroes {
+        gap: 25px;
+
+        margin-bottom: 50px;
+    }
+
+    .relationship-hero {
+        width: 140px;
+    }
+
+    .relationship-hero-image {
+        width: 105px;
+        height: 105px;
+    }
+
+    .relationship-hero-name {
+        font-size: 16px;
+
+        letter-spacing: 2px;
+    }
+
+    .relationship-info {
+        padding: 35px 25px;
+    }
+
+    .relationship-info h3 {
+        font-size: 25px;
+
+        letter-spacing: 4px;
+    }
+
+    .relationship-info p {
+        font-size: 14px;
+
+        line-height: 2;
+    }
+
+
+    /* 故事 */
+
+    .story-content p {
+        font-size: 15px;
+
+        line-height: 2.3;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 左侧导航 -->
+
+<nav class="sidebar">
+
+<a href="#home">廉颇</a>
+<a href="#intro">简介</a>
+<a href="#profile">峡谷群雄•英雄世界</a>
+<a href="#skills">技能</a>
+<a href="#relationship">英雄关系</a>
+<a href="#story">故事</a>
+
+</nav>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="hero-subtitle">正义爆轰</div>
+            <h1 class="hero-title">廉颇</h1>
+            <div class="hero-en">LIAN PO</div>
+            <div class="hero-line"></div>
+            <div class="hero-quote">「我可是最重量级的！」</div>
+            <a href="#intro" class="hero-button">探索英雄</a>
+        </div>
+    </div>
+
+    <div class="character">
+        <div class="character-placeholder">
+            <img src="lianpo2.jpg" alt="廉颇立绘">
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================
+     英雄简介
+========================= -->
+
+<section class="introduction" id="intro">
+
+<div class="section-title">
+
+<small>HERO INTRODUCTION</small>
+
+<h2>英雄简介</h2>
+
+</div>
+
+
+<div class="intro-container">
+
+<div class="intro-image">
+ <img src="lianpo.jpg" height="600" weight="600" alt="廉颇立绘">
+</div>
+
+
+<div class="intro-text">
+
+<h3>廉颇</h3>
+
+<div class="en">
+LIAN PO
+</div>
+
+<p>
+廉颇是《王者荣耀》中的坦克英雄，  
+拥有强大的防御能力与控制能力。  
+他擅长利用技能冲入敌阵，  
+并通过连续的控制技能干扰敌人，为队友创造输出机会。  
+</p>
+
+<p>
+作为一名坚韧的前排英雄，  
+廉颇能够凭借自身的防御能力承受大量伤害，  
+同时利用技能控制敌人、保护队友，  
+在战场上展现出强大的抗压能力与团战能力。  
+</p>
+
+
+
+<div class="intro-quote">
+「我可是最重量级的！」」
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     英雄档案
+========================= -->
+
+<section class="profile" id="profile">
+
+<div class="section-title">
+
+<small>HONOR OF KING</small>
+
+<h2>峡谷群雄•英雄世界</h2>
+
+</div>
+
+
+<div class="profile-box">
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="6.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>中文名</span>
+            <i></i>
+        </div>
+
+        <strong>廉颇<strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="2.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>种族</span>
+            <i></i>
+        </div>
+
+        <strong>人类</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="3.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>身份</span>
+            <i></i>
+        </div>
+
+        <strong>军人</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="5.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>职业</span>
+            <i></i>
+        </div>
+
+        <strong>坦克</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="4.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>阵营</span>
+            <i></i>
+        </div>
+
+        <strong>稷下学院</strong>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-logo">
+            <img src="1.jpg" alt="LOGO">
+        </div>
+
+        <div class="profile-label">
+            <i></i>
+            <span>能量</span>
+            <i></i>
+        </div>
+
+        <strong>武道</strong>
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     技能
+========================= -->
+
+<section class="skills" id="skills">
+
+<div class="section-title">
+
+<small>ABILITY</small>
+
+<h2>技能展示</h2>
+
+</div>
+
+
+<div class="skill-buttons">
+
+    <button class="skill-btn active" onclick="showSkill(0)">
+        <img src="1lianpo.jpg" alt="被动技能">
+        <span>被动</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(1)">
+        <img src="2lianpo.jpg" alt="一技能">
+        <span>一技能</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(2)">
+        <img src="3lianpo.jpg" alt="二技能">
+        <span>二技能</span>
+    </button>
+
+    <button class="skill-btn" onclick="showSkill(3)">
+        <img src="4lianpo.jpg" alt="三技能">
+        <span>三技能</span>
+    </button>
+
+</div>
+
+
+<div class="skill-content">
+
+<h3 id="skillName">
+勇士之魂
+</h3>
+
+<p id="skillText">
+廉颇释放技能时处于霸体状态。廉颇进入战斗后战意逐渐提升，普通攻击和技能命中单位时也会增加战意值，
+减伤效果随战意值提升而增强，最多获得20%减伤。战意充盈时，
+</p>
+
+</div>
+
+</section>
+
+<!-- =========================
+     英雄关系
+========================= -->
+
+<section class="relationship" id="relationship">
+
+<div class="section-title">
+
+<small>HERO RELATIONSHIP</small>
+
+<h2>英雄关系</h2>
+
+</div>
+
+
+<!-- 关系分类 -->
+
+<div class="relationship-tabs">
+
+    <button
+        class="relationship-tab active"
+        onclick="showRelationship('partner')">
+        最佳搭档
+    </button>
+
+    <button
+        class="relationship-tab"
+        onclick="showRelationship('counter')">
+        压制英雄
+    </button>
+
+    <button
+        class="relationship-tab"
+        onclick="showRelationship('countered')">
+        被压制英雄
+    </button>
+
+</div>
+
+
+<!-- 英雄头像 -->
+
+<div class="relationship-heroes" id="relationshipHeroes">
+
+    <!-- 阿轲 -->
+
+    <button
+        class="relationship-hero active"
+        onclick="showHeroRelation('ake')">
+
+        <div class="relationship-hero-image">
+            <img src="ake.jpg" alt="阿轲">
+        </div>
+
+        <div class="relationship-hero-name">
+            阿轲
+        </div>
+
+        <div class="relationship-hero-en">
+            A KE
+        </div>
+
+    </button>
+
+
+    <!-- 马可波罗 -->
+
+    <button
+        class="relationship-hero"
+        onclick="showHeroRelation('makeboluo')">
+
+        <div class="relationship-hero-image">
+            <img src="makeboluo.jpg" alt="马可波罗">
+        </div>
+
+        <div class="relationship-hero-name">
+            马可波罗
+        </div>
+
+        <div class="relationship-hero-en">
+            MA KE BO LUO
+        </div>
+
+    </button>
+
+</div>
+
+
+<!-- 英雄介绍 -->
+
+<div class="relationship-info">
+
+    <h3 id="relationshipName">
+        阿轲
+    </h3>
+
+    <div class="en" id="relationshipEnglish">
+        A KE
+    </div>
+
+    <p id="relationshipText">
+       廉颇拥有比较强的坦克能力，在团战和对线时都可以主动利用1技能开团后2技能消耗找敌方英雄换血，
+	   等到敌方英雄交出关键技能后，可以利用自己的13技能控制配合阿轲完成击杀和收割。
+    </p>
+
+</div>
+
+</section>
+
+<!-- =========================
+     故事
+========================= -->
+
+<section class="story" id="story">
+
+<div class="section-title">
+
+<small>HERO STORY</small>
+
+<h2>英雄故事</h2>
+
+</div>
+
+
+<div class="story-content">
+
+<p>
+南荒是一个贫瘠混乱之地，廉颇就出生于此地的甘丹部族，因其族内有一座矿山，所以其族的财富远胜过周边，但甘丹部族的武力却并不强大，历来只能固守，还经常遭到周边贫苦部族的劫掠。
+</p>
+
+<p>
+后来廉颇成为了这个部族的将军，在他的带领下，周边部族渐渐便无法再胜过甘丹，廉颇也因这期间的赫赫战功而被推举为族长。
+</p>
+
+<p>
+成为族长后，周边更惧廉颇声威，不敢再犯，但同时他们也丧失了最大的生存依赖，生活纷纷陷入困境。眼见周边饿殍无数，廉颇终究于心不忍，便主动接济，后来甚至是开放了部分矿脉，几族因此渐渐交融。
+</p>
+
+<p>
+甘丹部族由此获得了很长时间的和平，唯一一次冲突还是因为钟无艳来打劫甘丹，两人因此不打不相识，不过这却是另外的故事了。
+</p>
+
+<p>
+再后来，血族之灾突然爆发，年过半百的廉颇率族人支援无主之城，却在城门口时被白起“老东西，别碍事”之姿拦下，并亲历了白起一人屠尽城内血族，挽救无主之城的壮举。
+</p>
+
+<p>
+廉颇由此深深震撼，为了守护部落，也为了证明自己，他动身前往稷下寻求力量。
+</p>
+
+<p>
+他坚信“吾未老，尚能战”。
+</p>
+
+<p><span class="story-highlight">
+<strong>驰援</strong>
+</span></p>
+
+<p>
+当无主之城的信使找到廉颇时，廉颇正在家中用饭，他虽已年过花甲，但饭量却依然很好。
+</p>
+
+<p>
+廉颇的甘丹部族远在无主之城百里之外，但他“不老战神”的威名却早已传遍了无主之城，所以当无主之城面临血族威胁时，他们第一个想到的就是廉颇。
+</p>
+
+<p>
+虽然已有许多年未再上战场，但廉颇对战事的反应却未见生疏，几乎是一声号令，他便召集好了族中的精锐，然后快马加鞭地向无主之城赶去。
+</p>
+
+<p>
+一路走来，他们也遇到过好几次血族突袭，但廉颇却总能在第一时间作出反击，并带领部族将血族尽歼。
+</p>
+
+<p>
+信使的眼中只剩下惊讶，不老的战神，果真不老！
+</p>
+
+<p>
+只是等他们赶到无主之城时，却被一个手执镰刀的年轻人拦住了去路，年轻人的身后遍是尸体，有血族的，也有士兵的。从这年轻人身上的盔甲辨认，他应当来自玄雍。
+</p>
+
+<p>
+信使记得无主之城并未向玄雍请援，这些玄雍将士，为何会出现在此处？
+</p>
+
+<p>
+“这里的血族由我负责，你们勿要再前。”拿着镰刀的年轻人用不容置疑地口吻说道。
+</p>
+
+<p>
+勿要再前，开什么玩笑，他们辛辛苦苦地从甘丹部族赶来，为的就是支援无主之城，如今城门近在眼前，居然想用一句话就把他们拦下，况且，还不知此人是敌是友。
+</p>
+
+<p>
+廉颇继续前行，年轻人却在此时出手，一把镰刀一晃而过，廉颇挥拳抵挡。一击过后，廉颇心中有些震惊，这年轻人的力量，很强！
+</p>
+
+<p>
+“老东西，别碍事。”年轻人身上戾气爆发。
+</p>
+
+<p>
+看到那人突然出手，信使忽然反应过来，这人是白起——那个被称作最强兵器的白起。
+</p>
+
+<p>
+廉颇受辱，勃然大怒，他要动手教训这个无礼的年轻人，旁边的信使却死死地拉住了廉颇，并大声高喊：“那人是白起！”
+</p>
+
+<p>
+廉颇久居甘丹，并未听说过什么白起，不过就算听过，他也不可能容忍别人对自己如此侮辱，他下令族人将信使拉走时，却发现那人竟无视自己，孤身走入了城内。
+</p>
+
+<p>
+廉颇并没有立即追过去，他命令族人就地安营，然后默默地注视着城门口。
+</p>
+
+<p>
+夜色降临，满地的野草在皎洁的月光下静静地轻舞，将士们的营帐也仿佛笼罩在一片祥和之中，无主之城内，却不断地响起鬼哭狼嚎之声，那些叫声此起彼伏，无主之城外的将士们仿佛不断地被月神的温柔，和梦魇的压抑交替缠绕。
+</p>
+
+<p>
+天上明月，人间炼狱，战神何处，佑我城民。
+</p>
+
+<p>
+当清晨的第一缕阳光洒下时，一个全身染血的年轻人缓缓出现在了城门口，鬼哭狼嚎之声随之戛然而止，众人渐渐看清那人的模样——是白起！
+</p>
+
+<p>
+他竟然真的仅凭一人之力，就将无主之城的血族尽数屠尽了！
+</p>
+
+<p>
+廉颇的内心受到了极大的震撼，他用力地握紧了拳头，心中无穷的战意也被瞬间激起。
+</p>
+
+<p>
+自此以后，白起杀神的称号传遍了南荒，而廉颇，则成为了稷下年纪最大的那个学生，廉颇心中决定，终有一天，他不仅要根除南荒的威胁，还要亲自战胜那个叫白起的年轻人。
+</p>
+
+<p>
+廉颇不老，尚善饭！
+</p>
+
+
+</div>
+
+</section>
+
+
+<footer>
+HERO PROFILE · LIAN PO
+</footer>
+
+
+<script>
+
+/* =========================
+   技能资料
+========================= */
+
+const skills = [
+
+{
+name: "勇士之魂",
+text: "廉颇释放技能时处于霸体状态。廉颇进入战斗后战意逐渐提升，普通攻击和技能命中单位时也会增加战意值，减伤效果随战意值提升而增强，最多获得20%减伤。战意充盈时，廉颇提升30%攻速。脱战后战意逐渐降低并转化为每次70-140(+1.5%额外生命值)点生命回复，最多回复10次。"
+
+},
+
+{
+name: "爆裂冲撞",
+text: "廉颇向前冲锋并对路径上的敌人造成55/66/77/88/99/110(+15%额外物理攻击)物理伤害，击飞(持续0.5秒)并对英雄造成目标5%敌方英雄最大生命撞击伤害，对非英雄造成自身5%最大生命撞击伤害廉颇的第三下普攻为直拳重击，额外造成250/300/350/400/450/500(+100%额外物理攻击)物理伤害"
+},
+
+{
+name: "熔岩重击",
+text: "廉颇用臂甲向地面注入狂暴力量，获得400/480/560/640/720/800(+10%额外生命值)点护盾，1秒后地面崩裂，造成350/420/490/560/630/700(+90%额外物理攻击)物理伤害，距离中心越近伤害越高，最高提升100%。技能范围内有敌人时会刷新【爆裂冲撞】的冷却，敌人会减少15/18/21/24/27/30%移速，非英雄单位会被拉向范围中心。技能释放期间可以使用其他技能。"
+},
+
+{
+name: "天崩地裂",
+text: "廉颇跳向指定区域连续锤击地面三次。第一次：造成220/330/440(+50%额外攻击力)物理伤害和15/22.5/30%减速，对锤击中心区域额外造成60%额外物理攻击物理伤害。第二次：造成440(+10%额外生命值)物理伤害和30/45/60%减速，对锤击中心区域额外造成90%额外物理攻击物理伤害。第三次：造成660(+150%额外物理攻击)物理伤害和1秒击飞并对英雄造成目标10%敌敌方英雄最大生命的撞击伤害(对非英雄单位造成10%自身最大生命的撞击伤害)，对锤击中心区域额外造成150%额外物理攻击物理伤害。技能释放期间可以使用【爆裂冲撞】。"
+}
+
+];
+
+
+/* =========================
+   切换技能
+========================= */
+
+function showSkill(index) {
+
+    // 改变技能名称
+    document.getElementById("skillName").innerText =
+        skills[index].name;
+
+    // 改变技能介绍
+    document.getElementById("skillText").innerHTML =
+        skills[index].text;
+
+    // 移除所有 active
+    document.querySelectorAll(".skill-btn")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+    // 给当前技能增加 active
+    document.querySelectorAll(".skill-btn")[index]
+        .classList.add("active");
+}
+
+/* =========================
+   英雄关系资料
+========================= */
+
+const relationshipData = {
+
+    partner: {
+
+        heroes: [
+            {
+                id: "ake",
+                name: "阿轲",
+                english: "A KE",
+                image: "ake.jpg",
+                text: "廉颇拥有比较强的坦克能力，在团战和对线时都可以主动利用1技能开团后2技能消耗找敌方英雄换血，等到敌方英雄交出关键技能后，可以利用自己的13技能控制配合阿轲完成击杀和收割。"
+            },
+
+            {
+                id: "makeboluo",
+                name: "马可波罗",
+                english: "MA KE BO LUO",
+                image: "makeboluo.jpg",
+                text: "马可波罗拥有比较强的远程poke能力，2技能的突进也可以快速跟上廉颇的1技能突进，对线时廉颇可以利用1技能和3技能控制限制敌方刺客对己方马可波罗的刺杀，也可以主动利用1技能开团，3技能配合闪现打出双段控制，为马可波罗创造良好的输出环境。"
+            }
+        ]
+
+    },
+
+
+    counter: {
+
+        heroes: [
+            {
+                id: "zhangliang",
+                name: "张良",
+                english: "ZHANG LIANG",
+                image: "zhangliang.jpg",
+                text: "张良作为一个比较依赖控制效果的法师，1技能的控制和大招的控制，对拥有免伤的廉颇来说效果甚微，而且廉颇的1技能和3技能都可以很好的打断张良的大招技能对己方进行保护，为队友提供良好的生存环境。"
+            },
+
+            {
+                id: "wangzhaojun",
+                name: "王昭君",
+                english: "WANG ZHAO JUN ",
+                image: "wangzhaojun.jpg",
+                text: "作为一个比较依赖2技能控制效果的英雄，面对廉颇时会很尴尬，因为廉颇本身拥有比较强的坦克能力，即使被王昭君大到也很难一套秒杀，王昭君开大后廉颇1技能和3技能都可以轻松打断，进攻时利用控制技能也配合队友黏住王昭君轻松将其击杀。"
+            }
+        ]
+
+    },
+
+
+    countered: {
+
+        heroes: [
+            {
+                id: "houyi",
+                name: "后裔",
+                english: "HOU YI",
+                image: "houyi.jpg",
+                text: "后羿普攻有减速效果，很容易风筝廉颇"
+            },
+
+            {
+                id: "diaochan",
+                name: "貂蝉",
+                english: "DIAO CHAN",
+                image: "diaochan.jpg",
+                text: "廉颇不能很容易控制到灵活的貂蝉"
+            }
+        ]
+
+    }
+
+};
+
+
+/* =========================
+   当前关系
+========================= */
+
+let currentRelationship = "partner";
+
+
+/* =========================
+   切换关系类型
+========================= */
+
+function showRelationship(type) {
+
+    currentRelationship = type;
+
+    /* 切换顶部按钮 */
+
+    document.querySelectorAll(".relationship-tab")
+        .forEach(button => {
+            button.classList.remove("active");
+        });
+
+    event.currentTarget.classList.add("active");
+
+
+    /* 取得当前关系英雄 */
+
+    const heroes =
+        relationshipData[type].heroes;
+
+
+    /* 重新生成英雄头像 */
+
+    const container =
+        document.getElementById("relationshipHeroes");
+
+    container.innerHTML = "";
+
+
+    heroes.forEach((hero, index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "relationship-hero" +
+            (index === 0 ? " active" : "");
+
+        button.onclick = function() {
+            showHeroRelation(hero.id);
+        };
+
+
+        button.innerHTML = `
+
+            <div class="relationship-hero-image">
+
+                <img
+                    src="${hero.image}"
+                    alt="${hero.name}">
+
+            </div>
+
+            <div class="relationship-hero-name">
+                ${hero.name}
+            </div>
+
+            <div class="relationship-hero-en">
+                ${hero.english}
+            </div>
+
+        `;
+
+
+        container.appendChild(button);
+
+    });
+
+
+    /* 默认显示第一个英雄 */
+
+    showHeroRelation(heroes[0].id);
+}
+
+
+/* =========================
+   点击英雄
+========================= */
+
+function showHeroRelation(heroId) {
+
+    const heroes =
+        relationshipData[currentRelationship].heroes;
+
+
+    const hero =
+        heroes.find(item => item.id === heroId);
+
+
+    if (!hero) return;
+
+
+    /* 修改介绍 */
+
+    document.getElementById(
+        "relationshipName"
+    ).innerText = hero.name;
+
+
+    document.getElementById(
+        "relationshipEnglish"
+    ).innerText = hero.english;
+
+
+    document.getElementById(
+        "relationshipText"
+    ).innerText = hero.text;
+
+
+    /* 修改当前头像 */
+
+    document.querySelectorAll(
+        ".relationship-hero"
+    ).forEach(button => {
+
+        button.classList.remove("active");
+
+    });
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".relationship-hero"
+        );
+
+
+    buttons.forEach(button => {
+
+        const name =
+            button.querySelector(
+                ".relationship-hero-name"
+            ).innerText;
+
+
+        if(name === hero.name) {
+
+            button.classList.add("active");
+
+        }
+
+    });
+
+}
+
+/* =========================
+   滚动出现动画
+========================= */
+
+const observer =
+new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.style.animation =
+                "fadeUp 1s ease forwards";
+
+        }
+
+    });
+
+},{threshold:0.15});
+
+
+document.querySelectorAll(
+    ".intro-container, .profile-box, .skill-content, .story-content"
+).forEach(el => {
+
+    el.style.opacity = "0";
+    observer.observe(el);
+
+});
+
+</script>
+
+</body>
+</html>
