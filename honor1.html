@@ -149,14 +149,6 @@ button{
     gap:20px;
 }
 
-.hero-card:nth-last-child(2):nth-child(4n+1){
-    grid-column:2;
-}
-
-.hero-card:last-child{
-    grid-column:3;
-}
-
 
 /* =====================================================
    英雄卡片
@@ -876,580 +868,202 @@ id="profileBox">
 const heroes = [
 
 /* =========================
-   对抗路 10
+   对抗路 5
 ========================= */
 
 {
-    name:"吕布",
-    en:"LU BU",
+    name:"芈月",
+    en:"MIYUE",
     position:"对抗路",
-    image:"images/lubu.jpg",
-    title:"无双之魔",
-    weapon:"方天画戟",
-    faction:"群雄",
-    quote:"从此刻开始，战场由我主宰。"
+    image:"MIYUE/miyue2.jpg",
+    page:"MIYUE/MI YUE.html"
 },
 
 {
     name:"关羽",
-    en:"GUAN YU",
+    en:"GUANYU",
     position:"对抗路",
-    image:"images/guanyu.jpg",
-    title:"一骑当千",
-    weapon:"青龙偃月刀",
-    faction:"蜀",
-    quote:"人在塔在。"
+    image:"GUANYU/guanyu2.jpg",
+    page:"GUANYU/GUAN YU.html"
 },
 
 {
-    name:"夏侯惇",
-    en:"XIAHOU DUN",
+    name:"曹操",
+    en:"CAOCAO",
     position:"对抗路",
-    image:"images/xiahoudun.jpg",
-    title:"不羁之风",
-    weapon:"刀",
-    faction:"魏",
-    quote:"独眼，是男人的浪漫。"
+    image:"CAOCAO/caocao2.jpg",
+    page:"CAOCAO/CAO CAO.html"
 },
 
 {
-    name:"花木兰",
-    en:"HUA MULAN",
+    name:"廉颇",
+    en:"LIANPO",
     position:"对抗路",
-    image:"images/huamulan.jpg",
-    title:"传说之刃",
-    weapon:"双剑",
-    faction:"长城守卫军",
-    quote:"谁说女子不如男。"
+    image:"LIANPO/lianpo2.jpg",
+    page:"LIANPO/LIAN PO.html"
 },
 
 {
-    name:"狂铁",
-    en:"KUANG TIE",
+    name:"刘邦",
+    en:"LIUBANG",
     position:"对抗路",
-    image:"images/kuangtie.jpg",
-    title:"命运角斗场",
-    weapon:"电流战锤",
-    faction:"海都",
-    quote:"力量来自信念。"
+    image:"LIUBANG/liubang2.jpg",
+    page:"LIUBANG/LIU BANG.html"
 },
-
-{
-    name:"程咬金",
-    en:"CHENG YAOJIN",
-    position:"对抗路",
-    image:"images/chengyaojin.jpg",
-    title:"热烈之斧",
-    weapon:"双斧",
-    faction:"长安",
-    quote:"一个字，干！"
-},
-
-{
-    name:"亚瑟",
-    en:"ARTHUR",
-    position:"对抗路",
-    image:"images/arthur.jpg",
-    title:"圣骑之力",
-    weapon:"圣剑",
-    faction:"日落海",
-    quote:"因剑而生。"
-},
-
-{
-    name:"夏洛特",
-    en:"CHARLOTTE",
-    position:"对抗路",
-    image:"images/charlotte.jpg",
-    title:"永昼",
-    weapon:"剑",
-    faction:"海都",
-    quote:"剑之所向，心之所往。"
-},
-
-{
-    name:"孙策",
-    en:"SUN CE",
-    position:"对抗路",
-    image:"images/sunce.jpg",
-    title:"长帆破浪",
-    weapon:"船锚",
-    faction:"吴",
-    quote:"劈风斩浪，为你而来。"
-},
-
-{
-    name:"杨戬",
-    en:"YANG JIAN",
-    position:"对抗路",
-    image:"images/yangjian.jpg",
-    title:"根源之目",
-    weapon:"三尖两刃刀",
-    faction:"神话",
-    quote:"纵使天各一方，我也要找到你。"
-},
-
 
 /* =========================
-   打野 10
+   打野 5
 ========================= */
 
 {
     name:"李白",
     en:"LI BAI",
     position:"打野",
-    image:"images/libai.jpg",
-    title:"青莲剑仙",
-    weapon:"剑",
-    faction:"长安",
-    quote:"十步杀一人，千里不留行。"
+    image:"LIBAI/libai2.jpg",
+    page:"LIBAI/LI BAI.html"
 },
 
 {
-    name:"孙悟空",
-    en:"SUN WUKONG",
+    name:"澜",
+    en:"LAN",
     position:"打野",
-    image:"images/sunwukong.jpg",
-    title:"齐天大圣",
-    weapon:"金箍棒",
-    faction:"花果山",
-    quote:"俺老孙来也！"
+    image:"LAN/lan2.jpg",
+    page:"LAN/LAN.html"
 },
 
 {
-    name:"韩信",
-    en:"HAN XIN",
+    name:"铠",
+    en:"KAI",
     position:"打野",
-    image:"images/hanxin.jpg",
-    title:"国士无双",
-    weapon:"长枪",
-    faction:"长安",
-    quote:"正义，不过是胜者的谎言。"
+    image:"KAI/kai2.jpg",
+    page:"KAI/KAI.html"
 },
 
 {
-    name:"赵云",
-    en:"ZHAO YUN",
+    name:"百里玄策",
+    en:"BAILIXUANCE",
     position:"打野",
-    image:"images/zhaoyun.jpg",
-    title:"苍天翔龙",
-    weapon:"龙枪",
-    faction:"蜀",
-    quote:"阁下的首级，我收下了。"
-},
-
-{
-    name:"兰陵王",
-    en:"LANLINGWANG",
-    position:"打野",
-    image:"images/lanlingwang.jpg",
-    title:"暗影刀锋",
-    weapon:"匕首",
-    faction:"长城",
-    quote:"刀锋所划之地，便是疆土。"
-},
-
-{
-    name:"橘右京",
-    en:"UKYO TACHIBANA",
-    position:"打野",
-    image:"images/juyoujing.jpg",
-    title:"神梦一刀",
-    weapon:"剑",
-    faction:"扶桑",
-    quote:"剑的真谛，在于刹那生灭。"
-},
-
-{
-    name:"娜可露露",
-    en:"NAKORURU",
-    position:"打野",
-    image:"images/nakelulu.jpg",
-    title:"鹰之守护",
-    weapon:"短刀",
-    faction:"扶桑",
-    quote:"守护，是为了更好的未来。"
-},
-
-{
-    name:"典韦",
-    en:"DIAN WEI",
-    position:"打野",
-    image:"images/dianwei.jpg",
-    title:"狂战士",
-    weapon:"双斧",
-    faction:"魏",
-    quote:"给我一个目标，还你一片寂静。"
-},
-
-{
-    name:"阿轲",
-    en:"A KE",
-    position:"打野",
-    image:"images/ake.jpg",
-    title:"信念之刃",
-    weapon:"双刺",
-    faction:"长安",
-    quote:"不是你记忆中的荆轲，但致命的程度没两样。"
+    image:"BAILIXUANCE/bailixuance2.jpg",
+    page:"BAILIXUANCE/BAI LI XUAN CE.html"
 },
 
 {
     name:"云中君",
-    en:"YUN ZHONGJUN",
+    en:"YUNZHONGJUN",
     position:"打野",
-    image:"images/yunzhongjun.jpg",
-    title:"流云之翼",
-    weapon:"羽刃",
-    faction:"云梦泽",
-    quote:"我飞翔的理由，就是脚下的土地。"
+    image:"YUNZHONGJUN/yunzhongjun2.jpg",
+    page:"YUNZHONGJUN/YUN ZHONG JUN.html"
 },
 
 
 /* =========================
-   中路 10
+   中路 5
 ========================= */
 
 {
     name:"妲己",
-    en:"DA JI",
+    en:"DAJI",
     position:"中路",
-    image:"images/daji.jpg",
-    title:"魅惑之狐",
-    weapon:"狐火",
-    faction:"长安",
-    quote:"请尽情吩咐妲己吧。"
+    image:"DAJI/daji2.jpg",
+    page:"DAJI/DA JI.html"
 },
 
 {
     name:"貂蝉",
-    en:"DIAO CHAN",
+    en:"DIAOCHAN",
     position:"中路",
-    image:"images/diaochan.jpg",
-    title:"绝世舞姬",
-    weapon:"花",
-    faction:"长安",
-    quote:"花有再开的那天，人会不会有重逢的时刻？"
+    image:"DIAOCHAN/diaochan2.jpg",
+    page:"DIAOCHAN/DIAO CHAN.html"
 },
 
 {
     name:"安琪拉",
-    en:"ANGELA",
+    en:"ANQILA",
     position:"中路",
-    image:"images/angela.jpg",
-    title:"暗夜萝莉",
-    weapon:"魔法书",
-    faction:"魔道",
-    quote:"知识就是力量。"
+    image:"ANQILA/anqila2.jpg",
+    page:"ANQILA/AN QI LA.html"
 },
 
 {
     name:"王昭君",
-    en:"WANG ZHAOJUN",
+    en:"WANGZHAOJUN",
     position:"中路",
-    image:"images/wangzhaojun.jpg",
-    title:"冰雪之华",
-    weapon:"法杖",
-    faction:"北夷",
-    quote:"凛冬已至。"
+    image:"WANGZHAOJUN/wangzhaojun2.jpg",
+    page:"WANGZHAOJUN/WANG ZHAO JUN.html"
 },
 
 {
     name:"小乔",
-    en:"XIAO QIAO",
+    en:"XIAOQIAO",
     position:"中路",
-    image:"images/xiaoqiao.jpg",
-    title:"恋之微风",
-    weapon:"扇子",
-    faction:"吴",
-    quote:"风，听从我的呼唤。"
+    image:"XIAOQIAO/xiaoqiao2.jpg",
+    page:"XIAOQIAO/XIAO QIAO.html"
 },
-
-{
-    name:"甄姬",
-    en:"ZHEN JI",
-    position:"中路",
-    image:"images/zhenji.jpg",
-    title:"洛神降临",
-    weapon:"水",
-    faction:"魏",
-    quote:"明明说好的，要永远在一起。"
-},
-
-{
-    name:"诸葛亮",
-    en:"ZHU GE LIANG",
-    position:"中路",
-    image:"images/zhugeliang.jpg",
-    title:"绝代智谋",
-    weapon:"羽扇",
-    faction:"蜀",
-    quote:"天下如棋，一步三算。"
-},
-
-{
-    name:"张良",
-    en:"ZHANG LIANG",
-    position:"中路",
-    image:"images/zhangliang.jpg",
-    title:"言灵之书",
-    weapon:"法典",
-    faction:"长安",
-    quote:"预知未来的唯一方式，就是创造未来。"
-},
-
-{
-    name:"上官婉儿",
-    en:"SHANGGUAN WANER",
-    position:"中路",
-    image:"images/shangguanwaner.jpg",
-    title:"惊鸿之笔",
-    weapon:"笔",
-    faction:"长安",
-    quote:"横扫千军，笔落惊风。"
-},
-
-{
-    name:"不知火舞",
-    en:"MAI SHIRANUI",
-    position:"中路",
-    image:"images/buzhihuowu.jpg",
-    title:"明媚烈焰",
-    weapon:"扇",
-    faction:"扶桑",
-    quote:"花蝶扇！"
-},
-
 
 /* =========================
-   发育路 10
+   发育路 5
 ========================= */
 
 {
-    name:"孙尚香",
-    en:"SUN SHANGXIANG",
+    name:"鲁班七号",
+    en:"LUBANQIHAO",
     position:"发育路",
-    image:"images/sunshangxiang.jpg",
-    title:"千金重弩",
-    weapon:"重弩",
-    faction:"吴",
-    quote:"大小姐驾到，统统闪开！",
-    page:"sunshangxiang.html"
+    image:"LUBANQIHAO/lubanqihao2.jpg",
+    page:"LUBANQIHAO/LU BAN QI HAO.html"
 },
 
 {
     name:"后羿",
-    en:"HOU YI",
+    en:"HOUYI",
     position:"发育路",
-    image:"images/houyi.jpg",
-    title:"半神之弓",
-    weapon:"弓箭",
-    faction:"神话",
-    quote:"发光的，一个就够了。"
-},
-
-{
-    name:"狄仁杰",
-    en:"DI RENJIE",
-    position:"发育路",
-    image:"images/direnjie.jpg",
-    title:"断案大师",
-    weapon:"令牌",
-    faction:"长安",
-    quote:"真相只有一个。"
-},
-
-{
-    name:"鲁班七号",
-    en:"LUBAN NO.7",
-    position:"发育路",
-    image:"images/luban.jpg",
-    title:"机关造物",
-    weapon:"机关枪",
-    faction:"稷下",
-    quote:"鲨嘴炮！"
-},
-
-{
-    name:"伽罗",
-    en:"JIA LUO",
-    position:"发育路",
-    image:"images/jialuo.jpg",
-    title:"破魔之箭",
-    weapon:"长弓",
-    faction:"长城",
-    quote:"即使如此，我也要继续守护。"
-},
-
-{
-    name:"虞姬",
-    en:"YU JI",
-    position:"发育路",
-    image:"images/yuji.jpg",
-    title:"森之风灵",
-    weapon:"弩",
-    faction:"楚汉",
-    quote:"明媚如风，轻盈似箭。"
-},
-
-{
-    name:"公孙离",
-    en:"GONGSUN LI",
-    position:"发育路",
-    image:"images/gongsunli.jpg",
-    title:"幻舞玲珑",
-    weapon:"纸伞",
-    faction:"长安",
-    quote:"花会枯萎，爱永不凋零。"
+    image:"HOUYI/houyi2.jpg",
+    page:"HOUYI/HOU YI.html"
 },
 
 {
     name:"李元芳",
-    en:"LI YUANFANG",
+    en:"LIYUANFANG",
     position:"发育路",
-    image:"images/liyuanfang.jpg",
-    title:"王都密探",
-    weapon:"飞镖",
-    faction:"长安",
-    quote:"秘密的探员，正在行动。"
+    image:"LIYUANFANG/liyuanfang2.jpg",
+    page:"LIYUANFANG/LI YUAN FANG.html"
 },
 
 {
-    name:"百里守约",
-    en:"BAILI SHOUYUE",
+    name:"伽罗",
+    en:"JIALUO",
     position:"发育路",
-    image:"images/bailishouyue.jpg",
-    title:"静谧之眼",
-    weapon:"狙击枪",
-    faction:"长城",
-    quote:"给你，整个世界。"
+    image:"JIALUO/jialuo2.jpg",
+    page:"JIALUO/JIA LUO.html"
 },
-
-{
-    name:"黄忠",
-    en:"HUANG ZHONG",
-    position:"发育路",
-    image:"images/huangzhong.jpg",
-    title:"燃魂重炮",
-    weapon:"重炮",
-    faction:"蜀",
-    quote:"老兵不死，只会逐渐凋零。"
-},
-
 
 /* =========================
-   游走 10
+   游走 5
 ========================= */
 
 {
     name:"瑶",
-    en:"YAO",
+    en:"YAOMEI",
     position:"游走",
-    image:"images/yao.jpg",
-    title:"鹿灵守心",
-    weapon:"法杖",
-    faction:"云梦泽",
-    quote:"风里雨里，等你。"
+    image:"YAOMEI/yao2.jpg",
+    page:"YAOMEI/YAO.html"
 },
 
-{
-    name:"张飞",
-    en:"ZHANG FEI",
-    position:"游走",
-    image:"images/zhangfei.jpg",
-    title:"乱世虎臣",
-    weapon:"蛇矛",
-    faction:"蜀",
-    quote:"心有猛虎。"
-},
 
 {
-    name:"蔡文姬",
-    en:"CAI WENJI",
+    name:"明世隐",
+    en:"MINGSHIYIN",
     position:"游走",
-    image:"images/caiwenji.jpg",
-    title:"天籁弦音",
-    weapon:"胡笳琴",
-    faction:"魏",
-    quote:"不要欺负我，我会生气的！"
-},
-
-{
-    name:"牛魔",
-    en:"NIU MO",
-    position:"游走",
-    image:"images/niumo.jpg",
-    title:"精英酋长",
-    weapon:"巨斧",
-    faction:"长安",
-    quote:"牛气冲天！"
-},
-
-{
-    name:"东皇太一",
-    en:"DONGHUANG TAIYI",
-    position:"游走",
-    image:"images/donghuang.jpg",
-    title:"噬灭日蚀",
-    weapon:"日蚀",
-    faction:"太古",
-    quote:"万物皆有灵。"
-},
-
-{
-    name:"鬼谷子",
-    en:"GUIGUZI",
-    position:"游走",
-    image:"images/guiguzi.jpg",
-    title:"玄微子",
-    weapon:"法杖",
-    faction:"稷下",
-    quote:"万物皆有因果。"
-},
-
-{
-    name:"盾山",
-    en:"DUNSHAN",
-    position:"游走",
-    image:"images/dunshan.jpg",
-    title:"无尽之盾",
-    weapon:"盾",
-    faction:"长城",
-    quote:"坚不可摧。"
-},
-
-{
-    name:"大乔",
-    en:"DA QIAO",
-    position:"游走",
-    image:"images/daqiao.jpg",
-    title:"沧海之曜",
-    weapon:"法杖",
-    faction:"吴",
-    quote:"守望着天空，大海，和你的回忆。"
+   image:"MINGSHIYIN/mingshiyin2.jpg",
+    page:"MINGSHIYIN/MING SHIYIN.html"
 },
 
 {
     name:"刘禅",
-    en:"LIU SHAN",
+    en:"LIUSHAN",
     position:"游走",
-    image:"images/liushan.jpg",
-    title:"暴走机关",
-    weapon:"机关",
-    faction:"蜀",
-    quote:"小霸王又回来啦！"
+    image:"LIUSHAN/liushan2.jpg",
+    page:"LIUSHAN/LIU SHAN.html"
 },
-
-{
-    name:"孙膑",
-    en:"SUN BIN",
-    position:"游走",
-    image:"images/sunbin.jpg",
-    title:"逆流之时",
-    weapon:"时空",
-    faction:"稷下",
-    quote:"时间，会证明一切。"
-}
-
 ];
 
 
@@ -1472,9 +1086,11 @@ function renderHeroes(list){
 
         card.className="hero-card";
 
-        card.onclick=()=>{
-         window.location.href = hero.page;
-        };
+        card.onclick=()=>{ 
+         if(hero.page){
+        window.location.href = hero.page;
+    }
+};
 
         card.innerHTML=`
 
@@ -1758,10 +1374,9 @@ function backToGallery(){
    页面初始化
 ===================================================== */
 
+console.log(heroes);
 renderHeroes(heroes);
 
-
 </script>
-
 </body>
 </html>
