@@ -1126,7 +1126,7 @@ footer {
             <h1 class="hero-title">澜</h1>
             <div class="hero-en">LAN</div>
             <div class="hero-line"></div>
-            <div class="hero-quote">「鲨鱼，永远不会迷路。」</div>
+            <div class="hero-quote">「潜行于黑暗，游猎于光明。」</div>
             <a href="#intro" class="hero-button">探索英雄</a>
         </div>
     </div>
@@ -1179,7 +1179,7 @@ LAN
 </p>
 
 <div class="intro-quote">
-「鲨鱼，永远不会迷路。」
+「潜行于黑暗，游猎于光明。」
 </div>
 
 </div>
@@ -1231,7 +1231,7 @@ LAN
             <i></i>
         </div>
 
-        <strong>魔种</strong>
+        <strong>人类</strong>
     </div>
 
     <div class="profile-row">
@@ -1245,7 +1245,7 @@ LAN
             <i></i>
         </div>
 
-        <strong>鲨之猎刃</strong>
+        <strong>前魏营顶级杀手</strong>
     </div>
 
     <div class="profile-row">
@@ -1259,7 +1259,7 @@ LAN
             <i></i>
         </div>
 
-        <strong>射手</strong>
+        <strong>刺客</strong>
     </div>
 
     <div class="profile-row">
@@ -1273,7 +1273,7 @@ LAN
             <i></i>
         </div>
 
-        <strong>长安</strong>
+        <strong>暂无阵营</strong>
     </div>
 
     <div class="profile-row">
@@ -1287,7 +1287,7 @@ LAN
             <i></i>
         </div>
 
-        <strong>机关术</strong>
+        <strong>武道、魔道</strong>
     </div>
 
 </div>
@@ -1338,11 +1338,11 @@ LAN
 <div class="skill-content">
 
 <h3 id="skillName">
-破魔之箭
+狩猎
 </h3>
 
 <p id="skillText">
-普攻与技能伤害将会优先对目标的护盾效果造成一次50%的伤害。
+澜连续使用普通攻击时，会强化下一次普通攻击为扫射，对前方范围内敌人造成大量物理伤害。
 </p>
 
 </div>
@@ -1393,43 +1393,43 @@ LAN
 
 <div class="relationship-heroes" id="relationshipHeroes">
 
-    <!-- 蔡文姬 -->
+    <!-- 孙膑 -->
 
     <button
         class="relationship-hero active"
-        onclick="showHeroRelation('zhuangzhou')">
+        onclick="showHeroRelation('sunbin')">
 
         <div class="relationship-hero-image">
-            <img src="cao_cao.jpg" alt="蔡文姬">
+            <img src="sunbin.jpg" alt="孙膑">
         </div>
 
         <div class="relationship-hero-name">
-            蔡文姬
+            孙膑
         </div>
 
         <div class="relationship-hero-en">
-            MASTER LAN
+            SUN BIN
         </div>
 
     </button>
 
 
-    <!-- 孙尚香 -->
+    <!-- 张飞 -->
 
     <button
         class="relationship-hero"
-        onclick="showHeroRelation('daqiao')">
+        onclick="showHeroRelation('zhangfei')">
 
         <div class="relationship-hero-image">
-            <img src="caiwenji.jpg" alt="孙尚香">
+            <img src="zhangfei.jpg" alt="张飞">
         </div>
 
         <div class="relationship-hero-name">
-            太乙真人
+            张飞
         </div>
 
         <div class="relationship-hero-en">
-            SUN SHANGXIANG
+            ZHANG FEI
         </div>
 
     </button>
@@ -1442,15 +1442,15 @@ LAN
 <div class="relationship-info">
 
     <h3 id="relationshipName">
-        蔡文姬
+        孙膑
     </h3>
 
     <div class="en" id="relationshipEnglish">
-        MASTER LAN
+        SUN BIN
     </div>
 
     <p id="relationshipText">
-        澜在初期对线时，具有压倒性的消耗能力，配合蔡文姬能够迅速针对1塔进行压迫
+       提供移速加成，帮助澜进一步提高机动性，极速穿行于峡谷之中。
     </p>
 
 </div>
@@ -1506,6 +1506,30 @@ LAN
 
 </section>
 
+<!-- 返回按钮 -->
+<a href="https://melissatan081214-hue.github.io/finalproject.github.io/honor1" class="back-button">
+    返回首页
+</a>
+
+<style>
+.back-button {
+    display: block;
+    width: fit-content;
+    margin: 30px auto 40px;
+    padding: 14px 35px;
+    border: 1px solid #d9bd78;
+    color: #d9bd78;
+    text-decoration: none;
+    letter-spacing: 4px;
+    font-family: "Noto Serif SC", serif;
+    transition: .4s;
+}
+
+.back-button:hover {
+    background: #d9bd78;
+    color: #111;
+}
+</style>
 
 <footer>
 HERO PROFILE · LAN
@@ -1577,18 +1601,18 @@ const relationshipData = {
     partner: {
         heroes: [
             {
-                id: "MASTER LAN",
-                name: "蔡文姬",
-                english: "MASTER LAN",
-                image: "cao_cao.jpg",
-                text: "蔡文姬能够为澜提供保护与控制，让澜更安心地进行远程输出和推塔。"
+                id: "SUN BIN",
+                name: "孙膑",
+                english: "SUN BIN",
+                image: "sunbin.jpg",
+                text: "提供移速加成，帮助澜进一步提高机动性，极速穿行于峡谷之中。"
             },
             {
-                id: "SUN SHANGXIANG",
-                name: "孙尚香",
-                english: "SUN SHANGXIANG",
+                id: "ZHANG FEI",
+                name: "张飞",
+                english: "ZHANG FEI",
                 image: "caiwenji.jpg",
-                text: "孙尚香的控制、支援与快速转线能力能够帮助澜发挥推塔和快速支援的优势。"
+                text: "提供护盾加成，提高澜的对拼容错率，不易被集火秒杀。"
             }
         ]
     },
@@ -1596,18 +1620,18 @@ const relationshipData = {
     counter: {
         heroes: [
             {
-                id: "LAN",
-                name: "澜",
-                english: "LAN",
-                image: "luban.jpg",
-                text: "澜可以利用自身机动性和爆发能力寻找澜的输出空隙，快速完成击杀。"
+                id: "JIA LUO",
+                name: "伽罗",
+                english: "JIA LUO",
+                image: "jialuo.jpg",
+                text: "无位移英雄，很容易被澜突脸输出，难以逃脱"
             },
             {
-                id: "HOU YI",
-                name: "后羿",
-                english: "HOU YI",
-                image: "houyi.jpg",
-                text: "澜拥有更强的机动性和爆发节奏，在合适的距离下可以快速接近并压制后羿。"
+                id: "JING",
+                name: "镜",
+                english: "JING",
+                image: "jing.jpg",
+                text: "澜的大招可强行将镜“拖出”大招范围内。"
             }
         ]
     },
@@ -1615,18 +1639,18 @@ const relationshipData = {
     countered: {
         heroes: [
             {
-                id: "LAN LINGWANG",
-                name: "兰陵王",
-                english: "LAN LINGWANG",
-                image: "lanlingwang.jpg",
-                text: "兰陵王的隐身与爆发能力能够快速接近澜，对缺少持续防御能力的澜形成威胁。"
+                id: "ZHAO YUN",
+                name: "赵云",
+                english: "ZHAO YUN",
+                image: "zhaoyun.jpg",
+                text: "赵云这种既有坦度，又有爆发输出的英雄，澜不仅打不动，而且容易被秒。"
             },
             {
-                id: "ZHONG KUI",
-                name: "钟馗",
-                english: "ZHONG KUI",
-                image: "zhongkui.jpg",
-                text: "钟馗的钩子和控制能力能够限制澜的走位，一旦被命中就容易陷入被动。"
+                id: "DIAO CHAN",
+                name: "貂蝉",
+                english: "DIAO CHAN",
+                image: "diaochan.jpg",
+                text: "澜需近身打输出，而貂蝉可以通过二技能拉扯距离，有效规避掉澜的攻击。"
             }
         ]
     }
